@@ -8,7 +8,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 def val(attack=False) :
     _, mnist_test = data.get_mnist()
 
-    model = torch.load(f='./weights/trained_Alexnet2.pt')
+    model = torch.load(f='./weights/trained_Alexnet_grad.pt')
     model.eval()
     model = model.to(device)
 
@@ -54,7 +54,7 @@ def val(attack=False) :
 def fine_tuned_val(attack=False) :
     _, mnist_test = data.get_mnist()
 
-    model = torch.load(f='./weights/fine-tuned_trained_Alexnet.pt')
+    model = torch.load(f='./weights/fine-tuned_trained_Alexnet_grad.pt')
     model.eval()
     model = model.to(device)
 

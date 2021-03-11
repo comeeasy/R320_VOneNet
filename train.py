@@ -10,15 +10,18 @@ import ML_model
 from tqdm import tqdm
 
 def model_train():
+    print('[INFO] train with origin data')
+
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-3
-    epochs = 20
+    epochs = 10
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'train with {device}')
 
     # get data
+    print('[INFO] getting data')
     train_data, label_data = data.get_mnist(batch_size)
 
     # get model (AlexNet)
@@ -49,23 +52,29 @@ def model_train():
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.9f}'.format(avg_cost))
 
     # save weights
-    torch.save(model, 'weights/trained_Alexnet2.pt')
+    torch.save(model, 'weights/trained_Alexnet_grad.pt')
 
 from adversarial_attack import generate_image_adversary
 def fine_tune():
+    print('[INFO] fine-tuning with adversarial images')
+
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-4
-    epochs = 20
+    epochs = 100
+    print(f'[INFO] hyperparameters : batch size:{batch_size}, lr:{learning_rate}, epochs:{epochs}')
+
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    print(f'train with {device}')
+    print(f'[INFO] train with {device}')
 
     # get data
+    print('[INFO] getting data')
     train_data, _ = data.get_mnist(batch_size)
 
     # get model
-    model = torch.load(f='./weights/trained_Alexnet2.pt')
+    print('[INFO] getting model')
+    model = torch.load(f='./weights/trained_Alexnet_grad.pt')
     model.eval()
     model = model.to(device)
 
@@ -96,9 +105,11 @@ def fine_tune():
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.9f}'.format(avg_cost))
 
     # save weights
-    torch.save(model, 'weights/fine-tuned_trained_Alexnet.pt')
+    print('[INFO] saving model')
+    torch.save(model, 'weights/fine-tuned_trained_Alexnet_grad.pt')
 
 if __name__ == '__main__':
+
     # model_train()
     fine_tune()
 

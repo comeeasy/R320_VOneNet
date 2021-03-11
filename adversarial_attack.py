@@ -10,7 +10,7 @@ def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='c
 
     img.requires_grad = True
 
-    model.zero_grad()
+    # model.zero_grad()
     pred = model(img).to(device)
 
     loss_fn = torch.nn.CrossEntropyLoss()
