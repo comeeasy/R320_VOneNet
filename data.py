@@ -5,13 +5,13 @@ import torchvision.datasets as datasets
 def get_mnist(batch_size=64) :
     # download data
     mnist_train_data = datasets.MNIST(root="./MNIST_data",
-                                      train=False,
+                                      train=True,
                                       transform=transforms.ToTensor(),
                                       download=True)
     mnist_val_data = datasets.MNIST(root="./MNIST_data",
                                       train=False,
                                       transform=transforms.ToTensor(),
-                                      download=False)
+                                      download=True)
 
     # DataLoad
     mnist_train_dataloader = DataLoader(dataset=mnist_train_data,
