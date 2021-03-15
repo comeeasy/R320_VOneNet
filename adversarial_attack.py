@@ -2,9 +2,18 @@ import torch
 import data
 
 def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='cuda'):
-    img = img_batch.float().view(-1, 28 * 28).to(device)
+    img = img_batch.float().to(device)
     label = target_batch.to(device)
 
+    len = img.size(0)
+    rand_idx = torch.randperm(len)
+    tmp = img
+    tmp_l = label
+
+    for i in range(len):
+        img[i] = tmp[rand_idx[i]]
+        label[i] = tmp_l[rand_idx[i]]
+    
     # print(img.shape)
     # print(label.shape)
 
