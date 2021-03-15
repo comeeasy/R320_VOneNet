@@ -60,8 +60,8 @@ def fine_tune():
 
     # hyperparameter
     batch_size = 64
-    learning_rate = 1e-6
-    epochs = 100
+    learning_rate = 1e-4
+    epochs = 10
     print(f'[INFO] hyperparameters : batch size:{batch_size}, lr:{learning_rate}, epochs:{epochs}')
 
 
@@ -110,6 +110,6 @@ def fine_tune():
 
 if __name__ == '__main__':
 
-    # model_train()
+    model_train()
     fine_tune()
 

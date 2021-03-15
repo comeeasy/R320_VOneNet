@@ -45,11 +45,12 @@ class MNIST_net(nn.Module):
 
         if layers == 1:
             self.features = nn.Sequential(
+                nn.BatchNorm1d(28 * 28),
                 nn.Linear(28 * 28, 28 * 28, bias=True),
                 nn.ReLU(inplace=True)
             )
             self.classifier = nn.Sequential(
-                nn.Dropout(p=0.2),
+                nn.Dropout(p=0.8),
                 nn.Linear(28 * 28, num_classes),
             )
 
