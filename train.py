@@ -106,11 +106,11 @@ def fine_tune():
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.9f}'.format(avg_cost))
 
     # save weights
-    print('[INFO] saving model')0
+    print('[INFO] saving model')
     torch.save(model, 'weights/fine-tuned_trained_MNISTnet.pt')
 
 if __name__ == '__main__':
 
-    model_train()
+    # model_train()
     fine_tune()
 

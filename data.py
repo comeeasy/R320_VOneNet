@@ -3,20 +3,20 @@ from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 
-# from six.moves import urllib
+from six.moves import urllib
 
 def get_mnist(batch_size=64) :
     # mnist has issue
-#     opener = urllib.request.build_opener()
-#     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-#     urllib.request.install_opener(opener)
+    # opener = urllib.request.build_opener()
+    # opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+    # urllib.request.install_opener(opener)
     
     # download data
-    mnist_train_data = datasets.MNIST(root="./MNIST_data2",
+    mnist_train_data = datasets.MNIST(root="./MNIST_data",
                                       train=True,
                                       transform=transforms.ToTensor(),
                                       download=True)
-    mnist_val_data = datasets.MNIST(root="./MNIST_data2",
+    mnist_val_data = datasets.MNIST(root="./MNIST_data",
                                       train=False,
                                       transform=transforms.ToTensor(),
                                       download=True)

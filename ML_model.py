@@ -45,7 +45,7 @@ class MNIST_net(nn.Module):
 
         if layers == 1:
             self.features = nn.Sequential(
-                nn.Identity(),
+                nn.Linear(28 * 28, 28 * 28, bias=True),
                 nn.ReLU(inplace=True)
             )
             self.classifier = nn.Sequential(
@@ -54,15 +54,15 @@ class MNIST_net(nn.Module):
 
         elif layers == 3:
             self.features = nn.Sequential(
-                nn.Linear(28 * 28, 2 * 28 * 28, bias=True),
+                nn.Linear(28 * 28, 28 * 28, bias=True),
                 nn.ReLU(inplace=True),
-                nn.Linear(2 * 28 * 28, 3 * 28 * 28, bias=True),
+                nn.Linear(28 * 28, 28 * 28, bias=True),
                 nn.ReLU(inplace=True),
-                nn.Linear(3 * 28 * 28, 2 * 28 * 28, bias=True),
+                nn.Linear(28 * 28, 28 * 28, bias=True),
                 nn.ReLU(inplace=True)
             )
             self.classifier = nn.Sequential(
-                nn.Linear(2 * 28 * 28, num_classes)
+                nn.Linear(28 * 28, num_classes)
             )
 
     def forward(self, x):

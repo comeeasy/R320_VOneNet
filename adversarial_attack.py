@@ -2,7 +2,7 @@ import torch
 import data
 
 def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='cuda'):
-    img = img_batch.float().view(-1, 1, 28, 28).to(device)
+    img = img_batch.float().view(-1, 28 * 28).to(device)
     label = target_batch.to(device)
 
     # print(img.shape)
