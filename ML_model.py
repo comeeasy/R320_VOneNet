@@ -49,6 +49,7 @@ class MNIST_net(nn.Module):
                 nn.ReLU(inplace=True)
             )
             self.classifier = nn.Sequential(
+                nn.Dropout(p=0.2),
                 nn.Linear(28 * 28, num_classes),
             )
 
@@ -59,7 +60,7 @@ class MNIST_net(nn.Module):
                 nn.Linear(28 * 28, 28 * 28, bias=True),
                 nn.ReLU(inplace=True),
                 nn.Linear(28 * 28, 28 * 28, bias=True),
-                nn.ReLU(inplace=True)
+                nn.ReLU(inplace=True),
             )
             self.classifier = nn.Sequential(
                 nn.Linear(28 * 28, num_classes)

@@ -92,6 +92,8 @@ def fine_tuned_val(attack=False) :
 
         return accuracy_avg
 
+
+
 if __name__ == '__main__' :
     print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
     print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')

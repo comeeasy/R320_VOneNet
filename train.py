@@ -15,7 +15,7 @@ def model_train():
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-3
-    epochs = 3
+    epochs = 10
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'train with {device}')
@@ -60,8 +60,8 @@ def fine_tune():
 
     # hyperparameter
     batch_size = 64
-    learning_rate = 1e-4
-    epochs = 30
+    learning_rate = 1e-6
+    epochs = 100
     print(f'[INFO] hyperparameters : batch size:{batch_size}, lr:{learning_rate}, epochs:{epochs}')
 
 

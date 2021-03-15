@@ -15,9 +15,6 @@ def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='c
         label[i] = target_batch[rand_idx[i]]
 
     img = img.view(-1, 28 * 28)
-    # print(img.shape)
-    # print(label.shape)
-
     img.requires_grad = True
 
     # model.zero_grad()
@@ -25,8 +22,6 @@ def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='c
 
     loss_fn = torch.nn.CrossEntropyLoss()
     loss = loss_fn(pred, label).to(device)
-
-    # print(f'loss : {loss}')
 
     # we need to calculate ∇xJ(x,θ)
     loss.backward()
