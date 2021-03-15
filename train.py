@@ -52,11 +52,7 @@ def model_train():
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.9f}'.format(avg_cost))
 
     # save weights
-<<<<<<< HEAD
-    torch.save(model, 'weights/trained_Alexnet.pt')
-=======
     torch.save(model, 'weights/trained_MNISTnet.pt')
->>>>>>> b844d971a4975c18dd51e60961d06f0a3319edc1
 
 from adversarial_attack import generate_image_adversary
 def fine_tune():
@@ -65,11 +61,7 @@ def fine_tune():
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-4
-<<<<<<< HEAD
-    epochs = 5
-=======
     epochs = 10
->>>>>>> b844d971a4975c18dd51e60961d06f0a3319edc1
     print(f'[INFO] hyperparameters : batch size:{batch_size}, lr:{learning_rate}, epochs:{epochs}')
 
 
@@ -114,12 +106,8 @@ def fine_tune():
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.9f}'.format(avg_cost))
 
     # save weights
-    print('[INFO] saving model')
-<<<<<<< HEAD
-    torch.save(model, 'weights/fine-tuned_trained_Alexnet.pt')
-=======
+    print('[INFO] saving model')0
     torch.save(model, 'weights/fine-tuned_trained_MNISTnet.pt')
->>>>>>> b844d971a4975c18dd51e60961d06f0a3319edc1
 
 if __name__ == '__main__':
 
