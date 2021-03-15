@@ -35,11 +35,11 @@ def val(attack=False) :
 
         for img_batch, target_batch in tqdm(mnist_test) :
             # print(mnist_test_batch[0].shape)
-            X_test = generate_image_adversary(model=model, img_batch=img_batch,target_batch=target_batch)
+            X_test, Y_test = generate_image_adversary(model=model, img_batch=img_batch,target_batch=target_batch)
 
             with torch.no_grad(): # torch.no_grad()를 하면 gradient 계산을 수행하지 않는다.
                 X_test = X_test.view(-1, 28 * 28).to(device)
-                Y_test = target_batch.to(device)
+                Y_test = Y_test.to(device)
 
                 prediction = model(X_test).to(device)
                 correct_prediction = torch.argmax(prediction, 1) == Y_test
@@ -78,11 +78,11 @@ def fine_tuned_val(attack=False) :
         total_batch = len(mnist_test)
 
         for img_batch, target_batch in tqdm(mnist_test) :
-            X_test = generate_image_adversary(model=model, img_batch=img_batch,target_batch=target_batch)
+            X_test, Y_test = generate_image_adversary(model=model, img_batch=img_batch,target_batch=target_batch)
 
             with torch.no_grad(): # torch.no_grad()를 하면 gradient 계산을 수행하지 않는다.
-                X_test = X_test.to(device)
-                Y_test = target_batch.to(device)
+                X_test = X_test.view(-1, 28 * 28).to(device)
+                Y_test = Y_test.to(device)
 
                 prediction = model(X_test).to(device)
                 correct_prediction = torch.argmax(prediction, 1) == Y_test

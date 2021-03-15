@@ -61,7 +61,7 @@ def fine_tune():
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-4
-    epochs = 8
+    epochs = 30
     print(f'[INFO] hyperparameters : batch size:{batch_size}, lr:{learning_rate}, epochs:{epochs}')
 
 
@@ -88,8 +88,7 @@ def fine_tune():
 
         for img_batch, target_batch in tqdm(train_data):
             # generate adversarial image batch
-            adv_img_batch = generate_image_adversary(model=model, img_batch=img_batch, target_batch=target_batch)
-            adv_target_batch = target_batch
+            adv_img_batch, adv_target_batch = generate_image_adversary(model=model, img_batch=img_batch, target_batch=target_batch)
 
             adv_img_batch = adv_img_batch.view(-1, 28 * 28).to(device)
             adv_target_batch = adv_target_batch.to(device)
@@ -111,6 +110,6 @@ def fine_tune():
 
 if __name__ == '__main__':
 
-    model_train()
+    # model_train()
     fine_tune()
 
