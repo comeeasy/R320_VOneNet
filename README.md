@@ -28,7 +28,7 @@ red line is accrracy of original images validated with fine-tuned model
 <br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/3-layer-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
 3. Convnet
-<br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/Convnet-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
+<br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/Convnet-MNIST-epoch-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
 
 ## Requirements
