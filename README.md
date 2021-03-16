@@ -8,6 +8,11 @@ We're inspired by this [tutorial](https://www.pyimagesearch.com/2021/03/08/defen
 A function named
   generate_image_adversarial(args) is just interpretation of tensorflow code of above tutorial
 
+## Results
+1. 1-layer-linear-classifier model
+<img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/1-layer-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+
+
 ## Requirements
 
 - python 3.8+
