@@ -1,0 +1,401 @@
+1-layer MNIST model test
+
+epoch : 100
+fine-tuned model accuracy : 93.30926513671875
+fine-tuned model accuracy : 56.290077209472656
+
+epoch : 100
+fine-tuned model accuracy : 92.89863586425781
+fine-tuned model accuracy : 62.72035217285156
+
+epoch : 100
+fine-tuned model accuracy : 92.29768371582031
+fine-tuned model accuracy : 73.37741088867188
+
+epoch : 100
+fine-tuned model accuracy : 87.99077606201172
+fine-tuned model accuracy : 79.3369369506836
+
+epoch : 100
+fine-tuned model accuracy : 86.46836853027344
+fine-tuned model accuracy : 83.03286743164062
+
+epoch : 100
+fine-tuned model accuracy : 87.7003402709961
+fine-tuned model accuracy : 86.31813049316406
+
+epoch : 100
+fine-tuned model accuracy : 85.91747283935547
+fine-tuned model accuracy : 87.95072174072266
+
+epoch : 100
+fine-tuned model accuracy : 87.82049560546875
+fine-tuned model accuracy : 89.24278259277344
+
+epoch : 100
+fine-tuned model accuracy : 89.83374786376953
+fine-tuned model accuracy : 91.88700103759766
+
+epoch : 100
+fine-tuned model accuracy : 87.5300521850586
+fine-tuned model accuracy : 94.15060424804688
+
+epoch : 100
+fine-tuned model accuracy : 88.6518325805664
+fine-tuned model accuracy : 95.37255096435547
+
+epoch : 100
+fine-tuned model accuracy : 88.43148040771484
+fine-tuned model accuracy : 96.09371185302734
+
+epoch : 100
+fine-tuned model accuracy : 89.30286407470703
+fine-tuned model accuracy : 96.50437927246094
+
+epoch : 100
+fine-tuned model accuracy : 87.07933807373047
+fine-tuned model accuracy : 97.17544555664062
+
+epoch : 100
+fine-tuned model accuracy : 85.55691528320312
+fine-tuned model accuracy : 97.29563903808594
+
+epoch : 100
+fine-tuned model accuracy : 90.14421081542969
+fine-tuned model accuracy : 98.0268325805664
+
+epoch : 100
+fine-tuned model accuracy : 87.16947174072266
+fine-tuned model accuracy : 98.11697387695312
+
+epoch : 100
+fine-tuned model accuracy : 84.70553588867188
+fine-tuned model accuracy : 98.1269760131836
+
+epoch : 100
+fine-tuned model accuracy : 85.84736633300781
+fine-tuned model accuracy : 98.58772277832031
+
+epoch : 100
+fine-tuned model accuracy : 85.85736846923828
+fine-tuned model accuracy : 98.48756408691406
+
+epoch : 100
+fine-tuned model accuracy : 87.8805923461914
+fine-tuned model accuracy : 98.28722381591797
+
+epoch : 100
+fine-tuned model accuracy : 85.33654022216797
+fine-tuned model accuracy : 98.72792053222656
+
+epoch : 100
+fine-tuned model accuracy : 84.67547607421875
+fine-tuned model accuracy : 98.45751190185547
+
+epoch : 100
+fine-tuned model accuracy : 87.74036407470703
+fine-tuned model accuracy : 98.58770751953125
+
+epoch : 100
+fine-tuned model accuracy : 86.8990478515625
+fine-tuned model accuracy : 98.73796844482422
+
+epoch : 100
+fine-tuned model accuracy : 88.40142822265625
+fine-tuned model accuracy : 98.8481216430664
+
+epoch : 100
+fine-tuned model accuracy : 89.90386199951172
+fine-tuned model accuracy : 98.97833251953125
+
+epoch : 100
+fine-tuned model accuracy : 88.63179779052734
+fine-tuned model accuracy : 99.16864776611328
+
+epoch : 100
+fine-tuned model accuracy : 90.9955825805664
+fine-tuned model accuracy : 99.03842163085938
+
+epoch : 100
+fine-tuned model accuracy : 89.2527847290039
+fine-tuned model accuracy : 99.18865203857422
+
+epoch : 100
+fine-tuned model accuracy : 90.73513793945312
+fine-tuned model accuracy : 99.14859008789062
+
+epoch : 100
+fine-tuned model accuracy : 90.06411743164062
+fine-tuned model accuracy : 99.21870422363281
+
+epoch : 100
+fine-tuned model accuracy : 88.94231414794922
+fine-tuned model accuracy : 99.35893249511719
+
+epoch : 100
+fine-tuned model accuracy : 88.9022445678711
+fine-tuned model accuracy : 99.14859771728516
+
+epoch : 100
+fine-tuned model accuracy : 91.82693481445312
+fine-tuned model accuracy : 99.25878143310547
+
+epoch : 100
+fine-tuned model accuracy : 89.59333801269531
+fine-tuned model accuracy : 99.17863464355469
+
+epoch : 100
+fine-tuned model accuracy : 88.98236846923828
+fine-tuned model accuracy : 99.10852813720703
+
+epoch : 100
+fine-tuned model accuracy : 90.32453155517578
+fine-tuned model accuracy : 99.16862487792969
+
+epoch : 100
+fine-tuned model accuracy : 90.56490325927734
+fine-tuned model accuracy : 99.15862274169922
+
+epoch : 100
+fine-tuned model accuracy : 88.62181091308594
+fine-tuned model accuracy : 99.07850646972656
+
+epoch : 100
+fine-tuned model accuracy : 90.50482177734375
+fine-tuned model accuracy : 99.21871185302734
+
+epoch : 100
+fine-tuned model accuracy : 90.6049575805664
+fine-tuned model accuracy : 99.36894226074219
+
+epoch : 100
+fine-tuned model accuracy : 88.70193481445312
+fine-tuned model accuracy : 99.14859008789062
+
+epoch : 100
+fine-tuned model accuracy : 88.72193908691406
+fine-tuned model accuracy : 99.19868469238281
+
+epoch : 100
+fine-tuned model accuracy : 90.09415435791016
+fine-tuned model accuracy : 99.4490737915039
+
+epoch : 100
+fine-tuned model accuracy : 89.37300109863281
+fine-tuned model accuracy : 99.37898254394531
+
+epoch : 100
+fine-tuned model accuracy : 87.87060546875
+fine-tuned model accuracy : 99.41902160644531
+
+epoch : 100
+fine-tuned model accuracy : 89.82373809814453
+fine-tuned model accuracy : 99.38899230957031
+
+epoch : 100
+fine-tuned model accuracy : 90.77526092529297
+fine-tuned model accuracy : 99.31888580322266
+
+epoch : 100
+fine-tuned model accuracy : 90.45475006103516
+fine-tuned model accuracy : 99.27881622314453
+
+epoch : 100
+fine-tuned model accuracy : 89.60338592529297
+fine-tuned model accuracy : 99.12858581542969
+
+epoch : 100
+fine-tuned model accuracy : 89.14261627197266
+fine-tuned model accuracy : 99.13859558105469
+
+epoch : 100
+fine-tuned model accuracy : 90.92548370361328
+fine-tuned model accuracy : 99.35895538330078
+
+epoch : 100
+fine-tuned model accuracy : 90.4847412109375
+fine-tuned model accuracy : 99.25879669189453
+
+epoch : 100
+fine-tuned model accuracy : 89.24278259277344
+fine-tuned model accuracy : 99.03841400146484
+
+epoch : 100
+fine-tuned model accuracy : 89.60335540771484
+fine-tuned model accuracy : 99.268798828125
+
+epoch : 100
+fine-tuned model accuracy : 86.29806518554688
+fine-tuned model accuracy : 99.12858581542969
+
+epoch : 100
+fine-tuned model accuracy : 89.09254455566406
+fine-tuned model accuracy : 99.25878143310547
+
+epoch : 100
+fine-tuned model accuracy : 89.6434097290039
+fine-tuned model accuracy : 99.24876403808594
+
+epoch : 100
+fine-tuned model accuracy : 90.75521850585938
+fine-tuned model accuracy : 99.4390640258789
+
+epoch : 100
+fine-tuned model accuracy : 89.03243255615234
+fine-tuned model accuracy : 99.24877166748047
+
+epoch : 100
+fine-tuned model accuracy : 90.68506622314453
+fine-tuned model accuracy : 99.2587890625
+
+epoch : 100
+fine-tuned model accuracy : 91.2960433959961
+fine-tuned model accuracy : 99.35896301269531
+
+epoch : 100
+fine-tuned model accuracy : 91.16585540771484
+fine-tuned model accuracy : 99.48916625976562
+
+epoch : 100
+fine-tuned model accuracy : 89.71354675292969
+fine-tuned model accuracy : 99.32890319824219
+
+epoch : 100
+fine-tuned model accuracy : 89.2427978515625
+fine-tuned model accuracy : 99.3188705444336
+
+epoch : 100
+fine-tuned model accuracy : 92.7884521484375
+fine-tuned model accuracy : 99.41903686523438
+
+epoch : 100
+fine-tuned model accuracy : 89.69351959228516
+fine-tuned model accuracy : 99.4190444946289
+
+epoch : 100
+fine-tuned model accuracy : 89.66349029541016
+fine-tuned model accuracy : 99.40900421142578
+
+epoch : 100
+fine-tuned model accuracy : 89.80369567871094
+fine-tuned model accuracy : 99.47913360595703
+
+epoch : 100
+fine-tuned model accuracy : 90.4647445678711
+fine-tuned model accuracy : 99.4991455078125
+
+epoch : 100
+fine-tuned model accuracy : 89.65343475341797
+fine-tuned model accuracy : 99.22872924804688
+
+epoch : 100
+fine-tuned model accuracy : 91.34613037109375
+fine-tuned model accuracy : 99.39899444580078
+
+epoch : 100
+fine-tuned model accuracy : 90.93547821044922
+fine-tuned model accuracy : 99.49915313720703
+
+epoch : 100
+fine-tuned model accuracy : 90.18427276611328
+fine-tuned model accuracy : 99.2988510131836
+
+epoch : 100
+fine-tuned model accuracy : 91.06568908691406
+fine-tuned model accuracy : 99.4791259765625
+
+epoch : 100
+fine-tuned model accuracy : 89.39305114746094
+fine-tuned model accuracy : 99.55924224853516
+
+epoch : 100
+fine-tuned model accuracy : 90.4847640991211
+fine-tuned model accuracy : 99.4691162109375
+
+epoch : 100
+fine-tuned model accuracy : 90.45471954345703
+fine-tuned model accuracy : 99.34891510009766
+
+epoch : 100
+fine-tuned model accuracy : 90.0640869140625
+fine-tuned model accuracy : 99.47911834716797
+
+epoch : 100
+fine-tuned model accuracy : 89.79367065429688
+fine-tuned model accuracy : 99.4691162109375
+
+epoch : 100
+fine-tuned model accuracy : 90.8453369140625
+fine-tuned model accuracy : 99.46910858154297
+
+epoch : 100
+fine-tuned model accuracy : 89.40302276611328
+fine-tuned model accuracy : 99.41903686523438
+
+epoch : 100
+fine-tuned model accuracy : 91.12576293945312
+fine-tuned model accuracy : 99.41902923583984
+
+epoch : 100
+fine-tuned model accuracy : 87.64022064208984
+fine-tuned model accuracy : 99.42904663085938
+
+epoch : 100
+fine-tuned model accuracy : 88.54165649414062
+fine-tuned model accuracy : 99.30885314941406
+
+epoch : 100
+fine-tuned model accuracy : 89.6534652709961
+fine-tuned model accuracy : 99.47911834716797
+
+epoch : 100
+fine-tuned model accuracy : 90.26444244384766
+fine-tuned model accuracy : 99.44908905029297
+
+epoch : 100
+fine-tuned model accuracy : 88.1710433959961
+fine-tuned model accuracy : 99.33889770507812
+
+epoch : 100
+fine-tuned model accuracy : 89.9939956665039
+fine-tuned model accuracy : 99.39900970458984
+
+epoch : 100
+fine-tuned model accuracy : 90.37460327148438
+fine-tuned model accuracy : 99.59931182861328
+
+epoch : 100
+fine-tuned model accuracy : 88.81209564208984
+fine-tuned model accuracy : 99.40901184082031
+
+epoch : 100
+fine-tuned model accuracy : 91.01559448242188
+fine-tuned model accuracy : 99.37898254394531
+
+epoch : 100
+fine-tuned model accuracy : 90.02401733398438
+fine-tuned model accuracy : 99.37898254394531
+
+epoch : 100
+fine-tuned model accuracy : 91.27601623535156
+fine-tuned model accuracy : 99.4490966796875
+
+epoch : 100
+fine-tuned model accuracy : 90.244384765625
+fine-tuned model accuracy : 99.39901733398438
+
+epoch : 100
+fine-tuned model accuracy : 90.51481628417969
+fine-tuned model accuracy : 99.33890533447266
+
+epoch : 100
+fine-tuned model accuracy : 89.12259674072266
+fine-tuned model accuracy : 99.37898254394531
+
+epoch : 100
+fine-tuned model accuracy : 88.99239349365234
+fine-tuned model accuracy : 99.48915100097656
+
+epoch : 100
+fine-tuned model accuracy : 89.0424575805664
+fine-tuned model accuracy : 99.44908905029297
