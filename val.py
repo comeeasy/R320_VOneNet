@@ -52,7 +52,7 @@ def val(attack=False) :
 def fine_tuned_val(attack=False) :
     _, mnist_test = data.get_mnist()
 
-    model = torch.load(f='./weights/fine-tuned_trained_MNISTnet.pt')
+    model = torch.load(f='./weights/tmp.pt')
     model.eval()
     model = model.to(device)
 
@@ -93,15 +93,62 @@ def fine_tuned_val(attack=False) :
         return accuracy_avg
 
 import train
-def validation():
-    for i in range(3, 21):
+import matplotlib.pyplot as plt
+import numpy as np
+
+def validation(epochs=100):
+    file = "./report/1-layer-MNIST-log-epochs-100-2.log"
+    f = open(file=file, mode='w', encoding='utf-8')
+
+    f.write('1-layer MNIST model test\n')
+
+    ori_acc_list = []
+    adv_acc_list = []
+
+    train.model_train(epochs=1)
+    print(f'[INFO] epochs : 5')
+
+    for epoch in range(1, epochs + 1):
+        print(f'[INFO] epochs : {epoch}')
+
+        train.fine_tune(epochs=1)
+
+        f.write(f'\nepoch : {epoch}\n')
+
+        ori_acc = fine_tuned_val(attack=False) * 100
+        adv_acc = fine_tuned_val(attack=True) * 100
+
+        ori_acc_list.append(ori_acc)
+        adv_acc_list.append(adv_acc)
+
+        f.write(f'fine-tuned model original    image accuracy : {ori_acc}\n')
+        f.write(f'fine-tuned model adversarial image accuracy : {adv_acc}\n')
+
+    epochs_range = range(epochs)
+
+    # red dashes, blue squares and green triangles
+    plt.plot(epochs_range, ori_acc_list, 'r.-', label='origin      image accuracy')
+    plt.plot(epochs_range, adv_acc_list, 'b.-', label='adversarial image accuracy')
+
+    plt.title('1-layer-MNIST epochs 100')
+    plt.axis([0, epochs, 0, 100], )
+    plt.xlabel('epochs')
+    plt.ylabel('accuracy')
+    plt.yticks(np.arange(start=0, stop=101, step=10))
+    plt.grid(True, axis='y')
+    plt.show()
+
 
 
 
 if __name__ == '__main__' :
-    print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
-    print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')
-    print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
-    print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
+    # train.model_train(epochs=5)
+    # train.fine_tune(epochs=2)
 
+    # print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
+    # print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')
+    # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
+    # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
+
+    validation()
 
