@@ -30,6 +30,9 @@ red line is accrracy of original images validated with fine-tuned model
 3. Convnet
 <br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/Convnet-MNIST-epoch-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
+accuracy of original MNIST images of two simple linear classfier models are not rubust. these are not stable. however Convnet has robust accuracy of original images. accuracy of adversarial images are going up to original accuracy. almost 95%! 
+
+### fine-tunning harms linear-classifier's prediction of original data. But (at least) above simple convolutional model is robust to fine-tunning 
 
 ## Requirements
 
