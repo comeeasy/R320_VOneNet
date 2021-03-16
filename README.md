@@ -5,12 +5,30 @@ Yann LeCun's MNIST datasets are used.
 
 We're inspired by this [tutorial](https://www.pyimagesearch.com/2021/03/08/defending-against-adversarial-image-attacks-with-keras-and-tensorflow/).
 
+## Fine-tune modeling
+1. train model with original MNIST datasets (learning rate == 0.001)
+2. get adversarial images of MNIST from trained model
+3. fine-tune model with adversarial images. learning rate is 0.0001 (it may be modified)
+4. validate with validation set 100 epochs each models
+5. results saved as a plot 
+
 A function named
-  generate_image_adversarial(args) is just interpretation of tensorflow code of above tutorial
+  generate_image_adversarial(args) is just interpretation of tensorflow code to pytorch code
 
 ## Results
-1. 1-layer-linear-classifier model
+
+red line  : accuracy of original MNIST imagess of fine-tuned model
+blue line : accuracy of adversarial MNIST images of fine-tuned model 
+
+1. 1-layer-linear-classifier model 
+red line is accrracy of original images validated with fine-tuned model
 <br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/1-layer-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
+
+2. 3-layer-linear-classfier model
+<br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/3-layer-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
+
+3. Convnet
+<br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/Convnet-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
 
 ## Requirements
