@@ -92,6 +92,10 @@ def fine_tuned_val(attack=False) :
 
         return accuracy_avg
 
+import train
+def validation():
+    for i in range(3, 21):
+
 
 
 if __name__ == '__main__' :
