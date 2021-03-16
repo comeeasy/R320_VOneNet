@@ -10,7 +10,7 @@ A function named
 
 ## Results
 1. 1-layer-linear-classifier model
-<img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/1-layer-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+<br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/1-layer-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
 
 ## Requirements
