@@ -17,7 +17,7 @@ A function named
 
 ## License
 
-GNU GPL 3+
+MIT License
 
 ## trained model
 
