@@ -8,7 +8,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 def val(attack=False) :
     _, mnist_test = data.get_mnist()
 
-    model = torch.load(f='./weights/trained_MNISTnet.pt')
+    model = torch.load(f='./weights/tmp.pt')
     model.eval()
     model = model.to(device)
 
@@ -19,10 +19,10 @@ def val(attack=False) :
         for img_batch, target_batch in tqdm(mnist_test):
             with torch.no_grad():  # torch.no_grad()를 하면 gradient 계산을 수행하지 않는다.
                 # for linear model
-                X_test = img_batch.view(-1, 28 * 28).to(device)
+                # X_test = img_batch.view(-1, 28 * 28).to(device)
 
                 # for convolutional model
-                # X_test = img_batch.to(device)
+                X_test = img_batch.to(device)
                 Y_test = target_batch.to(device)
 
                 prediction = model(X_test).to(device)
@@ -43,9 +43,9 @@ def val(attack=False) :
 
             with torch.no_grad(): # torch.no_grad()를 하면 gradient 계산을 수행하지 않는다.
                 # for linear model
-                X_test = X_test.view(-1, 28 * 28).to(device)
+                # X_test = X_test.view(-1, 28 * 28).to(device)
                 # for convolutional model
-                # X_test = X_test.to(device)
+                X_test = X_test.to(device)
                 Y_test = Y_test.to(device)
 
                 prediction = model(X_test).to(device)
@@ -70,9 +70,9 @@ def fine_tuned_val(attack=False) :
         for img_batch, target_batch in tqdm(mnist_test):
             with torch.no_grad():  # torch.no_grad()를 하면 gradient 계산을 수행하지 않는다.
                 # for linear model
-                X_test = img_batch.view(-1, 28 * 28).to(device)
+                # X_test = img_batch.view(-1, 28 * 28).to(device)
                 # for convolutional model
-                # X_test = img_batch.to(device)
+                X_test = img_batch.to(device)
                 Y_test = target_batch.to(device)
 
                 prediction = model(X_test).to(device)
@@ -92,9 +92,9 @@ def fine_tuned_val(attack=False) :
 
             with torch.no_grad(): # torch.no_grad()를 하면 gradient 계산을 수행하지 않는다.
                 # for linear model
-                X_test = X_test.view(-1, 28 * 28).to(device)
+                # X_test = X_test.view(-1, 28 * 28).to(device)
                 # for convolutional model
-                # X_test = X_test.to(device)
+                X_test = X_test.to(device)
                 Y_test = Y_test.to(device)
 
                 prediction = model(X_test).to(device)
@@ -110,7 +110,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report/3-layer-MNIST-log-epochs-100.log"
+    file = "./report/3-layer-MNIST-log-epochs-100-2.log"
     f = open(file=file, mode='w', encoding='utf-8')
 
     f.write('3-layer-MNIST model test\n')
@@ -118,7 +118,7 @@ def validation(epochs=100):
     ori_acc_list = []
     adv_acc_list = []
 
-    train.model_train(epochs=10)
+    train.model_train(epochs=3)
     print(f'[INFO] epochs : 10')
 
     for epoch in range(1, epochs + 1):
@@ -163,5 +163,5 @@ if __name__ == '__main__' :
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    validation()
+    validation(epochs=10)
 

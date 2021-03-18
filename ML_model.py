@@ -107,19 +107,41 @@ class ConvNet(nn.Module):
         self.fc1 = nn.Linear(3 * 3 * 128, 32)
         self.fc2 = nn.Linear(32, 16)
         self.fc3 = nn.Linear(16, 10)
+        self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x):
-        x = self.pool(f.relu(self.conv1(x)))
+        x = self.pool(self.relu(self.conv1(x)))
         # Batch Normalization(x)
-        x = self.pool(f.relu(self.conv2(x)))
+        x = self.pool(self.relu(self.conv2(x)))
         x = self.conv3(x)
         # Batch Normalization(x)
 
         # Flattening
         x = x.view(x.size(0), -1)
-        x = torch.tanh(self.fc1(x))
+        x = self.relu(self.fc1(x))
         x = torch.tanh(self.fc2(x))
         x = self.fc3(x)
 
         return x
 
+class One_layer_ConvNet(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.Convolution_layer = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(5, 5), stride=(1, 1), padding=2),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.ReLU(inplace=True)
+        )
+        self.fully_connected_layer = nn.Sequential(
+            nn.Linear(32 * 14 * 14, 28 * 28, bias=True),
+            nn.ReLU(inplace=True),
+            nn.Linear(28 * 28, 10, bias=True)
+        )
+
+    def forward(self, x):
+        x = self.Convolution_layer(x)
+        x = x.view(64, -1)
+        x = self.fully_connected_layer(x)
+
+        return x

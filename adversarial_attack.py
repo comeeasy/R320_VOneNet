@@ -15,7 +15,7 @@ def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='c
         label[i] = target_batch[rand_idx[i]]
 
     # for linear model
-    img = img.view(-1, 28 * 28)
+    # img = img.view(-1, 28 * 28)
 
     img.requires_grad = True
 

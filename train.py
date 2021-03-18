@@ -9,7 +9,7 @@ import data
 import ML_model
 from tqdm import tqdm
 
-def model_train(epochs = 10):
+def model_train(epochs = 3):
     print('[INFO] train with origin data')
 
     # hyperparameter
@@ -24,7 +24,7 @@ def model_train(epochs = 10):
     train_data, label_data = data.get_mnist(batch_size)
 
     # get model (AlexNet)
-    model = ML_model.MNIST_net(layers=1, num_classes=10)
+    model = ML_model.ConvNet()
     model.eval()
     model = model.to(device)
 
@@ -36,7 +36,11 @@ def model_train(epochs = 10):
         total_batch = len(train_data)
 
         for X, Y in tqdm(train_data):
-            X = X.view(-1, 28 * 28).to(device)
+            # linear model
+            # X = X.view(-1, 28 * 28).to(device)
+
+            # for convolutional model
+            X = X.to(device)
             Y = Y.to(device)
 
             prediction = model(X)
@@ -88,7 +92,10 @@ def fine_tune(epochs = 10):
             # generate adversarial image batch
             adv_img_batch, adv_target_batch = generate_image_adversary(model=model, img_batch=img_batch, target_batch=target_batch)
 
-            adv_img_batch = adv_img_batch.view(-1, 28 * 28).to(device)
+            # for linear model
+            # adv_img_batch = adv_img_batch.view(-1, 28 * 28).to(device)
+            # for convolutional model
+            adv_img_batch = adv_img_batch.to(device)
             adv_target_batch = adv_target_batch.to(device)
 
             prediction = model(adv_img_batch)

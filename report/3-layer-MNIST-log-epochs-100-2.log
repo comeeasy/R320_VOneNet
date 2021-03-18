@@ -1,0 +1,41 @@
+3-layer-MNIST model test
+
+epoch : 1
+fine-tuned model original    image accuracy : 98.4675064086914
+fine-tuned model adversarial image accuracy : 8.683895111083984
+
+epoch : 2
+fine-tuned model original    image accuracy : 93.66983032226562
+fine-tuned model adversarial image accuracy : 54.40705490112305
+
+epoch : 3
+fine-tuned model original    image accuracy : 93.9703140258789
+fine-tuned model adversarial image accuracy : 62.30970764160156
+
+epoch : 4
+fine-tuned model original    image accuracy : 93.93026733398438
+fine-tuned model adversarial image accuracy : 65.3946304321289
+
+epoch : 5
+fine-tuned model original    image accuracy : 94.59131622314453
+fine-tuned model adversarial image accuracy : 67.69831848144531
+
+epoch : 6
+fine-tuned model original    image accuracy : 95.30245971679688
+fine-tuned model adversarial image accuracy : 69.81169891357422
+
+epoch : 7
+fine-tuned model original    image accuracy : 95.35253143310547
+fine-tuned model adversarial image accuracy : 70.80329895019531
+
+epoch : 8
+fine-tuned model original    image accuracy : 96.29402923583984
+fine-tuned model adversarial image accuracy : 71.96513366699219
+
+epoch : 9
+fine-tuned model original    image accuracy : 96.29401397705078
+fine-tuned model adversarial image accuracy : 73.2572250366211
+
+epoch : 10
+fine-tuned model original    image accuracy : 96.44426727294922
+fine-tuned model adversarial image accuracy : 74.13861846923828
