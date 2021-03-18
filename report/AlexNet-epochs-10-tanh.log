@@ -1,0 +1,41 @@
+AlexNet-epochs-10-tanh
+
+epoch : 1
+fine-tuned model original    image accuracy : 10.316507339477539
+fine-tuned model adversarial image accuracy : 10.316507339477539
+
+epoch : 2
+fine-tuned model original    image accuracy : 9.815704345703125
+fine-tuned model adversarial image accuracy : 9.815704345703125
+
+epoch : 3
+fine-tuned model original    image accuracy : 10.28646183013916
+fine-tuned model adversarial image accuracy : 10.28646183013916
+
+epoch : 4
+fine-tuned model original    image accuracy : 9.815704345703125
+fine-tuned model adversarial image accuracy : 9.815704345703125
+
+epoch : 5
+fine-tuned model original    image accuracy : 9.745594024658203
+fine-tuned model adversarial image accuracy : 9.745594024658203
+
+epoch : 6
+fine-tuned model original    image accuracy : 11.34815788269043
+fine-tuned model adversarial image accuracy : 11.34815788269043
+
+epoch : 7
+fine-tuned model original    image accuracy : 11.34815788269043
+fine-tuned model adversarial image accuracy : 11.34815788269043
+
+fine-tuned model original    image accuracy : 11.34815788269043
+fine-tuned model adversarial image accuracy : 11.34815788269043
+
+epoch : 9
+epoch : 8
+fine-tuned model original    image accuracy : 9.575321197509766
+fine-tuned model adversarial image accuracy : 9.575321197509766
+
+epoch : 10
+fine-tuned model original    image accuracy : 10.316507339477539
+fine-tuned model adversarial image accuracy : 10.316507339477539

@@ -110,10 +110,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report/3-layer-MNIST-log-epochs-100-2.log"
+    file = "./report/AlexNet-epochs-10-tanh.log"
     f = open(file=file, mode='w', encoding='utf-8')
 
-    f.write('3-layer-MNIST model test\n')
+    f.write('AlexNet-epochs-10-tanh\n')
 
     ori_acc_list = []
     adv_acc_list = []
@@ -143,7 +143,7 @@ def validation(epochs=100):
     plt.plot(epochs_range, ori_acc_list, 'r.-', label='origin      image accuracy')
     plt.plot(epochs_range, adv_acc_list, 'b.-', label='adversarial image accuracy')
 
-    plt.title('3-layer-MNIST epochs 100')
+    plt.title('AlexNet-epochs-10')
     plt.axis([0, epochs, 0, 100])
     plt.xlabel('epochs')
     plt.ylabel('accuracy')

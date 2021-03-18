@@ -9,26 +9,26 @@ class AlexNetBackEnd(nn.Module):
         super().__init__()
         self.features = nn.Sequential(
             nn.Conv2d(1, 64, kernel_size=5, stride=2, padding=2),
-            nn.ReLU(inplace=True),
+            nn.Tanh(),
             nn.Conv2d(64, 192, kernel_size=5, stride=2, padding=2),
-            nn.ReLU(inplace=True),
+            nn.Tanh(),
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
             nn.Conv2d(192, 384, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
+            nn.Tanh(),
             nn.Conv2d(384, 256, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
+            nn.Tanh(),
             nn.Conv2d(256, 256, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
+            nn.Tanh(),
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
         )
         self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
         self.classifier = nn.Sequential(
             nn.Dropout(),
             nn.Linear(256 * 7 * 7, 4096),
-            nn.ReLU(inplace=True),
+            nn.Tanh(),
             nn.Dropout(),
             nn.Linear(4096, 4096),
-            nn.ReLU(inplace=True),
+            nn.Tanh(),
             nn.Linear(4096, num_classes),
         )
 

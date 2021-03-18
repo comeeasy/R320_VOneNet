@@ -5,12 +5,13 @@ import torchvision.datasets as datasets
 
 from six.moves import urllib
 
+import os
 def get_mnist(batch_size=64) :
     # mnist has issue
     # opener = urllib.request.build_opener()
     # opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     # urllib.request.install_opener(opener)
-    
+
     # download data
     mnist_train_data = datasets.MNIST(root="./MNIST_data",
                                       train=True,

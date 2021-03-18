@@ -24,7 +24,7 @@ def model_train(epochs = 3):
     train_data, label_data = data.get_mnist(batch_size)
 
     # get model (AlexNet)
-    model = ML_model.ConvNet()
+    model = ML_model.AlexNetBackEnd()
     model.eval()
     model = model.to(device)
 
