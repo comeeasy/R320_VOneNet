@@ -9,26 +9,26 @@ class AlexNetBackEnd(nn.Module):
         super().__init__()
         self.features = nn.Sequential(
             nn.Conv2d(1, 64, kernel_size=5, stride=2, padding=2),
-            nn.Tanh(),
+            nn.ReLU(inplace=True),
             nn.Conv2d(64, 192, kernel_size=5, stride=2, padding=2),
-            nn.Tanh(),
+            nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
             nn.Conv2d(192, 384, kernel_size=3, padding=1),
-            nn.Tanh(),
+            nn.ReLU(inplace=True),
             nn.Conv2d(384, 256, kernel_size=3, padding=1),
-            nn.Tanh(),
+            nn.ReLU(inplace=True),
             nn.Conv2d(256, 256, kernel_size=3, padding=1),
-            nn.Tanh(),
+            nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
         )
         self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
         self.classifier = nn.Sequential(
             nn.Dropout(),
             nn.Linear(256 * 7 * 7, 4096),
-            nn.Tanh(),
+            nn.ReLU(inplace=True),
             nn.Dropout(),
             nn.Linear(4096, 4096),
-            nn.Tanh(),
+            nn.ReLU(inplace=True),
             nn.Linear(4096, num_classes),
         )
 
@@ -40,7 +40,7 @@ class AlexNetBackEnd(nn.Module):
         return x
 
 class MNIST_net(nn.Module):
-    def __init__(self, layers=3 ,num_classes=10):
+    def __init__(self, layers=3, num_classes=10):
         super().__init__()
 
         if layers == 1:
@@ -55,11 +55,11 @@ class MNIST_net(nn.Module):
         elif layers == 3:
             self.features = nn.Sequential(
                 nn.Linear(28 * 28, 28 * 28, bias=True),
-                nn.ReLU(inplace=True),
+                nn.Tanh(),
                 nn.Linear(28 * 28, 28 * 28, bias=True),
-                nn.ReLU(inplace=True),
+                nn.Tanh(),
                 nn.Linear(28 * 28, 28 * 28, bias=True),
-                nn.ReLU(inplace=True),
+                nn.Tanh(),
             )
             self.classifier = nn.Sequential(
                 nn.Linear(28 * 28, num_classes)
@@ -104,8 +104,14 @@ class ConvNet(nn.Module):
         self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(5, 5), stride=(2, 2), padding=2)
         self.conv3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3, 3), stride=(1, 1), padding=1)
         self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
-        self.fc1 = nn.Linear(3 * 3 * 128, 32)
-        self.fc2 = nn.Linear(32, 16)
+        self.fc1 = nn.Sequential(
+            nn.Linear(3 * 3 * 128, 32),
+            nn.ReLU(inplace=True)
+        )
+        self.fc2 = nn.Sequential(
+            nn.Linear(32, 16),
+            nn.ReLU(inplace=True)
+        )
         self.fc3 = nn.Linear(16, 10)
         self.relu = nn.ReLU(inplace=True)
 
@@ -118,8 +124,8 @@ class ConvNet(nn.Module):
 
         # Flattening
         x = x.view(x.size(0), -1)
-        x = self.relu(self.fc1(x))
-        x = torch.tanh(self.fc2(x))
+        x = self.fc1(x)
+        x = self.fc2(x)
         x = self.fc3(x)
 
         return x

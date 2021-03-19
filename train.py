@@ -9,7 +9,7 @@ import data
 import ML_model
 from tqdm import tqdm
 
-def model_train(epochs = 3):
+def model_train(epochs = 5):
     print('[INFO] train with origin data')
 
     # hyperparameter
@@ -24,7 +24,7 @@ def model_train(epochs = 3):
     train_data, label_data = data.get_mnist(batch_size)
 
     # get model (AlexNet)
-    model = ML_model.AlexNetBackEnd()
+    model = ML_model.ConvNet()
     model.eval()
     model = model.to(device)
 
@@ -116,5 +116,5 @@ def fine_tune(epochs = 10):
 if __name__ == '__main__':
 
     model_train()
-    fine_tune()
+    # fine_tune()
 

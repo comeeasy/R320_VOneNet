@@ -110,16 +110,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report/AlexNet-epochs-10-tanh.log"
+    file = "./report/Convnet-epochs-50-relu-relu.log"
     f = open(file=file, mode='w', encoding='utf-8')
 
-    f.write('AlexNet-epochs-10-tanh\n')
+    f.write('Convnet-epochs-50-tanh-tanh-lr-2e-4\n')
 
     ori_acc_list = []
     adv_acc_list = []
 
     train.model_train(epochs=3)
-    print(f'[INFO] epochs : 10')
+    print(f'[INFO] epochs : {epochs}')
 
     for epoch in range(1, epochs + 1):
         print(f'[INFO] epochs : {epoch}')
@@ -143,7 +143,7 @@ def validation(epochs=100):
     plt.plot(epochs_range, ori_acc_list, 'r.-', label='origin      image accuracy')
     plt.plot(epochs_range, adv_acc_list, 'b.-', label='adversarial image accuracy')
 
-    plt.title('AlexNet-epochs-10')
+    plt.title('Convnet-epochs-50-relu-relu')
     plt.axis([0, epochs, 0, 100])
     plt.xlabel('epochs')
     plt.ylabel('accuracy')
@@ -163,5 +163,5 @@ if __name__ == '__main__' :
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    validation(epochs=10)
+    validation(epochs=50)
 

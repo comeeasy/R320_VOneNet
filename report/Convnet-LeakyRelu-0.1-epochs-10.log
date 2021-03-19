@@ -1,0 +1,41 @@
+Convnet-LeakyRelu-epochs-10
+
+epoch : 1
+fine-tuned model original    image accuracy : 98.44745635986328
+fine-tuned model adversarial image accuracy : 0.741186261177063
+
+epoch : 2
+fine-tuned model original    image accuracy : 80.28845977783203
+fine-tuned model adversarial image accuracy : 30.49880027770996
+
+epoch : 3
+fine-tuned model original    image accuracy : 77.0633316040039
+fine-tuned model adversarial image accuracy : 33.34334945678711
+
+epoch : 4
+fine-tuned model original    image accuracy : 76.7528076171875
+fine-tuned model adversarial image accuracy : 41.806888580322266
+
+epoch : 5
+fine-tuned model original    image accuracy : 68.9503402709961
+fine-tuned model adversarial image accuracy : 46.794864654541016
+
+epoch : 6
+fine-tuned model original    image accuracy : 86.61857604980469
+fine-tuned model adversarial image accuracy : 56.901039123535156
+
+epoch : 7
+fine-tuned model original    image accuracy : 82.02124786376953
+fine-tuned model adversarial image accuracy : 39.813716888427734
+
+epoch : 8
+fine-tuned model original    image accuracy : 82.54207611083984
+fine-tuned model adversarial image accuracy : 47.996803283691406
+
+epoch : 9
+fine-tuned model original    image accuracy : 79.88782501220703
+fine-tuned model adversarial image accuracy : 66.52642822265625
+
+epoch : 10
+fine-tuned model original    image accuracy : 77.76444244384766
+fine-tuned model adversarial image accuracy : 74.91990661621094

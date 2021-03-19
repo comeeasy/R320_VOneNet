@@ -1,0 +1,401 @@
+Convnet-epochs-100-tanh-tanh
+
+epoch : 1
+fine-tuned model original    image accuracy : 98.13697052001953
+fine-tuned model adversarial image accuracy : 23.086938858032227
+
+epoch : 2
+fine-tuned model original    image accuracy : 96.23392486572266
+fine-tuned model adversarial image accuracy : 59.09454345703125
+
+epoch : 3
+fine-tuned model original    image accuracy : 96.17382049560547
+fine-tuned model adversarial image accuracy : 68.42949676513672
+
+epoch : 4
+fine-tuned model original    image accuracy : 95.9334487915039
+fine-tuned model adversarial image accuracy : 70.76322937011719
+
+epoch : 5
+fine-tuned model original    image accuracy : 96.47431945800781
+fine-tuned model adversarial image accuracy : 74.42910766601562
+
+epoch : 6
+fine-tuned model original    image accuracy : 96.26397705078125
+fine-tuned model adversarial image accuracy : 76.77284240722656
+
+epoch : 7
+fine-tuned model original    image accuracy : 96.58448028564453
+fine-tuned model adversarial image accuracy : 79.55730438232422
+
+epoch : 8
+fine-tuned model original    image accuracy : 96.7046890258789
+fine-tuned model adversarial image accuracy : 80.46875
+
+epoch : 9
+fine-tuned model original    image accuracy : 96.30403137207031
+fine-tuned model adversarial image accuracy : 82.35177612304688
+
+epoch : 10
+fine-tuned model original    image accuracy : 96.52440643310547
+fine-tuned model adversarial image accuracy : 83.7540054321289
+
+epoch : 11
+fine-tuned model original    image accuracy : 96.5744857788086
+fine-tuned model adversarial image accuracy : 83.48357391357422
+
+epoch : 12
+fine-tuned model original    image accuracy : 95.64299774169922
+fine-tuned model adversarial image accuracy : 86.49840545654297
+
+epoch : 13
+fine-tuned model original    image accuracy : 93.12899017333984
+fine-tuned model adversarial image accuracy : 89.50318908691406
+
+epoch : 14
+fine-tuned model original    image accuracy : 88.98236846923828
+fine-tuned model adversarial image accuracy : 92.73834228515625
+
+epoch : 15
+fine-tuned model original    image accuracy : 87.64024353027344
+fine-tuned model adversarial image accuracy : 93.46952819824219
+
+epoch : 16
+fine-tuned model original    image accuracy : 85.91751098632812
+fine-tuned model adversarial image accuracy : 94.82169342041016
+
+epoch : 17
+fine-tuned model original    image accuracy : 87.13944244384766
+fine-tuned model adversarial image accuracy : 95.68305969238281
+
+epoch : 18
+fine-tuned model original    image accuracy : 87.4299087524414
+fine-tuned model adversarial image accuracy : 95.84329223632812
+
+epoch : 19
+fine-tuned model original    image accuracy : 84.13461303710938
+fine-tuned model adversarial image accuracy : 96.26397705078125
+
+epoch : 20
+fine-tuned model original    image accuracy : 84.20475006103516
+fine-tuned model adversarial image accuracy : 96.54441833496094
+
+epoch : 21
+fine-tuned model original    image accuracy : 85.10619354248047
+fine-tuned model adversarial image accuracy : 96.99514770507812
+
+epoch : 22
+fine-tuned model original    image accuracy : 84.80571746826172
+fine-tuned model adversarial image accuracy : 96.59452819824219
+
+epoch : 23
+fine-tuned model original    image accuracy : 84.23477935791016
+fine-tuned model adversarial image accuracy : 97.07530975341797
+
+epoch : 24
+fine-tuned model original    image accuracy : 83.25321960449219
+fine-tuned model adversarial image accuracy : 97.07528686523438
+
+epoch : 25
+fine-tuned model original    image accuracy : 81.56050109863281
+fine-tuned model adversarial image accuracy : 97.16542053222656
+
+epoch : 26
+fine-tuned model original    image accuracy : 82.11136627197266
+fine-tuned model adversarial image accuracy : 97.92667388916016
+
+epoch : 27
+fine-tuned model original    image accuracy : 80.77924346923828
+fine-tuned model adversarial image accuracy : 98.03682708740234
+
+epoch : 28
+fine-tuned model original    image accuracy : 80.93952178955078
+fine-tuned model adversarial image accuracy : 98.21712493896484
+
+epoch : 29
+fine-tuned model original    image accuracy : 77.1834945678711
+fine-tuned model adversarial image accuracy : 98.2671890258789
+
+epoch : 30
+fine-tuned model original    image accuracy : 79.04645538330078
+fine-tuned model adversarial image accuracy : 98.487548828125
+
+epoch : 31
+fine-tuned model original    image accuracy : 80.2884750366211
+fine-tuned model adversarial image accuracy : 98.52759552001953
+
+epoch : 32
+fine-tuned model original    image accuracy : 79.50720977783203
+fine-tuned model adversarial image accuracy : 98.6878662109375
+
+epoch : 33
+fine-tuned model original    image accuracy : 78.48556518554688
+fine-tuned model adversarial image accuracy : 98.90821838378906
+
+epoch : 34
+fine-tuned model original    image accuracy : 78.5156478881836
+fine-tuned model adversarial image accuracy : 98.58773040771484
+
+epoch : 35
+fine-tuned model original    image accuracy : 76.1418228149414
+fine-tuned model adversarial image accuracy : 98.6578140258789
+
+epoch : 36
+fine-tuned model original    image accuracy : 76.60257720947266
+fine-tuned model adversarial image accuracy : 98.68787384033203
+
+epoch : 37
+fine-tuned model original    image accuracy : 74.88984680175781
+fine-tuned model adversarial image accuracy : 98.67784118652344
+
+epoch : 38
+fine-tuned model original    image accuracy : 77.24359893798828
+fine-tuned model adversarial image accuracy : 99.01838684082031
+
+epoch : 39
+fine-tuned model original    image accuracy : 77.35376739501953
+fine-tuned model adversarial image accuracy : 99.13858032226562
+
+epoch : 40
+fine-tuned model original    image accuracy : 74.54927825927734
+fine-tuned model adversarial image accuracy : 98.99835205078125
+
+epoch : 41
+fine-tuned model original    image accuracy : 73.47756958007812
+fine-tuned model adversarial image accuracy : 99.16862487792969
+
+epoch : 42
+fine-tuned model original    image accuracy : 75.71113586425781
+fine-tuned model adversarial image accuracy : 99.20869445800781
+
+epoch : 43
+fine-tuned model original    image accuracy : 78.66586303710938
+fine-tuned model adversarial image accuracy : 99.1085205078125
+
+epoch : 44
+fine-tuned model original    image accuracy : 77.54405975341797
+fine-tuned model adversarial image accuracy : 99.02840423583984
+
+epoch : 45
+fine-tuned model original    image accuracy : 76.57249450683594
+fine-tuned model adversarial image accuracy : 99.16861724853516
+
+epoch : 46
+fine-tuned model original    image accuracy : 78.06490325927734
+fine-tuned model adversarial image accuracy : 99.19866943359375
+
+epoch : 47
+fine-tuned model original    image accuracy : 79.8978271484375
+fine-tuned model adversarial image accuracy : 99.1385726928711
+
+epoch : 48
+fine-tuned model original    image accuracy : 82.05127716064453
+fine-tuned model adversarial image accuracy : 98.95829772949219
+
+epoch : 49
+fine-tuned model original    image accuracy : 82.44188690185547
+fine-tuned model adversarial image accuracy : 99.27880096435547
+
+epoch : 50
+fine-tuned model original    image accuracy : 80.67906188964844
+fine-tuned model adversarial image accuracy : 99.26879119873047
+
+epoch : 51
+fine-tuned model original    image accuracy : 76.06170654296875
+fine-tuned model adversarial image accuracy : 99.17863464355469
+
+epoch : 52
+fine-tuned model original    image accuracy : 78.50562286376953
+fine-tuned model adversarial image accuracy : 99.23873901367188
+
+epoch : 53
+fine-tuned model original    image accuracy : 77.7444076538086
+fine-tuned model adversarial image accuracy : 99.26879119873047
+
+epoch : 54
+fine-tuned model original    image accuracy : 77.41384887695312
+fine-tuned model adversarial image accuracy : 99.39899444580078
+
+epoch : 55
+fine-tuned model original    image accuracy : 80.35857391357422
+fine-tuned model adversarial image accuracy : 99.34893035888672
+
+epoch : 56
+fine-tuned model original    image accuracy : 79.37699890136719
+fine-tuned model adversarial image accuracy : 98.96830749511719
+
+epoch : 57
+fine-tuned model original    image accuracy : 77.12342071533203
+fine-tuned model adversarial image accuracy : 99.39899444580078
+
+epoch : 58
+fine-tuned model original    image accuracy : 79.12660217285156
+fine-tuned model adversarial image accuracy : 99.36895751953125
+
+epoch : 59
+fine-tuned model original    image accuracy : 76.66265106201172
+fine-tuned model adversarial image accuracy : 99.3188705444336
+
+epoch : 60
+fine-tuned model original    image accuracy : 75.27044677734375
+fine-tuned model adversarial image accuracy : 99.2587661743164
+
+epoch : 61
+fine-tuned model original    image accuracy : 72.06531524658203
+fine-tuned model adversarial image accuracy : 98.9282455444336
+
+epoch : 62
+fine-tuned model original    image accuracy : 72.8565673828125
+fine-tuned model adversarial image accuracy : 98.9282455444336
+
+epoch : 63
+fine-tuned model original    image accuracy : 74.94991302490234
+fine-tuned model adversarial image accuracy : 99.34891510009766
+
+epoch : 64
+fine-tuned model original    image accuracy : 77.29368591308594
+fine-tuned model adversarial image accuracy : 99.32887268066406
+
+epoch : 65
+fine-tuned model original    image accuracy : 80.4386978149414
+fine-tuned model adversarial image accuracy : 99.36894226074219
+
+epoch : 66
+fine-tuned model original    image accuracy : 78.82610321044922
+fine-tuned model adversarial image accuracy : 97.9066162109375
+
+epoch : 67
+fine-tuned model original    image accuracy : 74.75962829589844
+fine-tuned model adversarial image accuracy : 99.63937377929688
+
+epoch : 68
+fine-tuned model original    image accuracy : 77.05329132080078
+fine-tuned model adversarial image accuracy : 99.56925201416016
+
+epoch : 69
+fine-tuned model original    image accuracy : 75.44068908691406
+fine-tuned model adversarial image accuracy : 99.2587661743164
+
+epoch : 70
+fine-tuned model original    image accuracy : 75.11018371582031
+fine-tuned model adversarial image accuracy : 99.34889221191406
+
+epoch : 71
+fine-tuned model original    image accuracy : 78.59577178955078
+fine-tuned model adversarial image accuracy : 99.07848358154297
+
+epoch : 72
+fine-tuned model original    image accuracy : 77.25359344482422
+fine-tuned model adversarial image accuracy : 99.44906616210938
+
+epoch : 73
+fine-tuned model original    image accuracy : 79.56731414794922
+fine-tuned model adversarial image accuracy : 99.4991455078125
+
+epoch : 74
+fine-tuned model original    image accuracy : 79.40704345703125
+fine-tuned model adversarial image accuracy : 99.14859008789062
+
+epoch : 75
+fine-tuned model original    image accuracy : 77.07333374023438
+fine-tuned model adversarial image accuracy : 99.20869445800781
+
+epoch : 76
+fine-tuned model original    image accuracy : 77.78446197509766
+fine-tuned model adversarial image accuracy : 98.8681411743164
+
+epoch : 77
+fine-tuned model original    image accuracy : 79.2668228149414
+fine-tuned model adversarial image accuracy : 98.79804229736328
+
+epoch : 78
+fine-tuned model original    image accuracy : 81.93109893798828
+fine-tuned model adversarial image accuracy : 98.86814880371094
+
+epoch : 79
+fine-tuned model original    image accuracy : 83.52364349365234
+fine-tuned model adversarial image accuracy : 99.24876403808594
+
+epoch : 80
+fine-tuned model original    image accuracy : 84.34495544433594
+fine-tuned model adversarial image accuracy : 98.72789764404297
+
+epoch : 81
+fine-tuned model original    image accuracy : 82.94271087646484
+fine-tuned model adversarial image accuracy : 99.00836944580078
+
+epoch : 82
+fine-tuned model original    image accuracy : 83.48355102539062
+fine-tuned model adversarial image accuracy : 99.07847595214844
+
+epoch : 83
+fine-tuned model original    image accuracy : 84.04449462890625
+fine-tuned model adversarial image accuracy : 99.0484390258789
+
+epoch : 84
+fine-tuned model original    image accuracy : 81.22998046875
+fine-tuned model adversarial image accuracy : 99.33889770507812
+
+epoch : 85
+fine-tuned model original    image accuracy : 86.7087173461914
+fine-tuned model adversarial image accuracy : 99.1385726928711
+
+epoch : 86
+fine-tuned model original    image accuracy : 81.26004791259766
+fine-tuned model adversarial image accuracy : 99.38896942138672
+
+epoch : 87
+fine-tuned model original    image accuracy : 84.95592498779297
+fine-tuned model adversarial image accuracy : 99.18865966796875
+
+epoch : 88
+fine-tuned model original    image accuracy : 82.71234893798828
+fine-tuned model adversarial image accuracy : 99.40899658203125
+
+epoch : 89
+fine-tuned model original    image accuracy : 85.99761962890625
+fine-tuned model adversarial image accuracy : 99.28882598876953
+
+epoch : 90
+fine-tuned model original    image accuracy : 86.96916961669922
+fine-tuned model adversarial image accuracy : 99.07848358154297
+
+epoch : 91
+fine-tuned model original    image accuracy : 86.69869995117188
+fine-tuned model adversarial image accuracy : 99.33889770507812
+
+epoch : 92
+fine-tuned model original    image accuracy : 85.07612609863281
+fine-tuned model adversarial image accuracy : 99.21869659423828
+
+epoch : 93
+fine-tuned model original    image accuracy : 84.82574462890625
+fine-tuned model adversarial image accuracy : 99.34891510009766
+
+epoch : 94
+fine-tuned model original    image accuracy : 85.98756408691406
+fine-tuned model adversarial image accuracy : 99.45907592773438
+
+epoch : 95
+fine-tuned model original    image accuracy : 84.50519561767578
+fine-tuned model adversarial image accuracy : 99.43905639648438
+
+epoch : 96
+fine-tuned model original    image accuracy : 85.61698150634766
+fine-tuned model adversarial image accuracy : 99.35892486572266
+
+epoch : 97
+fine-tuned model original    image accuracy : 83.65383911132812
+fine-tuned model adversarial image accuracy : 99.30884552001953
+
+epoch : 98
+fine-tuned model original    image accuracy : 83.68387603759766
+fine-tuned model adversarial image accuracy : 99.54923248291016
+
+epoch : 99
+fine-tuned model original    image accuracy : 84.3449478149414
+fine-tuned model adversarial image accuracy : 99.63935852050781
+
+epoch : 100
+fine-tuned model original    image accuracy : 84.7456283569336
+fine-tuned model adversarial image accuracy : 99.50917053222656
