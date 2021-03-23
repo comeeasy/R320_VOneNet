@@ -110,8 +110,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report2/Alexnet-tanh-tanh.log"
-    title = 'Alexnet-tanh-tanh'
+    file = "./report2/Convnet-MNIST-epochs-30-tanh-relu-batch-norm.log"
+    title = 'Convnet-MNIST-epochs-30-tanh-relu-batch-norm'
     f = open(file=file, mode='w', encoding='utf-8')
 
     f.write(title +'\n')
@@ -156,13 +156,13 @@ def validation(epochs=100):
 
 
 if __name__ == '__main__' :
-    train.model_train(epochs=5)
+    # train.model_train(epochs=5)
     # train.fine_tune(epochs=2)
 
-    print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
-    print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')
-    print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
-    print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
+    # print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
+    # print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')
+    # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
+    # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    # validation(epochs=30)
+    validation(epochs=30)
 

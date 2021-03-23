@@ -173,22 +173,23 @@ class ConvNet2(nn.Module):
             nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3, 3), stride=(1, 1), padding=1),
             nn.BatchNorm2d(128),
             nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2),
+            # nn.MaxPool2d(kernel_size=2, stride=2),
         )
         self.fc1 = nn.Sequential(
             nn.Linear(3 * 3 * 128, 32),
-            # nn.ReLU(inplace=True)
             nn.ReLU(inplace=True)
+            # nn.Tanh()
         )
         self.fc2 = nn.Sequential(
             nn.Linear(32, 16),
             # nn.ReLU(inplace=True)
-            nn.ReLU(inplace=True)
+            nn.Tanh()
         )
         self.fc3 = nn.Linear(16, 10)
 
     def forward(self, x):
         x = self.Convolution_layer(x)
+        x = x.view(x.size(0), -1)
         x = self.fc1(x)
         x = self.fc2(x)
         x = self.fc3(x)
