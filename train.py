@@ -24,7 +24,7 @@ def model_train(epochs = 5):
     train_data, label_data = data.get_mnist(batch_size)
 
     # get model (AlexNet)
-    model = ML_model.ConvNet()
+    model = ML_model.AlexNetBackEnd()
     model.eval()
     model = model.to(device)
 
@@ -76,8 +76,10 @@ def fine_tune(epochs = 10):
 
     # get model
 
-    print('[INFO] getting model')
-    model = torch.load(f='./weights/tmp.pt')
+    model_weights = './weights/tmp.pt'
+
+    print(f'[INFO] getting model {model_weights}')
+    model = torch.load(f=model_weights)
     model.eval()
     model = model.to(device)
 

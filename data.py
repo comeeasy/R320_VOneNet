@@ -22,6 +22,12 @@ def get_mnist(batch_size=64) :
                                       transform=transforms.ToTensor(),
                                       download=True)
 
+    # mnist_train_data = mnist_train_data.data[:50000]
+    # mnist_val_data1 = mnist_train_data.data[50000:]
+    # mnist_val_data2 = mnist_val_data.data
+
+
+
     # DataLoad
     mnist_train_dataloader = DataLoader(dataset=mnist_train_data,
                                         shuffle=True,

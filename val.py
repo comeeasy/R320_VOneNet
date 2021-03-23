@@ -110,10 +110,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report/Convnet-epochs-50-relu-relu.log"
+    file = "./report2/Alexnet-tanh-tanh.log"
+    title = 'Alexnet-tanh-tanh'
     f = open(file=file, mode='w', encoding='utf-8')
 
-    f.write('Convnet-epochs-50-tanh-tanh-lr-2e-4\n')
+    f.write(title +'\n')
 
     ori_acc_list = []
     adv_acc_list = []
@@ -132,8 +133,8 @@ def validation(epochs=100):
         ori_acc_list.append(ori_acc)
         adv_acc_list.append(adv_acc)
 
-        f.write(f'fine-tuned model original    image accuracy : {ori_acc}\n')
-        f.write(f'fine-tuned model adversarial image accuracy : {adv_acc}\n')
+        f.write(f'fine-tuned model original    image accuracy : {ori_acc:3f}%\n')
+        f.write(f'fine-tuned model adversarial image accuracy : {adv_acc:3f}%\n')
 
         train.fine_tune(epochs=1)
 
@@ -143,7 +144,7 @@ def validation(epochs=100):
     plt.plot(epochs_range, ori_acc_list, 'r.-', label='origin      image accuracy')
     plt.plot(epochs_range, adv_acc_list, 'b.-', label='adversarial image accuracy')
 
-    plt.title('Convnet-epochs-50-relu-relu')
+    plt.title(title)
     plt.axis([0, epochs, 0, 100])
     plt.xlabel('epochs')
     plt.ylabel('accuracy')
@@ -155,13 +156,13 @@ def validation(epochs=100):
 
 
 if __name__ == '__main__' :
-    # train.model_train(epochs=5)
+    train.model_train(epochs=5)
     # train.fine_tune(epochs=2)
 
-    # print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
-    # print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')
-    # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
-    # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
+    print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
+    print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')
+    print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
+    print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    validation(epochs=50)
+    # validation(epochs=30)
 
