@@ -55,5 +55,5 @@ MIT License
 
 ## Longer Motivation
 
-1. VOneNet maybe boosts performance. So we're considering how apply this model
+1. VOneNet maybe boosts performance. So we're considering how apply this model to
 [VOneNet](https://github.com/dicarlolab/vonenet)
