@@ -9,7 +9,8 @@ import data
 import ML_model
 from tqdm import tqdm
 
-import vonenet.__init__
+import vonenet.vonenet as vonenet
+import vonenet.back_ends as back_ends
 
 def model_train(epochs = 5):
     print('[INFO] train with origin data')
@@ -26,7 +27,8 @@ def model_train(epochs = 5):
     train_data, label_data = data.get_mnist(batch_size)
 
     # get model (AlexNet)
-    model = globals()[f'VOneNet'](model_arch='Convnet_MNIST', image_size=28)
+    model = back_ends.ConvNet()
+    # model = vonenet.VOneNet()
     model.eval()
     model = model.to(device)
 
@@ -118,6 +120,6 @@ def fine_tune(epochs = 10):
     torch.save(model, 'weights/tmp.pt')
 
 if __name__ == '__main__':
-    model_train()
+    model_train(epochs=10)
     # fine_tune()
 

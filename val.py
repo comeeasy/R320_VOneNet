@@ -3,12 +3,18 @@ import data
 from tqdm import tqdm
 from adversarial_attack import generate_image_adversary
 
+import vonenet.vonenet as vonenet
+
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 def val(attack=False) :
     _, mnist_test = data.get_mnist()
 
-    model = torch.load(f='./weights/tmp.pt')
+    # model = torch.load(f='./weights/tmp.pt')
+    # model.eval()
+    # model = model.to(device)
+
+    model = vonenet.VOneNet(model_arch='ConvNet-MNIST')
     model.eval()
     model = model.to(device)
 
@@ -63,6 +69,10 @@ def fine_tuned_val(attack=False) :
     model.eval()
     model = model.to(device)
 
+    # vonenet_model = vonenet.VOneNet(model_arch='ConvNet-MNIST', image_size=28)
+    # vonenet_model.eval()
+    # vonenet_model = vonenet_model.to(device)
+
     if attack == False :
         accuracy_avg = 0
         total_batch = len(mnist_test)
@@ -110,8 +120,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report2/Convnet-MNIST-epochs-30-tanh-relu-batch-norm.log"
-    title = 'Convnet-MNIST-epochs-30-tanh-relu-batch-norm'
+    file = "./report2/VOneNet-MNIST-epochs-30-tanh-relu.log"
+    title = 'VOneNet-MNIST-epochs-30-tanh-relu'
     f = open(file=file, mode='w', encoding='utf-8')
 
     f.write(title +'\n')
@@ -159,10 +169,10 @@ if __name__ == '__main__' :
     # train.model_train(epochs=5)
     # train.fine_tune(epochs=2)
 
-    # print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
+    print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
     # print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    validation(epochs=30)
+    # validation(epochs=30)
 

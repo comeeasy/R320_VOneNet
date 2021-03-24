@@ -39,10 +39,10 @@ class GFB(nn.Module):
 class VOneBlock(nn.Module):
     def __init__(self, sf, theta, sigx, sigy, phase,
                  k_exc=25, noise_mode=None, noise_scale=1, noise_level=1,
-                 simple_channels=128, complex_channels=128, ksize=25, stride=4, input_size=224):
+                 simple_channels=128, complex_channels=128, in_channel=1, ksize=25, stride=4, input_size=224):
         super().__init__()
 
-        self.in_channels = 3
+        self.in_channels = in_channel
 
         self.simple_channels = simple_channels
         self.complex_channels = complex_channels
@@ -80,6 +80,7 @@ class VOneBlock(nn.Module):
         x = self.noise_f(x)
         # V1 Block output: (Batch, out_channels, H/stride, W/stride)
         x = self.output(x)
+
         return x
 
     def gabors_f(self, x):

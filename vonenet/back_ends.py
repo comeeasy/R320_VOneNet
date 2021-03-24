@@ -70,7 +70,7 @@ class BasicBlock(nn.Module):
         # Both self.conv1 and self.downsample layers downsample the input when stride != 1
         self.conv1 = conv3x3(inplanes, planes, stride)
         self.bn1 = norm_layer(planes)
-        self.relu = nn.ReLU(inplace=True) #
+        self.relu = nn.ReLU(inplace=True)
         self.conv2 = conv3x3(planes, planes)
         self.bn2 = norm_layer(planes)
         self.downsample = downsample
@@ -135,6 +135,10 @@ class Bottleneck(nn.Module):
 
         out += identity
         out = self.relu(out)
+
+        print(f'\n\n\nafter bottleneck, x.shape {out.shape}\n\n\n')
+
+        out = out.view(-1, 1, 28, 28)
 
         return out
 
@@ -336,6 +340,7 @@ class CORnetSBackEnd(nn.Module):
         x = self.decoder(x)
         return x
 
+import torch.functional as F
 class ConvNet(nn.Module):
     def __init__(self):
         super(ConvNet, self).__init__()
@@ -368,16 +373,16 @@ class ConvNet(nn.Module):
         self.conv1 = nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3, 3), stride=(1, 1), padding=1)
         self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(5, 5), stride=(2, 2), padding=2)
         self.conv3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3, 3), stride=(1, 1), padding=1)
-        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.pool = nn.MaxPool2d(kernel_size=5, stride=5)
         self.fc1 = nn.Sequential(
-            nn.Linear(3 * 3 * 128, 32),
+            nn.Linear(2048, 32),
             # nn.ReLU(inplace=True)
             nn.ReLU(inplace=True)
         )
         self.fc2 = nn.Sequential(
             nn.Linear(32, 16),
+            nn.Tanh()
             # nn.ReLU(inplace=True)
-            nn.ReLU(inplace=True)
         )
         self.fc3 = nn.Linear(16, 10)
         self.relu = nn.ReLU(inplace=True)
@@ -390,8 +395,12 @@ class ConvNet(nn.Module):
         x = self.conv3(x)
         # Batch Normalization(x)
 
+
         # Flattening
         x = x.view(x.size(0), -1)
+
+        # print(x.shape)
+
         x = self.fc1(x)
         x = self.fc2(x)
         x = self.fc3(x)

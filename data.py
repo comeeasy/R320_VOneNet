@@ -15,12 +15,18 @@ def get_mnist(batch_size=64) :
     # download data
     mnist_train_data = datasets.MNIST(root="./MNIST_data",
                                       train=True,
-                                      transform=transforms.ToTensor(),
+                                      transform=transforms.Compose([
+                                          transforms.ToTensor(),
+                                          transforms.Resize(224)
+                                      ]),
                                       download=True)
     mnist_val_data = datasets.MNIST(root="./MNIST_data",
-                                      train=False,
-                                      transform=transforms.ToTensor(),
-                                      download=True)
+                                    train=False,
+                                    transform=transforms.Compose([
+                                        transforms.ToTensor(),
+                                        transforms.Resize(224)
+                                    ]),
+                                    download=True)
 
     # mnist_train_data = mnist_train_data.data[:50000]
     # mnist_val_data1 = mnist_train_data.data[50000:]
