@@ -14,7 +14,7 @@ def val(attack=False) :
     # model.eval()
     # model = model.to(device)
 
-    model = vonenet.VOneNet(model_arch='ConvNet-MNIST')
+    model = torch.load('./weights/tmp.pt')
     model.eval()
     model = model.to(device)
 
@@ -120,8 +120,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report2/VOneNet-MNIST-epochs-30-tanh-relu.log"
-    title = 'VOneNet-MNIST-epochs-30-tanh-relu'
+    file = "./report2/VOneNet-MNIST-epochs-3-silu-relu.log"
+    title = 'VOneNet-MNIST-epochs-3-silu-relu'
     f = open(file=file, mode='w', encoding='utf-8')
 
     f.write(title +'\n')
@@ -129,7 +129,7 @@ def validation(epochs=100):
     ori_acc_list = []
     adv_acc_list = []
 
-    train.model_train(epochs=3)
+    train.model_train(epochs=5)
     print(f'[INFO] epochs : {epochs}')
 
     for epoch in range(1, epochs + 1):
@@ -169,10 +169,10 @@ if __name__ == '__main__' :
     # train.model_train(epochs=5)
     # train.fine_tune(epochs=2)
 
-    print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
+    # print(f'before adversarial attack, accuracy : {val(attack=False) * 100}')
     # print(f'after  adversarial attack, accuracy : {val(attack=True) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    # validation(epochs=30)
+    validation(epochs=50)
 

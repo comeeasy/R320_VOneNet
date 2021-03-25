@@ -27,7 +27,7 @@ def model_train(epochs = 5):
     train_data, label_data = data.get_mnist(batch_size)
 
     # get model (AlexNet)
-    model = back_ends.ConvNet()
+    model = vonenet.VOneNet(model_arch='ConvNet-MNIST')
     # model = vonenet.VOneNet()
     model.eval()
     model = model.to(device)
@@ -120,6 +120,6 @@ def fine_tune(epochs = 10):
     torch.save(model, 'weights/tmp.pt')
 
 if __name__ == '__main__':
-    model_train(epochs=10)
+    model_train(epochs=1)
     # fine_tune()
 

@@ -26,7 +26,9 @@ def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='c
     loss = loss_fn(pred, label).to(device)
 
     # we need to calculate ∇xJ(x,θ)
+    # with torch.autograd.set_detect_anomaly(True):
     loss.backward()
+
     img.requires_grad = False
 
     img = img + eps*img.grad.data.sign()
