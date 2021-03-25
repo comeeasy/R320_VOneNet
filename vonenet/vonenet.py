@@ -40,7 +40,7 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
                            ksize=ksize, stride=stride, input_size=image_size)
 
     if model_arch:
-        bottleneck = nn.Conv2d(out_channels, 1, kernel_size=1, stride=1, bias=False)
+        bottleneck = nn.Conv2d(out_channels, 64, kernel_size=1, stride=1, bias=False)
         nn.init.kaiming_normal_(bottleneck.weight, mode='fan_out', nonlinearity='relu')
 
         if model_arch.lower() == 'resnet50':
@@ -53,9 +53,9 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
             print('Model: ', 'VOneCORnet-S')
             model_back_end = CORnetSBackEnd()
         elif model_arch.lower() == 'convnet-mnist':
-            print('Model: ', 'VOneCORnet-S')
-            # model_back_end = ConvNet()
-            model_back_end = torch.load(mnist_model_path)
+            print('Model: ', 'convnet-mnist')
+            model_back_end = ConvNet()
+            # model_back_end = torch.load(mnist_model_path)
 
         model = nn.Sequential(OrderedDict([
             ('vone_block', vone_block),

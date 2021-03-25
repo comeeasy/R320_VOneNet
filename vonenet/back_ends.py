@@ -344,7 +344,7 @@ import torch.functional as F
 class ConvNet(nn.Module):
     def __init__(self):
         super(ConvNet, self).__init__()
-
+        before_fc = 0
         '''
         # 1st conv layer = 32 3*3 filters, with 2*2 stride
         # CNN => ReLU => Batch Normalization(which is skipped in this code)
@@ -370,22 +370,23 @@ class ConvNet(nn.Module):
         '''
 
         # For the sake of studying ML, I will use deeper network
-        self.conv1 = nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3, 3), stride=(1, 1), padding=1)
+        self.conv1 = nn.Conv2d(in_channels=64, out_channels=32, kernel_size=(3, 3), stride=(1, 1), padding=1)
         self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(5, 5), stride=(2, 2), padding=2)
         self.conv3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3, 3), stride=(1, 1), padding=1)
         self.pool = nn.MaxPool2d(kernel_size=5, stride=5)
         self.fc1 = nn.Sequential(
-            nn.Linear(2048, 32),
-            # nn.ReLU(inplace=True)
+            nn.Linear(128, 128),
+            # nn.ReLU(inplace=8
             nn.ReLU(inplace=True)
         )
         self.fc2 = nn.Sequential(
-            nn.Linear(32, 16),
-            nn.Tanh()
+            nn.Linear(128, 128),
+            nn.SiLU(inplace=True)
             # nn.ReLU(inplace=True)
         )
-        self.fc3 = nn.Linear(16, 10)
+        self.fc3 = nn.Linear(128, 10)
         self.relu = nn.ReLU(inplace=True)
+
 
 
     def forward(self, x):
@@ -397,6 +398,7 @@ class ConvNet(nn.Module):
 
 
         # Flattening
+        before_fc = x.size(0)
         x = x.view(x.size(0), -1)
 
         # print(x.shape)

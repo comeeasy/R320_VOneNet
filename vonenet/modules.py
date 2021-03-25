@@ -67,10 +67,10 @@ class VOneBlock(nn.Module):
         self.simple_conv_q1.initialize(sf=self.sf, theta=self.theta, sigx=self.sigx, sigy=self.sigy,
                                        phase=self.phase + np.pi / 2)
 
-        self.simple = nn.ReLU(inplace=True)
+        self.simple = nn.ReLU(inplace=False)
         self.complex = Identity()
         self.gabors = Identity()
-        self.noise = nn.ReLU(inplace=True)
+        self.noise = nn.ReLU(inplace=False)
         self.output = Identity()
 
     def forward(self, x):
@@ -80,6 +80,8 @@ class VOneBlock(nn.Module):
         x = self.noise_f(x)
         # V1 Block output: (Batch, out_channels, H/stride, W/stride)
         x = self.output(x)
+
+        # print(f'after VOneBlock : {x.shape}')
 
         return x
 

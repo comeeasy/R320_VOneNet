@@ -120,8 +120,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report2/VOneNet-MNIST-epochs-3-silu-relu.log"
-    title = 'VOneNet-MNIST-epochs-3-silu-relu'
+    file = "./report2/VOneNet-MNIST-epochs-30-silu-relu.log"
+    title = 'VOneNet-MNIST-epochs-30-silu-relu'
     f = open(file=file, mode='w', encoding='utf-8')
 
     f.write(title +'\n')
@@ -174,5 +174,5 @@ if __name__ == '__main__' :
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    validation(epochs=50)
+    validation(epochs=30)
 
