@@ -18,17 +18,17 @@ def model_train(epochs = 5):
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-3
+    image_size = 28
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'train with {device}')
 
     # get data
     print('[INFO] getting data')
-    train_data, label_data = data.get_mnist(batch_size)
+    train_data, label_data = data.get_mnist(batch_size, image_size=image_size)
 
     # get model (AlexNet)
-    model = vonenet.VOneNet(model_arch='ConvNet-MNIST')
-    # model = vonenet.VOneNet()
+    model = ML_model.ConvNet2()
     model.eval()
     model = model.to(device)
 
@@ -68,6 +68,7 @@ def fine_tune(epochs = 10):
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-4
+    image_size = 28
     print(f'[INFO] hyperparameters : batch size:{batch_size}, lr:{learning_rate}, epochs:{epochs}')
 
 
@@ -76,7 +77,7 @@ def fine_tune(epochs = 10):
 
     # get data
     print('[INFO] getting data')
-    train_data, _ = data.get_mnist(batch_size)
+    train_data, _ = data.get_mnist(batch_size, image_size=image_size)
 
     # get model
 
@@ -120,6 +121,6 @@ def fine_tune(epochs = 10):
     torch.save(model, 'weights/tmp.pt')
 
 if __name__ == '__main__':
-    model_train(epochs=1)
+    model_train(epochs=5)
     # fine_tune()
 

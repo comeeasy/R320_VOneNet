@@ -6,7 +6,7 @@ import torchvision.datasets as datasets
 from six.moves import urllib
 
 import os
-def get_mnist(batch_size=64) :
+def get_mnist(batch_size=64, image_size=224) :
     # mnist has issue
     # opener = urllib.request.build_opener()
     # opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -17,14 +17,14 @@ def get_mnist(batch_size=64) :
                                       train=True,
                                       transform=transforms.Compose([
                                           transforms.ToTensor(),
-                                          transforms.Resize(224)
+                                          transforms.Resize(image_size)
                                       ]),
                                       download=True)
     mnist_val_data = datasets.MNIST(root="./MNIST_data",
                                     train=False,
                                     transform=transforms.Compose([
                                         transforms.ToTensor(),
-                                        transforms.Resize(224)
+                                        transforms.Resize(image_size)
                                     ]),
                                     download=True)
 

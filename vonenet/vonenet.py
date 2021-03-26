@@ -55,7 +55,6 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
         elif model_arch.lower() == 'convnet-mnist':
             print('Model: ', 'convnet-mnist')
             model_back_end = ConvNet()
-            # model_back_end = torch.load(mnist_model_path)
 
         model = nn.Sequential(OrderedDict([
             ('vone_block', vone_block),

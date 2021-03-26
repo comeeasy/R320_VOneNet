@@ -8,7 +8,9 @@ import vonenet.vonenet as vonenet
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 def val(attack=False) :
-    _, mnist_test = data.get_mnist()
+    image_size = 28
+
+    _, mnist_test = data.get_mnist(image_size=image_size)
 
     # model = torch.load(f='./weights/tmp.pt')
     # model.eval()
@@ -63,15 +65,12 @@ def val(attack=False) :
         return accuracy_avg
 
 def fine_tuned_val(attack=False) :
-    _, mnist_test = data.get_mnist()
+    image_size = 28
+    _, mnist_test = data.get_mnist(image_size=image_size)
 
     model = torch.load(f='./weights/tmp.pt')
     model.eval()
     model = model.to(device)
-
-    # vonenet_model = vonenet.VOneNet(model_arch='ConvNet-MNIST', image_size=28)
-    # vonenet_model.eval()
-    # vonenet_model = vonenet_model.to(device)
 
     if attack == False :
         accuracy_avg = 0
@@ -120,8 +119,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs=100):
-    file = "./report2/VOneNet-MNIST-epochs-30-silu-relu.log"
-    title = 'VOneNet-MNIST-epochs-30-silu-relu'
+    file = "./report2/Convnet-MNIST-epochs-30-silu-relu.log"
+    title = 'Convnet-MNIST-epochs-30-silu-relu'
     f = open(file=file, mode='w', encoding='utf-8')
 
     f.write(title +'\n')
@@ -129,7 +128,7 @@ def validation(epochs=100):
     ori_acc_list = []
     adv_acc_list = []
 
-    train.model_train(epochs=5)
+    train.model_train(epochs=10)
     print(f'[INFO] epochs : {epochs}')
 
     for epoch in range(1, epochs + 1):

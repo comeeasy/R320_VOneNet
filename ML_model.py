@@ -183,7 +183,7 @@ class ConvNet2(nn.Module):
         self.fc2 = nn.Sequential(
             nn.Linear(32, 16),
             # nn.ReLU(inplace=True)
-            nn.Tanh()
+            nn.SiLU(inplace=True)
         )
         self.fc3 = nn.Linear(16, 10)
 
