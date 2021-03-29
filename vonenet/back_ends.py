@@ -391,7 +391,7 @@ class ConvNet(nn.Module):
 
     def forward(self, x):
 
-        print(x.shape)
+        # print(x.shape)
 
         x = self.pool(self.relu(self.conv1(x)))
         # Batch Normalization(x)
@@ -402,7 +402,7 @@ class ConvNet(nn.Module):
         before_fc = x.size(0)
         x = x.view(x.size(0), -1)
 
-        print(x.shape)
+        # print(x.shape)
 
         x = self.fc1(x)
         x = self.fc2(x)
