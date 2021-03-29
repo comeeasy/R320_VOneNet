@@ -118,9 +118,9 @@ import train
 import matplotlib.pyplot as plt
 import numpy as np
 
-def validation(epochs=100):
-    file = "./report2/Convnet-MNIST-epochs-30-silu-relu.log"
-    title = 'Convnet-MNIST-epochs-30-silu-relu'
+def validation(epochs=30, pre_trained=False):
+    file = "./report2/Convnet-MNIST-epochs-30-relu-relu-2021-03-29.log"
+    title = 'Convnet-MNIST-epochs-30-relu-relu-2021-03-29'
     f = open(file=file, mode='w', encoding='utf-8')
 
     f.write(title +'\n')
@@ -128,7 +128,9 @@ def validation(epochs=100):
     ori_acc_list = []
     adv_acc_list = []
 
-    train.model_train(epochs=10)
+    if not pre_trained:
+        train.model_train(epochs=10)
+
     print(f'[INFO] epochs : {epochs}')
 
     for epoch in range(1, epochs + 1):

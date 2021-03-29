@@ -28,7 +28,7 @@ def model_train(epochs = 5):
     train_data, label_data = data.get_mnist(batch_size, image_size=image_size)
 
     # get model (AlexNet)
-    model = ML_model.ConvNet2()
+    model = vonenet.VOneNet(model_arch='convnet-mnist')
     model.eval()
     model = model.to(device)
 
