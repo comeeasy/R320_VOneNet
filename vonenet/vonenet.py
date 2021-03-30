@@ -2,7 +2,7 @@
 from collections import OrderedDict
 from torch import nn
 from .modules import VOneBlock
-from .back_ends import ResNetBackEnd, Bottleneck, AlexNetBackEnd, CORnetSBackEnd, ConvNet
+from .back_ends import AlexNetBackEnd, ConvNet
 from .params import generate_gabor_param
 import numpy as np
 import torch
@@ -12,8 +12,6 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
             noise_mode='neuronal', noise_scale=0.35, noise_level=0.07, k_exc=25,
             model_arch='Resnet50', image_size=224, visual_degrees=8, ksize=25, stride=4,
             mnist_model_path='./weights/tmp.pt'):
-
-
 
     out_channels = simple_channels + complex_channels
 
@@ -46,15 +44,9 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
         bottleneck = nn.Conv2d(out_channels, 32, kernel_size=1, stride=1, bias=False)
         nn.init.kaiming_normal_(bottleneck.weight, mode='fan_out', nonlinearity='relu')
 
-        if model_arch.lower() == 'resnet50':
-            print('Model: ', 'VOneResnet50')
-            model_back_end = ResNetBackEnd(block=Bottleneck, layers=[3, 4, 6, 3])
-        elif model_arch.lower() == 'alexnet':
+        if model_arch.lower() == 'alexnet':
             print('Model: ', 'VOneAlexNet')
             model_back_end = AlexNetBackEnd()
-        elif model_arch.lower() == 'cornets':
-            print('Model: ', 'VOneCORnet-S')
-            model_back_end = CORnetSBackEnd()
         elif model_arch.lower() == 'convnet-mnist':
             print('Model: ', 'convnet-mnist')
             model_back_end = ConvNet()
