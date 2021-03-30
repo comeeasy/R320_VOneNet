@@ -31,7 +31,9 @@ def model_train(epochs = 5, image_size=224):
 
     # get model (AlexNet)
     # model = vonenet.VOneNet(model_arch='convnet-mnist')
-    model = back_ends.AlexNetBackEnd(num_classes=10)
+    # model = back_ends.AlexNetBackEnd(num_classes=10)
+    # model = back_ends.Basic_Linear_Regression()
+    model = back_ends.Basic_CNN()
     model.eval()
     model = model.to(device)
 
@@ -59,10 +61,10 @@ def model_train(epochs = 5, image_size=224):
 
             avg_cost += cost / total_batch
 
-        print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.3f}'.format(avg_cost))
+        print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.6f}'.format(avg_cost))
 
     # save weights
-    torch.save(model, 'weights/AlexNet-basic-epochs-10.pt')
+    torch.save(model, 'weights/Basic_Linear_regression-epochs-10.pt')
 
 from adversarial_attack import generate_image_adversary
 
