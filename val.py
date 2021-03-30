@@ -117,7 +117,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def validation(epochs, pre_trained, image_size):
-    file = "./report2/VOneNet-MNIST-03-30.log"
+    file = "./final-report/AlexNet-basic.log"
     title = 'VOneNet-MNIST-03-30'
 
     print(f'[INFO] validation start')
@@ -156,17 +156,17 @@ def validation(epochs, pre_trained, image_size):
     epochs_range = range(epochs)
 
     # red dashes, blue squares and green triangles
-    plt.plot(epochs_range, ori_acc_list, 'r.-', label='origin      image accuracy')
-    plt.plot(epochs_range, adv_acc_list, 'b.-', label='adversarial image accuracy')
-
-    plt.title(title)
-    plt.axis([0, epochs, 0, 100])
-    plt.xlabel('epochs')
-    plt.ylabel('accuracy')
-    plt.yticks(np.arange(start=0, stop=101, step=10))
-    plt.grid(True, axis='y')
-    plt.savefig('./report2/' + title + '.jpg')
-    plt.show()
+    # plt.plot(epochs_range, ori_acc_list, 'r.-', label='origin      image accuracy')
+    # plt.plot(epochs_range, adv_acc_list, 'b.-', label='adversarial image accuracy')
+    #
+    # plt.title(title)
+    # plt.axis([0, epochs, 0, 100])
+    # plt.xlabel('epochs')
+    # plt.ylabel('accuracy')
+    # plt.yticks(np.arange(start=0, stop=101, step=10))
+    # plt.grid(True, axis='y')
+    # plt.savefig('./report2/' + title + '.jpg')
+    # plt.show()
 
 
 
