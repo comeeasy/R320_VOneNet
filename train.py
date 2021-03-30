@@ -13,7 +13,10 @@ import vonenet.vonenet as vonenet
 import vonenet.back_ends as back_ends
 
 def model_train(epochs = 5, image_size=224):
+    model_name = 'Basic_CNN'
+
     print('[INFO] train with origin data')
+    print(f'[INFO] model name : {model_name}')
 
     # hyperparameter
     batch_size = 64
@@ -37,6 +40,8 @@ def model_train(epochs = 5, image_size=224):
     model.eval()
     model = model.to(device)
 
+    print(f'optimizer       : Adam')
+    print(f'cost function   : CrossEntropyLoss')
     optimizer = optim.Adam(params=model.parameters(), lr=learning_rate)
     costF = nn.CrossEntropyLoss()
 
@@ -64,7 +69,7 @@ def model_train(epochs = 5, image_size=224):
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.6f}'.format(avg_cost))
 
     # save weights
-    torch.save(model, 'weights/Basic_Linear_regression-epochs-10.pt')
+    torch.save(model, 'weights/' + model_name + '-epochs-10' + '.pt')
 
 from adversarial_attack import generate_image_adversary
 
