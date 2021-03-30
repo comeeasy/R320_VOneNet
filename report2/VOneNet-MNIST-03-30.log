@@ -1,0 +1,41 @@
+VOneNet-MNIST-03-30
+
+epoch : 1
+fine-tuned model original    image accuracy : 98.737946%
+fine-tuned model adversarial image accuracy : 92.998802%
+
+epoch : 2
+fine-tuned model original    image accuracy : 99.218712%
+fine-tuned model adversarial image accuracy : 97.806473%
+
+epoch : 3
+fine-tuned model original    image accuracy : 99.318863%
+fine-tuned model adversarial image accuracy : 98.086914%
+
+epoch : 4
+fine-tuned model original    image accuracy : 99.268791%
+fine-tuned model adversarial image accuracy : 98.387390%
+
+epoch : 5
+fine-tuned model original    image accuracy : 99.258766%
+fine-tuned model adversarial image accuracy : 98.447456%
+
+epoch : 6
+fine-tuned model original    image accuracy : 99.188652%
+fine-tuned model adversarial image accuracy : 98.627762%
+
+epoch : 7
+fine-tuned model original    image accuracy : 99.278809%
+fine-tuned model adversarial image accuracy : 98.397408%
+
+epoch : 8
+fine-tuned model original    image accuracy : 99.248741%
+fine-tuned model adversarial image accuracy : 98.567673%
+
+epoch : 9
+fine-tuned model original    image accuracy : 99.388954%
+fine-tuned model adversarial image accuracy : 98.667839%
+
+epoch : 10
+fine-tuned model original    image accuracy : 99.268791%
+fine-tuned model adversarial image accuracy : 98.597733%

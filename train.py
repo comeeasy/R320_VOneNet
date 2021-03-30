@@ -12,13 +12,15 @@ from tqdm import tqdm
 import vonenet.vonenet as vonenet
 import vonenet.back_ends as back_ends
 
-def model_train(epochs = 5):
+def model_train(epochs = 5, image_size=224):
     print('[INFO] train with origin data')
 
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-3
-    image_size = 28
+
+    print(f'[INFO] batch_size : {batch_size}, lr : {learning_rate}, img_size: {image_size}')
+    print(f'[INFO] epochs : {epochs}')
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'train with {device}')
@@ -62,14 +64,15 @@ def model_train(epochs = 5):
     torch.save(model, 'weights/tmp.pt')
 
 from adversarial_attack import generate_image_adversary
-def fine_tune(epochs = 10):
+
+def fine_tune(epochs = 10, image_size=224):
     print('[INFO] fine-tuning with adversarial images')
 
     # hyperparameter
     batch_size = 64
     learning_rate = 1e-4
-    image_size = 28
-    print(f'[INFO] hyperparameters : batch size:{batch_size}, lr:{learning_rate}, epochs:{epochs}')
+    print(f'[INFO] batch_size : {batch_size}, lr : {learning_rate}, img_size: {image_size}')
+    print(f'[INFO] epochs : {epochs}')
 
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'

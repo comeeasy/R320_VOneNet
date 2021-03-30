@@ -1,0 +1,41 @@
+Convnet-MNIST-epochs-30-relu-relu-2021-03-29
+
+epoch : 1
+fine-tuned model original    image accuracy : 98.487511%
+fine-tuned model adversarial image accuracy : 91.105759%
+
+epoch : 2
+fine-tuned model original    image accuracy : 98.928230%
+fine-tuned model adversarial image accuracy : 94.961891%
+
+epoch : 3
+fine-tuned model original    image accuracy : 98.998329%
+fine-tuned model adversarial image accuracy : 95.783211%
+
+epoch : 4
+fine-tuned model original    image accuracy : 98.998344%
+fine-tuned model adversarial image accuracy : 96.263977%
+
+epoch : 5
+fine-tuned model original    image accuracy : 98.928230%
+fine-tuned model adversarial image accuracy : 96.484337%
+
+epoch : 6
+fine-tuned model original    image accuracy : 99.138565%
+fine-tuned model adversarial image accuracy : 96.474304%
+
+epoch : 7
+fine-tuned model original    image accuracy : 99.028397%
+fine-tuned model adversarial image accuracy : 96.804840%
+
+epoch : 8
+fine-tuned model original    image accuracy : 99.048416%
+fine-tuned model adversarial image accuracy : 97.055252%
+
+epoch : 9
+fine-tuned model original    image accuracy : 99.008354%
+fine-tuned model adversarial image accuracy : 96.995140%
+
+epoch : 10
+fine-tuned model original    image accuracy : 99.058434%
+fine-tuned model adversarial image accuracy : 97.055252%

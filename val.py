@@ -7,8 +7,7 @@ import vonenet.vonenet as vonenet
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-def val(attack=False) :
-    image_size = 28
+def val(attack=False, image_size=224) :
 
     _, mnist_test = data.get_mnist(image_size=image_size)
 
@@ -64,8 +63,7 @@ def val(attack=False) :
 
         return accuracy_avg
 
-def fine_tuned_val(attack=False) :
-    image_size = 28
+def fine_tuned_val(attack=False, image_size=224) :
     _, mnist_test = data.get_mnist(image_size=image_size)
 
     model = torch.load(f='./weights/tmp.pt')
@@ -118,9 +116,14 @@ import train
 import matplotlib.pyplot as plt
 import numpy as np
 
-def validation(epochs=30, pre_trained=False):
-    file = "./report2/Convnet-MNIST-epochs-30-relu-relu-2021-03-29.log"
-    title = 'Convnet-MNIST-epochs-30-relu-relu-2021-03-29'
+def validation(epochs, pre_trained, image_size):
+    file = "./report2/VOneNet-MNIST-03-30.log"
+    title = 'VOneNet-MNIST-03-30'
+
+    print(f'[INFO] validation start')
+    print(f'[INFO] epochs:{epochs}, pre_trained:{pre_trained}, img_size:{image_size}')
+    print(f'title:{title}')
+
     f = open(file=file, mode='w', encoding='utf-8')
 
     f.write(title +'\n')
@@ -129,7 +132,7 @@ def validation(epochs=30, pre_trained=False):
     adv_acc_list = []
 
     if not pre_trained:
-        train.model_train(epochs=10)
+        train.model_train(epochs=10, image_size=image_size)
 
     print(f'[INFO] epochs : {epochs}')
 
@@ -138,8 +141,8 @@ def validation(epochs=30, pre_trained=False):
 
         f.write(f'\nepoch : {epoch}\n')
 
-        ori_acc = fine_tuned_val(attack=False) * 100
-        adv_acc = fine_tuned_val(attack=True) * 100
+        ori_acc = fine_tuned_val(attack=False, image_size=image_size) * 100
+        adv_acc = fine_tuned_val(attack=True, image_size=image_size) * 100
 
         ori_acc_list.append(ori_acc)
         adv_acc_list.append(adv_acc)
@@ -147,7 +150,8 @@ def validation(epochs=30, pre_trained=False):
         f.write(f'fine-tuned model original    image accuracy : {ori_acc:3f}%\n')
         f.write(f'fine-tuned model adversarial image accuracy : {adv_acc:3f}%\n')
 
-        train.fine_tune(epochs=1)
+        if epoch == epochs: break
+        train.fine_tune(epochs=1, image_size=image_size)
 
     epochs_range = range(epochs)
 
@@ -161,6 +165,7 @@ def validation(epochs=30, pre_trained=False):
     plt.ylabel('accuracy')
     plt.yticks(np.arange(start=0, stop=101, step=10))
     plt.grid(True, axis='y')
+    plt.savefig('./report2/' + title + '.jpg')
     plt.show()
 
 
@@ -175,5 +180,5 @@ if __name__ == '__main__' :
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    validation(epochs=30)
+    validation(epochs=10, pre_trained=False, image_size=28)
 

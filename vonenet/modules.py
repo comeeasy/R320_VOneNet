@@ -19,6 +19,9 @@ class GFB(nn.Module):
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.kernel_size = (kernel_size, kernel_size)
+
+        print(f'gabor filter kernel size : {kernel_size}')
+
         self.stride = (stride, stride)
         self.padding = (kernel_size // 2, kernel_size // 2)
 
@@ -39,7 +42,7 @@ class GFB(nn.Module):
 class VOneBlock(nn.Module):
     def __init__(self, sf, theta, sigx, sigy, phase,
                  k_exc=25, noise_mode=None, noise_scale=1, noise_level=1,
-                 simple_channels=128, complex_channels=128, in_channel=1, ksize=25, stride=4, input_size=224):
+                 simple_channels=128, complex_channels=128, in_channel=1, ksize=8, stride=4, input_size=224):
         super().__init__()
 
         self.in_channels = in_channel

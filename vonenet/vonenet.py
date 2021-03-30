@@ -34,13 +34,16 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
     theta = theta/180 * np.pi
     phase = phase / 180 * np.pi
 
+    ksize = 25
+    stride = 1
+
     vone_block = VOneBlock(sf=sf, theta=theta, sigx=sigx, sigy=sigy, phase=phase,
                            k_exc=k_exc, noise_mode=noise_mode, noise_scale=noise_scale, noise_level=noise_level,
                            simple_channels=simple_channels, complex_channels=complex_channels,
                            ksize=ksize, stride=stride, input_size=image_size)
 
     if model_arch:
-        bottleneck = nn.Conv2d(out_channels, 1, kernel_size=1, stride=1, bias=False)
+        bottleneck = nn.Conv2d(out_channels, 32, kernel_size=1, stride=1, bias=False)
         nn.init.kaiming_normal_(bottleneck.weight, mode='fan_out', nonlinearity='relu')
 
         if model_arch.lower() == 'resnet50':
