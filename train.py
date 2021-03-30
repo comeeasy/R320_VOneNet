@@ -13,7 +13,7 @@ import vonenet.vonenet as vonenet
 import vonenet.back_ends as back_ends
 
 def model_train(epochs = 5, image_size=224):
-    model_name = 'Basic_CNN'
+    model_name = 'Basic_Linear_Regression'
 
     print('[INFO] train with origin data')
     print(f'[INFO] model name : {model_name}')
@@ -35,8 +35,8 @@ def model_train(epochs = 5, image_size=224):
     # get model (AlexNet)
     # model = vonenet.VOneNet(model_arch='convnet-mnist')
     # model = back_ends.AlexNetBackEnd(num_classes=10)
-    # model = back_ends.Basic_Linear_Regression()
-    model = back_ends.Basic_CNN()
+    model = back_ends.Basic_Linear_Regression()
+    # model = back_ends.Basic_CNN()
     model.eval()
     model = model.to(device)
 
@@ -51,10 +51,10 @@ def model_train(epochs = 5, image_size=224):
 
         for X, Y in tqdm(train_data):
             # linear model
-            # X = X.view(-1, 28 * 28).to(device)
+            X = X.view(-1, 28 * 28).to(device)
 
             # for convolutional model
-            X = X.to(device)
+            # X = X.to(device)
             Y = Y.to(device)
 
             prediction = model(X)
@@ -70,6 +70,7 @@ def model_train(epochs = 5, image_size=224):
 
     # save weights
     torch.save(model, 'weights/' + model_name + '-epochs-10' + '.pt')
+    print(f'save model safely weights/{model_name}-epochs-10.pt')
 
 from adversarial_attack import generate_image_adversary
 
