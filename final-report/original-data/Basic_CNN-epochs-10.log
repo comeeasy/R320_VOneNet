@@ -1,0 +1,19 @@
+[INFO] train with origin data
+[INFO] model name : Basic_CNN
+[INFO] batch_size : 64, lr : 0.001, img_size: 28
+[INFO] epochs : 10
+train with cuda
+[INFO] getting data
+optimizer       : Adam
+cost function   : CrossEntropyLoss
+Epoch: 0001 cost = 0.180237
+Epoch: 0002 cost = 0.055515
+Epoch: 0003 cost = 0.040585
+Epoch: 0004 cost = 0.032096
+Epoch: 0005 cost = 0.025648
+Epoch: 0006 cost = 0.021525
+Epoch: 0007 cost = 0.017444
+Epoch: 0008 cost = 0.014001
+Epoch: 0009 cost = 0.010883
+Epoch: 0010 cost = 0.010392
+save model safely weights/Basic_CNN-epochs-10.pt

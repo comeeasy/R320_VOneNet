@@ -9,10 +9,10 @@ from collections import OrderedDict
 # Based on Torchvision implementation in
 # https://github.com/pytorch/vision/blob/master/torchvision/models/alexnet.py
 class AlexNetBackEnd(nn.Module):
-    def __init__(self, num_classes=1000):
+    def __init__(self, num_classes=10):
         super().__init__()
         self.features = nn.Sequential(
-            nn.Conv2d(1, 192, kernel_size=5, stride=2, padding=2),
+            nn.Conv2d(32, 192, kernel_size=5, stride=2, padding=2),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
             nn.Conv2d(192, 384, kernel_size=3, padding=1),
@@ -141,11 +141,19 @@ class Basic_Linear_Regression(nn.Module):
     def __init__(self):
         super(Basic_Linear_Regression, self).__init__()
 
+        self.voneblock_connector = nn.Linear(32 * 28 * 28, 28 * 28, bias=True)
         self.fc1 = nn.Linear(28 * 28, 28 * 28, bias=True)
         self.fc2 = nn.Linear(28 * 28, 10, bias=True)
         self.relu = nn.ReLU(inplace=True)
+        self.flatten = nn.Flatten()
+
 
     def forward(self, x):
+        x = self.flatten(x)
+
+        # for VOneBlock
+        x = self.voneblock_connector(x)
+
         x = self.fc1(x)
         x = self.relu(x)
         x = self.fc2(x)
@@ -157,7 +165,7 @@ class Basic_CNN(nn.Module):
         super(Basic_CNN, self).__init__()
 
         self.layer1 = nn.Sequential(
-            nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2)
         )
