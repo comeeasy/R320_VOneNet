@@ -41,20 +41,20 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
                            ksize=ksize, stride=stride, input_size=image_size)
 
     if model_arch:
-        bottleneck = nn.Conv2d(out_channels, 32, kernel_size=1, stride=1, bias=False)
+        bottleneck = nn.Conv2d(out_channels, 64, kernel_size=1, stride=1, bias=False)
         nn.init.kaiming_normal_(bottleneck.weight, mode='fan_out', nonlinearity='relu')
 
         if model_arch.lower() == 'alexnet':
             print('Model: ', 'VOneAlexNet')
             model_back_end = AlexNetBackEnd()
-        elif model_arch.lower() == 'convnet-mnist':
-            print('Model: ', 'convnet-mnist')
+        elif model_arch.lower() == 'convnet':
+            print('Model: ', 'VOneConvnet')
             model_back_end = ConvNet()
         elif model_arch.lower() == 'basic-cnn':
-            print('Model: ', 'basic-cnn')
+            print('Model: ', 'VOncBasic-cnn')
             model_back_end = Basic_CNN()
         elif model_arch.lower() == 'basic-linear-regression':
-            print('Model: ', 'basic-linear-regression')
+            print('Model: ', 'VOneBasic-linear-regression')
             model_back_end = Basic_Linear_Regression()
 
         model = nn.Sequential(OrderedDict([

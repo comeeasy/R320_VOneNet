@@ -17,8 +17,19 @@ def val(attack=False, image_size=224) :
     # model_path = './weights/original-data/AlexNet-epochs-10-epochs-10.pt'
     # model_path = './weights/original-data/ConvNet-epochs-10-epochs-10.pt'
     # model_path = './weights/original-data/Basic_CNN-epochs-10.pt'
-    model_path = './weights/original-data/Basic_Linear_Regression-epochs-10.pt'
-    model_name = 'Basic-CNN'
+    # model_path = './weights/original-data/Basic_Linear_Regression-epochs-10.pt'
+
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-AlexNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-ConvNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic_CNN-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic-Linear-Regression-epochs-10.pt'
+
+    # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-AlexNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-ConvNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Basic-CNN-epochs-10.pt'
+    model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Linear-Regression-epochs-10.pt'
+
+    model_name = 'VOneLinear-Regression'
 
     model = torch.load(model_path)
     model.eval()
@@ -37,10 +48,10 @@ def val(attack=False, image_size=224) :
         for img_batch, target_batch in tqdm(mnist_test):
             with torch.no_grad():  # torch.no_grad()를 하면 gradient 계산을 수행하지 않는다.
                 # for linear model
-                X_test = img_batch.view(-1, 28 * 28).to(device)
+                # X_test = img_batch.view(-1, 28 * 28).to(device)
 
                 # for convolutional model
-                # X_test = img_batch.to(device)
+                X_test = img_batch.to(device)
                 Y_test = target_batch.to(device)
 
                 prediction = model(X_test).to(device)
@@ -64,9 +75,9 @@ def val(attack=False, image_size=224) :
 
             with torch.no_grad(): # torch.no_grad()를 하면 gradient 계산을 수행하지 않는다.
                 # for linear model
-                X_test = X_test.view(-1, 28 * 28).to(device)
+                # X_test = X_test.view(-1, 28 * 28).to(device)
                 # for convolutional model
-                # X_test = X_test.to(device)
+                X_test = X_test.to(device)
                 Y_test = Y_test.to(device)
 
                 prediction = model(X_test).to(device)
@@ -214,10 +225,10 @@ if __name__ == '__main__' :
     # train.model_train(epochs=5)
     # train.fine_tune(epochs=2)
 
-    # val(attack=False, image_size=28)
-    # val(attack=True, image_size=28)
+    val(attack=False, image_size=28)
+    val(attack=True, image_size=28)
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    validation(epochs=30, pre_trained=True, image_size=28)
+    # validation(epochs=30, pre_trained=True, image_size=28)
 
