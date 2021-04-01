@@ -1,0 +1,12 @@
+
+[INFO] model        : ./weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic_CNN-epochs-10.pt
+[INFO] image size   : 28
+
+[INFO] calculate accuracy of original image for original model of VOneBasic-CNN
+[RESULT] accuracy of original image for original model of VOneBasic-CNN == 98.838081%
+
+[INFO] model        : ./weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic_CNN-epochs-10.pt
+[INFO] image size   : 28
+
+[INFO] calculate accuracy of adversarial image for original model of VOneBasic-CNN
+[RESULT] accuracy of adversarial image for original model of VOneBasic-CNN == 95.312469%
