@@ -1,0 +1,22 @@
+[INFO] train with origin data
+[INFO] model name : VOneBlock-bottle-to-64-ConvNet
+[INFO] batch_size : 64, lr : 0.001, img_size: 28
+[INFO] epochs : 10
+train with cuda
+Neuronal distributions gabor parameters
+gabor filter kernel size : 25
+gabor filter kernel size : 25
+Model:  convnet
+optimizer       : Adam
+cost function   : CrossEntropyLoss
+Epoch: 0001 cost = 0.184633
+Epoch: 0002 cost = 0.083490
+Epoch: 0003 cost = 0.074823
+Epoch: 0004 cost = 0.072796
+Epoch: 0005 cost = 0.067479
+Epoch: 0006 cost = 0.064085
+Epoch: 0007 cost = 0.061239
+Epoch: 0008 cost = 0.056800
+Epoch: 0009 cost = 0.058642
+Epoch: 0010 cost = 0.061421
+save model safely in ./weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-ConvNet-epochs-10.pt
