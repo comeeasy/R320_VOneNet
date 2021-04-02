@@ -1,0 +1,12 @@
+
+[INFO] model        : ./weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-ConvNet-epochs-10.pt
+[INFO] image size   : 28
+
+[INFO] calculate accuracy of original image for original model of VOneConvNet
+[RESULT] accuracy of original image for original model of VOneConvNet == 98.467514%
+
+[INFO] model        : ./weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-ConvNet-epochs-10.pt
+[INFO] image size   : 28
+
+[INFO] calculate accuracy of adversarial image for original model of VOneConvNet
+[RESULT] accuracy of adversarial image for original model of VOneConvNet == 93.429474%

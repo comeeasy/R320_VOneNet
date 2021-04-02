@@ -27,7 +27,7 @@ def val(attack=False, image_size=224) :
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-AlexNet-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-ConvNet-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Basic-CNN-epochs-10.pt'
-    model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Linear-Regression-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Linear-Regression-epochs-10.pt'
 
     model_name = 'VOneLinear-Regression'
 
@@ -156,8 +156,17 @@ import numpy as np
 import os
 
 def validation(epochs, pre_trained, image_size):
-    model_path = './weights/original-data/AlexNet-epochs-10.pt'
-    model_name = 'AlexNet'
+    model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-AlexNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-ConvNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic_CNN-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic-Linear-Regression-epochs-10.pt'
+
+    # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-AlexNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-ConvNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Basic-CNN-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Linear-Regression-epochs-10.pt'
+
+    model_name = 'VOneAlexNet'
     tmp_path = './weights/tmp.pt'
 
     print(f'[INFO] validation start')
@@ -167,8 +176,6 @@ def validation(epochs, pre_trained, image_size):
     print(f'[INFO] saving pre-trained model to {tmp_path}')
     os.system(f'cp {model_path} {tmp_path}')
     print(f'cp {model_path} {tmp_path}')
-
-
 
     ori_acc_list = []
     adv_acc_list = []
@@ -212,23 +219,18 @@ def validation(epochs, pre_trained, image_size):
     plt.ylabel('accuracy')
     plt.yticks(np.arange(start=0, stop=101, step=10))
     plt.grid(True, axis='y')
-    plt.savefig('./final-report/fine-tuned/' + model_name + '.jpg')
+    plt.savefig('./final-report/VOneBlock-bottle-to-32/finetune/' + model_name + '.jpg')
 
     print(f'[INFO] graph saved in path ./fine-tuned/{model_name}.jpg')
-
-    # plt.show()
-
-
-
 
 if __name__ == '__main__' :
     # train.model_train(epochs=5)
     # train.fine_tune(epochs=2)
 
-    val(attack=False, image_size=28)
-    val(attack=True, image_size=28)
+    # val(attack=False, image_size=28)
+    # val(attack=True, image_size=28)
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=False) * 100}')
     # print(f'fine-tuned model accuracy : {fine_tuned_val(attack=True) * 100}')
 
-    # validation(epochs=30, pre_trained=True, image_size=28)
+    validation(epochs=30, pre_trained=True, image_size=28)
 

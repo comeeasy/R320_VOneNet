@@ -1,0 +1,303 @@
+[INFO] validation start
+[INFO] epochs:30, pre_trained:True, img_size:28
+[INFO] model name : VOneAlexNet
+[INFO] saving pre-trained model to ./weights/tmp.pt
+cp ./weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-AlexNet-epochs-10.pt ./weights/tmp.pt
+[INFO] fine-tune VOneAlexNet via tmp.pt
+[INFO] epochs : 1
+=======================================================================
+fine-tuned model original    image accuracy : 98.607704%
+fine-tuned model adversarial image accuracy : 95.242348%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 2
+=======================================================================
+fine-tuned model original    image accuracy : 98.858124%
+fine-tuned model adversarial image accuracy : 97.616158%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 3
+=======================================================================
+fine-tuned model original    image accuracy : 99.048431%
+fine-tuned model adversarial image accuracy : 97.876549%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 4
+=======================================================================
+fine-tuned model original    image accuracy : 99.128548%
+fine-tuned model adversarial image accuracy : 98.096916%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 5
+=======================================================================
+fine-tuned model original    image accuracy : 98.988327%
+fine-tuned model adversarial image accuracy : 97.986710%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 6
+=======================================================================
+fine-tuned model original    image accuracy : 99.198662%
+fine-tuned model adversarial image accuracy : 98.357338%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 7
+=======================================================================
+fine-tuned model original    image accuracy : 99.108521%
+fine-tuned model adversarial image accuracy : 98.407402%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 8
+=======================================================================
+fine-tuned model original    image accuracy : 99.138573%
+fine-tuned model adversarial image accuracy : 98.417412%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 9
+=======================================================================
+fine-tuned model original    image accuracy : 99.198662%
+fine-tuned model adversarial image accuracy : 98.437469%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 10
+=======================================================================
+fine-tuned model original    image accuracy : 99.238739%
+fine-tuned model adversarial image accuracy : 98.387375%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 11
+=======================================================================
+fine-tuned model original    image accuracy : 99.088486%
+fine-tuned model adversarial image accuracy : 98.277206%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 12
+=======================================================================
+fine-tuned model original    image accuracy : 99.208679%
+fine-tuned model adversarial image accuracy : 98.327271%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 13
+=======================================================================
+fine-tuned model original    image accuracy : 99.208679%
+fine-tuned model adversarial image accuracy : 98.247154%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 14
+=======================================================================
+fine-tuned model original    image accuracy : 99.198669%
+fine-tuned model adversarial image accuracy : 98.437469%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 15
+=======================================================================
+fine-tuned model original    image accuracy : 99.088486%
+fine-tuned model adversarial image accuracy : 98.487534%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 16
+=======================================================================
+fine-tuned model original    image accuracy : 99.048431%
+fine-tuned model adversarial image accuracy : 98.287216%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 17
+=======================================================================
+fine-tuned model original    image accuracy : 99.128563%
+fine-tuned model adversarial image accuracy : 98.347321%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 18
+=======================================================================
+fine-tuned model original    image accuracy : 99.228714%
+fine-tuned model adversarial image accuracy : 98.187057%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 19
+=======================================================================
+fine-tuned model original    image accuracy : 99.038414%
+fine-tuned model adversarial image accuracy : 98.507568%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 20
+=======================================================================
+fine-tuned model original    image accuracy : 99.138573%
+fine-tuned model adversarial image accuracy : 98.357323%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 21
+=======================================================================
+fine-tuned model original    image accuracy : 99.028389%
+fine-tuned model adversarial image accuracy : 98.036812%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 22
+=======================================================================
+fine-tuned model original    image accuracy : 99.018379%
+fine-tuned model adversarial image accuracy : 98.377350%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 23
+=======================================================================
+fine-tuned model original    image accuracy : 99.008369%
+fine-tuned model adversarial image accuracy : 98.227135%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 24
+=======================================================================
+fine-tuned model original    image accuracy : 99.028389%
+fine-tuned model adversarial image accuracy : 98.126961%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 25
+=======================================================================
+fine-tuned model original    image accuracy : 99.108521%
+fine-tuned model adversarial image accuracy : 98.197083%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 26
+=======================================================================
+fine-tuned model original    image accuracy : 99.008354%
+fine-tuned model adversarial image accuracy : 98.167023%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 27
+=======================================================================
+fine-tuned model original    image accuracy : 99.068466%
+fine-tuned model adversarial image accuracy : 98.367355%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 28
+=======================================================================
+fine-tuned model original    image accuracy : 99.018387%
+fine-tuned model adversarial image accuracy : 98.197090%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 29
+=======================================================================
+fine-tuned model original    image accuracy : 99.108528%
+fine-tuned model adversarial image accuracy : 98.497551%
+
+=======================================================================
+[INFO] fine-tuning with adversarial images
+[INFO] batch_size : 64, lr : 0.0001, img_size: 28
+[INFO] train with cuda
+[INFO] saving model in path, ./weights/tmp.pt
+[INFO] epochs : 30
+=======================================================================
+fine-tuned model original    image accuracy : 98.808044%
+fine-tuned model adversarial image accuracy : 97.946671%
+
+=======================================================================
+[INFO] graph saved in path ./fine-tuned/VOneAlexNet.jpg

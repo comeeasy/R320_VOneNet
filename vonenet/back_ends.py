@@ -12,7 +12,7 @@ class AlexNetBackEnd(nn.Module):
     def __init__(self, num_classes=10):
         super().__init__()
         self.features = nn.Sequential(
-            nn.Conv2d(64, 192, kernel_size=5, stride=2, padding=2),
+            nn.Conv2d(32, 192, kernel_size=5, stride=2, padding=2),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
             nn.Conv2d(192, 384, kernel_size=3, padding=1),
@@ -99,7 +99,7 @@ class ConvNet(nn.Module):
     def __init__(self):
         super(ConvNet, self).__init__()
         # For the sake of studying ML, I will use deeper network
-        self.conv1 = nn.Conv2d(in_channels=64, out_channels=32, kernel_size=(3, 3), stride=(1, 1), padding=1)
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3, 3), stride=(1, 1), padding=1)
         self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(3, 3), stride=(1, 1), padding=1)
         self.conv3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3, 3), stride=(2, 2), padding=1)
         self.pool = nn.MaxPool2d(kernel_size=3, stride=3)
@@ -141,7 +141,7 @@ class Basic_Linear_Regression(nn.Module):
     def __init__(self):
         super(Basic_Linear_Regression, self).__init__()
 
-        self.voneblock_connector = nn.Linear(64 * 28 * 28, 28 * 28, bias=True)
+        self.voneblock_connector = nn.Linear(1 * 28 * 28, 28 * 28, bias=True)
         self.fc1 = nn.Linear(28 * 28, 28 * 28, bias=True)
         self.fc2 = nn.Linear(28 * 28, 10, bias=True)
         self.relu = nn.ReLU(inplace=True)
@@ -165,7 +165,7 @@ class Basic_CNN(nn.Module):
         super(Basic_CNN, self).__init__()
 
         self.layer1 = nn.Sequential(
-            nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2)
         )
