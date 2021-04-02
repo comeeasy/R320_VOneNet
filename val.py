@@ -156,8 +156,8 @@ import numpy as np
 import os
 
 def validation(epochs, pre_trained, image_size):
-    model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-AlexNet-epochs-10.pt'
-    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-ConvNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-AlexNet-epochs-10.pt'
+    model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-ConvNet-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic_CNN-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic-Linear-Regression-epochs-10.pt'
 
@@ -166,7 +166,7 @@ def validation(epochs, pre_trained, image_size):
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Basic-CNN-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Linear-Regression-epochs-10.pt'
 
-    model_name = 'VOneAlexNet'
+    model_name = 'VOneConvNet'
     tmp_path = './weights/tmp.pt'
 
     print(f'[INFO] validation start')
@@ -221,7 +221,7 @@ def validation(epochs, pre_trained, image_size):
     plt.grid(True, axis='y')
     plt.savefig('./final-report/VOneBlock-bottle-to-32/finetune/' + model_name + '.jpg')
 
-    print(f'[INFO] graph saved in path ./fine-tuned/{model_name}.jpg')
+    print(f'[INFO] graph saved in path ./final-report/VOneBlock-bottle-to-32/fine-tuned/{model_name}.jpg')
 
 if __name__ == '__main__' :
     # train.model_train(epochs=5)
