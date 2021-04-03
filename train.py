@@ -11,7 +11,7 @@ import vonenet.vonenet as vonenet
 import vonenet.back_ends as back_ends
 
 def model_train(epochs = 5, image_size=224):
-    model_name = 'VOneBlock-bottle-to-1-AlexNet'
+    model_name = 'ConvNet'
 
     print('[INFO] train with origin data')
     print(f'[INFO] model name : {model_name}')
@@ -31,7 +31,7 @@ def model_train(epochs = 5, image_size=224):
     train_data, label_data = data.get_mnist(batch_size, image_size=image_size)
 
     # get model (AlexNet)
-    model = vonenet.VOneNet(model_arch='alexnet')
+    # model = vonenet.VOneNet(model_arch='alexnet')
     # model = vonenet.VOneNet(model_arch='convnet')
     # model = vonenet.VOneNet(model_arch='basic-cnn')
     # model = vonenet.VOneNet(model_arch='basic-linear-regression')
@@ -39,7 +39,7 @@ def model_train(epochs = 5, image_size=224):
     # model = back_ends.AlexNetBackEnd(num_classes=10)
     # model = back_ends.Basic_Linear_Regression()
     # model = back_ends.Basic_CNN()
-    # model = back_ends.ConvNet()
+    model = back_ends.ConvNet()
     model.eval()
     model = model.to(device)
 
@@ -72,8 +72,8 @@ def model_train(epochs = 5, image_size=224):
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.6f}'.format(avg_cost))
 
     # save weights
-    torch.save(model, './weights/VOneBlock-bottle-to-1/' + model_name + '-epochs-10' + '.pt')
-    print(f'save model safely in ./weights/VOneBlock-bottle-to-1/{model_name}-epochs-10.pt')
+    torch.save(model, './weights/original/' + model_name + '-epochs-10' + '.pt')
+    print(f'save model safely in ./weights/original/{model_name}-epochs-10.pt')
 
 from adversarial_attack import generate_image_adversary
 

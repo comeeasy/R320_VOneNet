@@ -2,17 +2,19 @@ import torch
 import data
 
 def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='cuda'):
-    len = img_batch.size(0)
-    rand_idx = torch.randperm(len)
+    global i
+
+    # len = img_batch.size(0)
+    # rand_idx = torch.randperm(len)
 
     # print(rand_idx)
 
     img = img_batch.clone().to(device)
     label = target_batch.clone().to(device)
 
-    for i in range(len):
-        img[i] = img_batch[rand_idx[i]]
-        label[i] = target_batch[rand_idx[i]]
+    # for i in range(len):
+    #     img[i] = img_batch[rand_idx[i]]
+    #     label[i] = target_batch[rand_idx[i]]
 
     # for linear model
     # img = img.view(-1, 28 * 28)
@@ -37,33 +39,38 @@ def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='c
     return img, label
 
 import matplotlib.pyplot as plt
+from tqdm import tqdm
+
 if __name__ == '__main__':
-    print('[INFO] getting data...')
-    mnist_train, _ = data.get_mnist(batch_size=64)
+    image_size = 28
+    device = 'cuda'
+    batch_size = 64
+    _, mnist_val_dateloader = data.get_mnist(batch_size, image_size=image_size)
 
-    print('[INFO] getting model...')
-    model = torch.load(f='./weights/trained_MNISTnet.pt')
+    model_weights = './weights/original/ConvNet-epochs-10.pt'
+
+    # print(f'[INFO] getting model {model_weights}')
+    model = torch.load(f=model_weights)
     model.eval()
-    model = model.to('cuda')
+    model = model.to(device)
+    i = 0
+    for img_batch, target_batch in tqdm(mnist_val_dateloader):
+        ori_sample = img_batch.__getitem__(0)
+        ori_sample = ori_sample.to('cpu')
+        ori_sample = torch.reshape(ori_sample, [28, 28]).numpy()
+        plt.imsave(f'./final-report/adv-img-samples/ori-sample{i}.bmp', ori_sample)
 
-    for img_batch, target_batch in mnist_train:
-        print('[INFO] getting adversarial imgs...')
-        adv_mnist_train, adv_mnist_target = generate_image_adversary(model=model,
-                                                   img_batch=img_batch,
-                                                   target_batch=target_batch)
+        # generate adversarial image batch
+        adv_img_batch, adv_target_batch = generate_image_adversary(model=model, img_batch=img_batch,
+                                                                   target_batch=target_batch)
+        adv_img_batch = adv_img_batch.to(device)
+        adv_target_batch = adv_target_batch.to(device)
 
-        img_batch = img_batch.view(-1, 28, 28)
-        # adv_mnist_train.view(-1, 28, 28).to('cpu')
-        adv_mnist_train = adv_mnist_train.view(-1, 28, 28).cpu()
+        adv_sample = adv_img_batch.__getitem__(0)
+        adv_sample = adv_sample.to('cpu')
+        adv_sample = torch.reshape(adv_sample, [28, 28]).numpy()
+        plt.imsave(f'./final-report/adv-img-samples/adv-sample{i}.bmp', adv_sample)
+        i += 1
 
-        plt.imshow(adv_mnist_train[0])
-        print(adv_mnist_target[0])
-        plt.show()
-        print('///////////////////////////////////////////////////')
 
-        plt.imshow(img_batch[0])
-        print(target_batch[0])
-        plt.show()
-
-        print('///////////////////////////////////////////////////')
 
