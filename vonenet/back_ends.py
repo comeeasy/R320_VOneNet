@@ -141,7 +141,7 @@ class Basic_Linear_Regression(nn.Module):
     def __init__(self):
         super(Basic_Linear_Regression, self).__init__()
 
-        self.voneblock_connector = nn.Linear(1 * 28 * 28, 28 * 28, bias=True)
+        self.voneblock_connector = nn.Linear(32 * 28 * 28, 28 * 28, bias=True)
         self.fc1 = nn.Linear(28 * 28, 28 * 28, bias=True)
         self.fc2 = nn.Linear(28 * 28, 10, bias=True)
         self.relu = nn.ReLU(inplace=True)

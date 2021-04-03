@@ -157,16 +157,16 @@ import os
 
 def validation(epochs, pre_trained, image_size):
     # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-AlexNet-epochs-10.pt'
-    model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-ConvNet-epochs-10.pt'
+    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-ConvNet-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic_CNN-epochs-10.pt'
-    # model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic-Linear-Regression-epochs-10.pt'
+    model_path = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic-Linear-Regression-epochs-10.pt'
 
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-AlexNet-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-ConvNet-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Basic-CNN-epochs-10.pt'
     # model_path = './weights/VOneBlock-bottle-to-64/VOneBlock-bottle-to-64-Linear-Regression-epochs-10.pt'
 
-    model_name = 'VOneConvNet'
+    model_name = 'VOneLinear-Regression'
     tmp_path = './weights/tmp.pt'
 
     print(f'[INFO] validation start')
