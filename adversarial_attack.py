@@ -47,7 +47,7 @@ if __name__ == '__main__':
     batch_size = 64
     _, mnist_val_dateloader = data.get_mnist(batch_size, image_size=image_size)
 
-    model_weights = './weights/original/ConvNet-epochs-10.pt'
+    model_weights = './weights/VOneBlock-bottle-to-32/VOneBlock-bottle-to-32-Basic_CNN-epochs-10.pt'
 
     # print(f'[INFO] getting model {model_weights}')
     model = torch.load(f=model_weights)
@@ -58,7 +58,7 @@ if __name__ == '__main__':
         ori_sample = img_batch.__getitem__(0)
         ori_sample = ori_sample.to('cpu')
         ori_sample = torch.reshape(ori_sample, [28, 28]).numpy()
-        plt.imsave(f'./final-report/adv-img-samples/ori-sample{i}.bmp', ori_sample)
+        plt.imsave(f'./final-report/VOne-adv-img-samples/V1-ori-sample{i}.bmp', ori_sample)
 
         # generate adversarial image batch
         adv_img_batch, adv_target_batch = generate_image_adversary(model=model, img_batch=img_batch,
@@ -69,7 +69,7 @@ if __name__ == '__main__':
         adv_sample = adv_img_batch.__getitem__(0)
         adv_sample = adv_sample.to('cpu')
         adv_sample = torch.reshape(adv_sample, [28, 28]).numpy()
-        plt.imsave(f'./final-report/adv-img-samples/adv-sample{i}.bmp', adv_sample)
+        plt.imsave(f'./final-report/VOne-adv-img-samples/V1-adv-sample{i}.bmp', adv_sample)
         i += 1
 
 
