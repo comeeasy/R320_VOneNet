@@ -55,6 +55,13 @@ MIT License
 | 3-layer-linear-classifier | add two layer to 1-layer simple model                   |
 | Convnet                   | simple convolutional model                              |
 
+## Report
+<object data="https://github.com/comeeasy/FGSM_MNIST/VOneNet-FGSM-report.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://github.com/comeeasy/FGSM_MNIST/VOneNet-FGSM-report.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/comeeasy/FGSM_MNIST/VOneNet-FGSM-report.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
+
 ## Longer Motivation
 
 1. VOneNet maybe boosts performance. So we're considering how apply this model to
