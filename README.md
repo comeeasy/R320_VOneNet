@@ -33,7 +33,8 @@ red line is accrracy of original images validated with fine-tuned model<br>
 accuracy of original MNIST images of two simple linear classfier models are not rubust. these are not stable.<br>
 however Convnet has robust accuracy of original images. accuracy of adversarial images are going up to original accuracy. almost 95%! <br>
 
-### fine-tunning harms linear-classifier's prediction of original data. But (at least) above simple convolutional model is robust to fine-tunning 
+### fine-tunning harms linear-classifier's prediction of original data. 
+### But (at least) above simple convolutional model is robust to fine-tunning 
 
 ## Requirements
 
