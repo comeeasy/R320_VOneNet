@@ -58,7 +58,7 @@ def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch):
 
             # save weights
             torch.save(model, f"./weights/{model_arch}-ep{epoch:3d}.pth")
-            print(f"./weights/{model_arch}-ep{epoch:3d}.pth")
+            print(f"./weights/{model_arch}-ep{epoch:03d}.pth")
 
 
 
@@ -74,14 +74,14 @@ if __name__ == '__main__':
     parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--lr', type=float, default=1e-3)
     parser.add_argument('--model_arch', type=str, required=True, default="resnet18",
-                        help='arch: ["resnet18"]')
+                        help='arch: ["resnet18"] default="resnet18"')
 
     FLAGS, FIRE_FLAGS = parser.parse_known_args()
 
-    epochs = FLAGS.epochs
-    batch_size = FLAGS.batch_size
+    epochs = int(FLAGS.epochs)
+    batch_size = int(FLAGS.batch_size)
     model_arch = FLAGS.model_arch
-    learning_rate = FLAGS.lr
+    learning_rate = float(FLAGS.lr)
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
     image_size = (224, 224)
