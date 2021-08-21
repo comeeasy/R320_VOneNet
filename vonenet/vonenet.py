@@ -2,7 +2,7 @@
 from collections import OrderedDict
 from torch import nn
 from .modules import VOneBlock
-from .back_ends import AlexNetBackEnd, ConvNet, Basic_CNN, Basic_Linear_Regression
+from .back_ends import AlexNetBackEnd, ConvNet, Basic_CNN, Basic_Linear_Regression, Resnet18
 from .params import generate_gabor_param
 import numpy as np
 import torch
@@ -11,7 +11,7 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
             simple_channels=256, complex_channels=256,
             noise_mode='neuronal', noise_scale=0.35, noise_level=0.07, k_exc=25,
             model_arch='Resnet50', image_size=224, visual_degrees=8, ksize=25, stride=4,
-            mnist_model_path='./weights/tmp.pt'):
+            bottleneck_connection_channel=32):
 
     out_channels = simple_channels + complex_channels
 
@@ -41,7 +41,7 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
                            ksize=ksize, stride=stride, input_size=image_size)
 
     if model_arch:
-        bottleneck = nn.Conv2d(out_channels, 32, kernel_size=1, stride=1, bias=False)
+        bottleneck = nn.Conv2d(out_channels, bottleneck_connection_channel, kernel_size=1, stride=1, bias=False)
         nn.init.kaiming_normal_(bottleneck.weight, mode='fan_out', nonlinearity='relu')
 
         if model_arch.lower() == 'alexnet':
@@ -56,6 +56,9 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
         elif model_arch.lower() == 'basic-linear-regression':
             print('Model: ', 'VOneBasic-linear-regression')
             model_back_end = Basic_Linear_Regression()
+        elif model_arch.lower() == "resnet18":
+            print('Model: ', 'VOneNet-resnet18')
+            model_back_end = Resnet18(bottleneck_connection_channel=bottleneck_connection_channel)
 
         model = nn.Sequential(OrderedDict([
             ('vone_block', vone_block),

@@ -3,7 +3,37 @@ import numpy as np
 import torch
 from torch import nn
 from collections import OrderedDict
+import torchvision
 
+class Resnet18(nn.Module):
+
+    def __init__(self, bottleneck_connection_channel=32):
+        """
+        bottleneck_connection_channel: connection channel for VOneBlock
+        """
+        super(Resnet18, self).__init__()
+        self.customized_layer = nn.Sequential(
+            nn.Conv2d(bottleneck_connection_channel, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False),
+            nn.BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+        )
+
+        self.origin_layer = nn.Sequential(
+            *list(torchvision.models.resnet18(pretrained=False).children())[4:-1]
+        )
+
+        self.fc_layer = nn.Sequential(
+            nn.Linear(in_features=512, out_features=10, bias=True)
+        )
+
+    def forward(self, x):
+        out = self.customized_layer(x)
+        out = self.origin_layer(out)
+        out = torch.flatten(out, start_dim=1)
+        out = self.fc_layer(out)
+
+        return out
 
 # AlexNet Back-End architecture
 # Based on Torchvision implementation in
@@ -62,9 +92,6 @@ class Flatten(nn.Module):
 class Identity(nn.Module):
     def forward(self, x):
         return x
-
-
-
 
     def forward(self, inp):
         x = self.conv_input(inp)
@@ -185,3 +212,4 @@ class Basic_CNN(nn.Module):
         out = self.fc(out)
 
         return out
+
