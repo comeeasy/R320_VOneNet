@@ -29,6 +29,7 @@ def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='c
 
 
 
+
 if __name__ == "__main__":
 
     image_size = int(input("enter image size -> image size: (img_size x img_size)"))

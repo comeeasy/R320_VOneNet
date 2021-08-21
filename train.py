@@ -9,6 +9,8 @@ import data
 from tqdm import tqdm
 import sys
 import logging
+import argparse
+
 
 
 def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch):
@@ -58,19 +60,30 @@ def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch):
             torch.save(model, f"./weights/{model_arch}-ep{epoch:3d}.pth")
             print(f"./weights/{model_arch}-ep{epoch:3d}.pth")
 
+
+
+
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
+
 if __name__ == '__main__':
-    if len(sys.argv) < 5:
-        raise ValueError("Usage: python train.py <epochs> <batch_size> <model_arch> <learning rate> \n<model arch> only can be resnet18 for now")
 
-    epochs = int(sys.argv[1])
-    batch_size = int(sys.argv[2])
-    model_arch = sys.argv[3]
-    learning_rate = float(sys.argv[4])
+    parser = argparse.ArgumentParser(description='VOneNet training Usage')
+    parser.add_argument('--epochs', type=int, default=1)
+    parser.add_argument('--batch_size', type=int, default=8)
+    parser.add_argument('--lr', type=float, default=1e-3)
+    parser.add_argument('--model_arch', type=str, required=True, default="resnet18",
+                        help='arch: ["resnet18"]')
 
-    # As resnet was trained with ImageNet dataset, image size is fixed
+    FLAGS, FIRE_FLAGS = parser.parse_known_args()
+
+    epochs = FLAGS.epochs
+    batch_size = FLAGS.batch_size
+    model_arch = FLAGS.model_arch
+    learning_rate = FLAGS.lr
+
+    logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
     image_size = (224, 224)
 
     logging.info(f"epochs       : {epochs}")
