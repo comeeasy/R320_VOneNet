@@ -17,8 +17,8 @@ A function named<br>
 
 ## Results
 
-red line  : accuracy of original MNIST imagess of fine-tuned model<br>
-blue line : accuracy of adversarial MNIST images of fine-tuned model <br>
+red line  : accuracy of __original__ MNIST imagess of fine-tuned model<br>
+blue line : accuracy of __adversarial__ MNIST images of fine-tuned model <br>
 
 1. 1-layer-linear-classifier model <br>
 red line is accrracy of original images validated with fine-tuned model<br>
