@@ -20,21 +20,11 @@ A function named<br>
 red line  : accuracy of original MNIST imagess of fine-tuned model<br>
 blue line : accuracy of adversarial MNIST images of fine-tuned model <br>
 
-1. 1-layer-linear-classifier model <br>
-red line is accrracy of original images validated with fine-tuned model<br>
-<br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/1-layer-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
-
-2. 3-layer-linear-classfier model<br>
-<br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/3-layer-MNIST-epochs-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
-
-3. Convnet<br>
+1. Result of none VOneNet finetuned<br>
 <br><img src="https://github.com/comeeasy/VOneNet_FGSM_MNIST/blob/main/report/None-vonenet-finetuned.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
-4. Result of none VOneNet finetuned<br>
-<br><img src="https://github.com/comeeasy/VOneNet_FGSM_MNIST/tree/main/report/None-vonenet-finetuned.png" width="50%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
-
-5. Result of none VOneNet finetuned<br>
-<br><img src="https://github.com/comeeasy/VOneNet_FGSM_MNIST/tree/main/report/final-report/VOneBlock-bottle-to-32/finetune/VOneAlexNet.jpg" width="50%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
+2. Result of VOneNet finetuned<br>
+<br><img src="https://github.com/comeeasy/VOneNet_FGSM_MNIST/blob/main/report/vonenet-finetuned.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
 accuracy of original MNIST images of two simple linear classfier models are not rubust. these are not stable.<br>
 however Convnet has robust accuracy of original images. accuracy of adversarial images are going up to original accuracy. almost 95%! <br>
