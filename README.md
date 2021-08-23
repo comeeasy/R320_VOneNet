@@ -26,11 +26,8 @@ blue line : accuracy of adversarial MNIST images of fine-tuned model <br>
 2. Result of VOneNet finetuned<br>
 <br><img src="https://github.com/comeeasy/VOneNet_FGSM_MNIST/blob/main/report/vonenet-finetuned.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
-accuracy of original MNIST images of two simple linear classfier models are not rubust. these are not stable.<br>
-however Convnet has robust accuracy of original images. accuracy of adversarial images are going up to original accuracy. almost 95%! <br>
-
-### fine-tunning harms linear-classifier's prediction of original data. 
-### But (at least) above simple convolutional model is robust to fine-tunning 
+### fine-tunning harms None-VOneNet models's prediction of original data. 
+### But VOnetNet models are robust to fine-tunning 
 
 ## Requirements
 
