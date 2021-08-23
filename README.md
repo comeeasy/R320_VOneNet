@@ -17,8 +17,8 @@ A function named<br>
 
 ## Results
 
-red line  : accuracy of original MNIST imagess of fine-tuned model<br>
-blue line : accuracy of adversarial MNIST images of fine-tuned model <br>
+red line  : accuracy of __original__ MNIST imagess of fine-tuned model<br>
+blue line : accuracy of __adversarial__ MNIST images of fine-tuned model <br>
 
 1. 1-layer-linear-classifier model <br>
 red line is accrracy of original images validated with fine-tuned model<br>
@@ -61,7 +61,7 @@ MIT License
 ## Report
 <object data="https://github.com/comeeasy/FGSM_MNIST/blob/main/VOneNet-FGSM-report.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://github.com/comeeasy/FGSM_MNIST/blob/main/VOneNet-FGSM-report.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/comeeasy/FGSM_MNIST/blob/main/VOneNet-FGSM-report.pdf">Download PDF</a>.</p>
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/comeeasy/VOneNet_FGSM_MNIST/blob/main/report/VOneNet-FGSM-report.pdf">Download PDF</a>.</p>
     </embed>
 </object>
 
