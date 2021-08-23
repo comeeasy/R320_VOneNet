@@ -17,8 +17,8 @@ A function named<br>
 
 ## Results
 
-red line  : accuracy of __original__ MNIST imagess of fine-tuned model<br>
-blue line : accuracy of __adversarial__ MNIST images of fine-tuned model <br>
+red line  : accuracy of original MNIST imagess of fine-tuned model<br>
+blue line : accuracy of adversarial MNIST images of fine-tuned model <br>
 
 1. 1-layer-linear-classifier model <br>
 red line is accrracy of original images validated with fine-tuned model<br>
@@ -31,7 +31,7 @@ red line is accrracy of original images validated with fine-tuned model<br>
 <br><img src="https://github.com/comeeasy/FGSM_MNIST/blob/main/report/Convnet-MNIST-epoch-100.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
 4. Result of none VOneNet finetuned<br>
-<br><img src="https://github.com/comeeasy/VOnetNet_FGSM_MNIST/blob/main/report/None-vonenet-finetuned.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
+<br><img src="https://github.com/comeeasy/VOneNet_FGSM_MNIST/tree/main/report/None-vonenet-finetuned.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
 
 accuracy of original MNIST images of two simple linear classfier models are not rubust. these are not stable.<br>
 however Convnet has robust accuracy of original images. accuracy of adversarial images are going up to original accuracy. almost 95%! <br>
@@ -61,7 +61,7 @@ MIT License
 ## Report
 <object data="https://github.com/comeeasy/FGSM_MNIST/blob/main/VOneNet-FGSM-report.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://github.com/comeeasy/FGSM_MNIST/blob/main/VOneNet-FGSM-report.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/comeeasy/VOneNet_FGSM_MNIST/blob/main/report/VOneNet-FGSM-report.pdf">Download PDF</a>.</p>
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/comeeasy/FGSM_MNIST/blob/main/VOneNet-FGSM-report.pdf">Download PDF</a>.</p>
     </embed>
 </object>
 
