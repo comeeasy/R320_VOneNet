@@ -23,12 +23,14 @@ def get_mnist(batch_size=64, image_size=224) :
     mnist_train_dataloader = DataLoader(dataset=mnist_train_data,
                                         shuffle=True,
                                         batch_size=batch_size,
-                                        drop_last=True)
+                                        drop_last=True,
+                                        num_workers=8)
 
     mnist_val_dataloader = DataLoader(dataset=mnist_val_data,
                                       shuffle=True,
                                       batch_size=batch_size,
-                                      drop_last=True)
+                                      drop_last=True,
+                                      num_workers=8)
 
 
     return mnist_train_dataloader, mnist_val_dataloader
