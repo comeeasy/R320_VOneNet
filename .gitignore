@@ -179,5 +179,6 @@ $RECYCLE.BIN/
 *.lnk
 
 __pycache__
+runs/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,pycharm,visualstudiocode,windows
