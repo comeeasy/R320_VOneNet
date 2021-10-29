@@ -2,7 +2,7 @@
 from collections import OrderedDict
 from torch import nn
 from .modules import VOneBlock
-from .back_ends import AlexNetBackEnd, ConvNet, Basic_CNN, Basic_Linear_Regression, Resnet18
+from .back_ends import AlexNetBackEnd, ConvNet, Basic_CNN, Basic_Linear_Regression, Resnet18, Resnet50
 from .params import generate_gabor_param
 import numpy as np
 import torch
@@ -59,6 +59,11 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
         elif model_arch.lower() == "resnet18":
             print('Model: ', 'VOneNet-resnet18')
             model_back_end = Resnet18(bottleneck_connection_channel=bottleneck_connection_channel)
+        elif model_arch.lower() == "resnet50":
+            print('Model: ', 'VOneNet-resnet50')
+            model_back_end = Resnet50(bottleneck_connection_channel=bottleneck_connection_channel)
+        else:
+            raise ValueError("Invalid arch name try resnet18")
 
         model = nn.Sequential(OrderedDict([
             ('vone_block', vone_block),
