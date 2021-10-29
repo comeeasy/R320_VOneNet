@@ -113,6 +113,8 @@ if __name__ == '__main__' :
                         help='arch: ["resnet18"]')
     parser.add_argument('--test_size_limit', type=int, default=None,
                         help='As test dataset is too big, we limit test_size')
+    parser.add_argument('--img_size', type=int, required=True, default=224,
+                        help='shape=(img_size, img_size')
 
     FLAGS, FIRE_FLAGS = parser.parse_known_args()
 
@@ -122,9 +124,9 @@ if __name__ == '__main__' :
     model_path = os.path.abspath(FLAGS.model_path)
     model_arch = FLAGS.model_arch
     test_size_limit = None if not FLAGS.test_size_limit else int(FLAGS.test_size_limit)
+    image_size = (int(FLAGS.img_size), int(FLAGS.img_size))
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
-    image_size = (224, 224)
 
     logging.info(f"epochs       : {epochs}")
     logging.info(f"batch size   : {batch_size}")
@@ -136,7 +138,6 @@ if __name__ == '__main__' :
 
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
-    image_size = (224, 224)
 
     validation(epochs=epochs, batch_size=batch_size, learning_rate=learning_rate,
                model_path=model_path, model_arch=model_arch, test_size_limit=test_size_limit,

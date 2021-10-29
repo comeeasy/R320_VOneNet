@@ -14,7 +14,7 @@ import argparse
 
 
 def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch):
-    if model_arch != "resnet18":
+    if not model_arch in ["resnet18", "resnet50"] :
         logging.error(f"model_arch: {model_arch}")
         raise ValueError()
 
@@ -74,7 +74,9 @@ if __name__ == '__main__':
     parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--lr', type=float, default=1e-3)
     parser.add_argument('--model_arch', type=str, required=True, default="resnet18",
-                        help='arch: ["resnet18"] default="resnet18"')
+                        help='arch: ["resnet18", "resnet18_28x28] default="resnet18"')
+    parser.add_argument('--img_size', type=int, required=True, default=224,
+                        help='shape=(img_size, img_size')
 
     FLAGS, FIRE_FLAGS = parser.parse_known_args()
 
@@ -82,10 +84,9 @@ if __name__ == '__main__':
     batch_size = int(FLAGS.batch_size)
     model_arch = FLAGS.model_arch
     learning_rate = float(FLAGS.lr)
+    image_size = (int(FLAGS.img_size), int(FLAGS.img_size))
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
-    image_size = (224, 224)
-
     logging.info(f"epochs       : {epochs}")
     logging.info(f"batch size   : {batch_size}")
     logging.info(f"model_arch   : {model_arch}")
