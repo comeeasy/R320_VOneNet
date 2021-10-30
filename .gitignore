@@ -180,5 +180,7 @@ $RECYCLE.BIN/
 
 __pycache__
 runs/
+nohup.*
+.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,pycharm,visualstudiocode,windows
