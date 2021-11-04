@@ -131,7 +131,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dataset):
                 iter += 1
 
             # save weights
-            torch.save(model, f"./weights/{model_arch}-{dataset}-ep{epoch:3d}.pth")
+            torch.save(model, f"./weights/{model_arch}-{dataset}-ep{epoch:03d}.pth")
             print(f"./weights/{model_arch}-ep{epoch:03d}.pth")
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
