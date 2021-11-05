@@ -133,6 +133,20 @@ def get_damegenet(root: str, img_size: tuple, batch_size: int, num_worker=4):
 
     return val_dataloader
 
+def get_imagenet_folder(root: str, img_size: tuple):
+    """
+    root: path to ILSVRC2012 consisting of train, val
+    img_size: to Resize
+    """
+
+    imagenet_val = ImageFolder(
+    root=os.path.join([root, 'val']),
+    transform=transforms.Compose([
+        transforms.Resize(img_size),
+        transforms.ToTensor()
+    ])
+)
+
 if __name__ == "__main__" :
     get_mnist()
 
