@@ -1,6 +1,7 @@
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 
+import torch
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 import os
@@ -148,7 +149,9 @@ def get_imagenet_folder(root: str, img_size: tuple):
 )
 
 if __name__ == "__main__" :
-    get_mnist()
+    print(torch.cuda.is_available())
+
+
 
 
 

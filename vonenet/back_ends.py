@@ -24,14 +24,14 @@ class Resnet18(nn.Module):
         )
 
         self.fc_layer = nn.Sequential(
-            nn.Linear(in_features=512, out_features=10, bias=True)
+            nn.Linear(in_features=512, out_features=1000, bias=True)
         )
 
     def forward(self, x):
-        print(x.shape)
+        # print(x.shape)
         out = self.customized_layer(x)
         out = self.origin_layer(out)
-        print(out.shape)
+        # print(out.shape)
         out = torch.flatten(out, start_dim=1)
         out = self.fc_layer(out)
 

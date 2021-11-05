@@ -11,7 +11,7 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
             simple_channels=256, complex_channels=256,
             noise_mode='neuronal', noise_scale=0.35, noise_level=0.07, k_exc=25,
             model_arch='Resnet50', image_size=224, visual_degrees=8, ksize=25, stride=4,
-            bottleneck_connection_channel=32):
+            bottleneck_connection_channel=32, in_channel=3):
 
     out_channels = simple_channels + complex_channels
 
@@ -38,7 +38,7 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
     vone_block = VOneBlock(sf=sf, theta=theta, sigx=sigx, sigy=sigy, phase=phase,
                            k_exc=k_exc, noise_mode=noise_mode, noise_scale=noise_scale, noise_level=noise_level,
                            simple_channels=simple_channels, complex_channels=complex_channels,
-                           ksize=ksize, stride=stride, input_size=image_size)
+                           ksize=ksize, stride=stride, input_size=image_size, in_channel=in_channel)
 
     if model_arch:
         bottleneck = nn.Conv2d(out_channels, bottleneck_connection_channel, kernel_size=1, stride=1, bias=False)
