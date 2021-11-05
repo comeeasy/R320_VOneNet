@@ -1,6 +1,9 @@
 from torch.utils.data import DataLoader
+from torchvision.datasets import ImageFolder
+
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
+import os
 
 def get_mnist(batch_size=64, image_size=224) :
     # download data
@@ -85,9 +88,9 @@ def get_imagenet(root: str, img_size: tuple, batch_size: int, num_worker=4):
     val_dataloader = DataLoader(
         batch_size=batch_size,
         dataset=imagenet_val,
-        shuffle=True,
+        shuffle=False,
         num_workers=num_worker,
-        drop_last=True,
+        drop_last=False,
     )
 
     return (train_dataloader, val_dataloader)
@@ -123,9 +126,9 @@ def get_damegenet(root: str, img_size: tuple, batch_size: int, num_worker=4):
     val_dataloader = DataLoader(
         batch_size=batch_size,
         dataset=imagenet_val,
-        shuffle=True,
+        shuffle=False,
         num_workers=num_worker,
-        drop_last=True,
+        drop_last=False,
     )
 
     return val_dataloader
