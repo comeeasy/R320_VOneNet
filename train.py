@@ -72,17 +72,16 @@ def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch, dset_roo
                 iter += 1
 
             # save weights
-            model_path = f"./weights/VOne{model_arch}-{dataset}-ep{epoch:03d}-{time.strftime("%Y-%m-%d-%H")}.pth" 
+            model_path = f"./weights/VOne{model_arch}-{dataset}-ep{epoch:03d}-{time.strftime('%Y-%m-%d-%H')}.pth" 
             torch.save(model, model_path)
             logging.info(f"weight is saved as {model_path}")
 
 
-def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, dataset):
+def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, dataset, is_vonenet):
     if not model_arch in ["resnet18", "resnet50"] :
         logging.error(f"model_arch: {model_arch}")
         raise ValueError()
 
-    logging.info(f"train {model_arch} with {dataset}")
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     logging.info(f"train with {device}")
@@ -101,11 +100,18 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
         )
         in_channel = 3
     else:
-        raise RuntimeError("Not Exist dataset")
+        raise RuntimeError("Not Exist dataset Error")
 
     logging.info(f"load {model_arch}")
-    model = back_ends.Resnet18(bottleneck_connection_channel=3)
+    if is_vonenet: 
+        model = vonenet.VOneNet(model_arch=model_arch, in_channel=in_channel)
+        model_arch = "VOne" + model_arch
+    else:
+        model = back_ends.Resnet18(bottleneck_connection_channel=3)
     model = model.train().to(device)
+
+    logging.info(f"train {model_arch} with {dataset}")
+    logging.info(f"load {model_arch}")
 
     optimizer = optim.Adam(params=model.parameters(), lr=lr)
     criterion = nn.CrossEntropyLoss()
@@ -133,7 +139,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
                 iter += 1
 
             # save weights
-            model_path = f"./weights/{model_arch}-{dataset}-ep{epoch:03d}-{time.strftime("%Y-%m-%d-%H")}.pth" 
+            model_path = f"./weights/{model_arch}-{dataset}-ep{epoch:03d}-{time.strftime('%Y-%m-%d-%H')}.pth" 
             torch.save(model, model_path)
             logging.info(f"weight is saved as {model_path}")
 
@@ -153,6 +159,8 @@ if __name__ == '__main__':
                         help='shape=(img_size, img_size')
     parser.add_argument('--dataset', type=str, required=True, default='imagenet',
                         help='choose one of [imagenet , mnist]')
+    parser.add_argument('--dset_root', type=str, required=True, default=None,
+                        help='path to ILSVRC2012 consisting of train, val dirs')
     parser.add_argument('--vonenet', dest='is_vonenet', action='store_true')
     parser.set_defaults(vonenet=False)
 
@@ -164,6 +172,7 @@ if __name__ == '__main__':
     learning_rate = float(FLAGS.lr)
     image_size = (int(FLAGS.img_size), int(FLAGS.img_size))
     dataset = FLAGS.dataset
+    dset_root = FLAGS.dset_root
     is_vonenet = FLAGS.is_vonenet
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
@@ -174,9 +183,4 @@ if __name__ == '__main__':
     logging.info(f"image size   : {image_size}")
     logging.info(f"dataset      : {dataset}")
 
-
-    if is_vonenet:
-        vonenet_model_train(epochs=epochs, batch_size=batch_size, lr=learning_rate,
-                        image_size=image_size, model_arch=model_arch, dataset=dataset)
-    else:
-        model_train(epochs, batch_size, learning_rate, image_size, model_arch, dataset) 
+    model_train(epochs, batch_size, learning_rate, image_size, model_arch, dset_root, dataset, is_vonenet) 

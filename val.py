@@ -191,13 +191,18 @@ def validation(epochs, batch_size, learning_rate, model_path, model_arch,
                 clear_idx = 0
                 for img_batch, target_batch in tqdm(damagenet_val):
                     # get clear images as batch
-                    clear_img_batch = [imagenet_val.__getitem__(i + clear_idx)[0].unsqueeze(0) for i in range(batch_size)]
-                    clear_target_batch = [imagenet_val.__getitem__(i + clear_idx)[1] for i in range(batch_size)]
+                    clear_img_batch = [imagenet_folder.__getitem__(i + clear_idx)[0].unsqueeze(0) for i in range(batch_size)]
                     clear_img_batch = torch.cat(clear_img_batch, dim=0)
+                    clear_target_batch = [imagenet_folder.__getitem__(i + clear_idx)[1] for i in range(batch_size)]
+                    clear_target_batch = torch.Tensor(clear_target_batch)
                     clear_idx += batch_size
                     
                     writer.add_images("Images/clear image batch", clear_img_batch, iter)
                     writer.add_images("Images/adversarial image batch", img_batch, iter)
+                   
+                    clear_img_batch = clear_img_batch.to(device)
+                    img_batch = img_batch.to(device)
+                    target_batch = target_batch.to(device)
 
                     prediction = model(img_batch)
                     cost = criterion(prediction, target_batch)
@@ -208,11 +213,13 @@ def validation(epochs, batch_size, learning_rate, model_path, model_arch,
 
                     writer.add_scalar('Loss/train', cost / total_batch, iter)
                     writer.add_scalar("Test/origin_accuracy", accuracy(
-                        attacked=False, 
-                        val_dset=val_dset,
-                        model=model), iter)
-                    writer.add_scalar("Test/advers_accuracy", accuracy(attacked=True, val_dset=val_dset,
-                                                                    model=model, test_size_limit=test_size_limit), iter)
+                        clear_img_batch, 
+                        clear_target_batch,
+                        model), iter)
+                    writer.add_scalar("Test/advers_accuracy", accuracy(
+                        img_batch, 
+                        target_batch,                                           
+                        model), iter)
                     iter += 1
 
                 # save weights
@@ -278,8 +285,8 @@ if __name__ == '__main__' :
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
 
-    calc_accuracy(batch_size=batch_size, model_path=model_path, image_size=image_size, dataset=dataset, 
-                  dset_root=dset_root, val_method=val_method, damagenet_root=damagenet_root)
+    #calc_accuracy(batch_size=batch_size, model_path=model_path, image_size=image_size, dataset=dataset, 
+    #              dset_root=dset_root, val_method=val_method, damagenet_root=damagenet_root)
     
     validation(epochs=epochs, batch_size=batch_size, learning_rate=learning_rate,
                model_path=model_path, model_arch=model_arch, test_size_limit=test_size_limit,
