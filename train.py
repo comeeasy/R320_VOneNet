@@ -14,69 +14,6 @@ import logging
 import argparse
 import time
 
-
-
-def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, dataset):
-    if not model_arch in ["resnet18", "resnet50"] :
-        logging.error(f"model_arch: {model_arch}")
-        raise ValueError()
-
-    logging.info(f"train vonenet-{model_arch} with {dataset.upper()}")
-
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    logging.info(f"train with {device}")
-
-    # get data
-    logging.info("loading data")
-    if dataset.lower() == 'mnist':
-        train_data, label_data = data.get_mnist(batch_size, image_size=image_size)
-        in_channel = 1
-    elif dataset.lower() == 'imagenet':
-        train_data, label_data = data.get_imagenet(
-            root=dset_root,
-            img_size=image_size,
-            batch_size=batch_size,
-            num_worker=8
-        )
-        in_channel = 3
-    else:
-        raise RuntimeError("Not Exist dataset")
-
-    logging.info(f"load vonenet-{model_arch}")
-    model = vonenet.VOneNet(model_arch=model_arch, in_channel=in_channel)
-    model = model.train().to(device)
-
-    optimizer = optim.Adam(params=model.parameters(), lr=lr)
-    criterion = nn.CrossEntropyLoss()
-    logging.info(f"optimizer: {optimizer}")
-    logging.info(f"criterion: {criterion}")
-
-    with tensorboard.SummaryWriter() as writer:
-        iter = 0
-        for epoch in range(epochs):
-            total_batch = len(train_data)
-
-            for imgs, targets in tqdm(train_data):
-                # for convolutional model
-                imgs = imgs.to(device)
-                targets = targets.to(device)
-
-                prediction = model(imgs)
-                cost = criterion(prediction, targets)
-
-                optimizer.zero_grad()
-                cost.backward()
-                optimizer.step()
-
-                writer.add_scalar('Loss/train', cost / total_batch, iter)
-                iter += 1
-
-            # save weights
-            model_path = f"./weights/VOne{model_arch}-{dataset}-ep{epoch:03d}-{time.strftime('%Y-%m-%d-%H')}.pth" 
-            torch.save(model, model_path)
-            logging.info(f"weight is saved as {model_path}")
-
-
 def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, dataset, is_vonenet):
     if not model_arch in ["resnet18", "resnet50"] :
         logging.error(f"model_arch: {model_arch}")
