@@ -12,15 +12,16 @@ from tqdm import tqdm
 import sys
 import logging
 import argparse
+import time
 
 
 
-def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch, dataset):
+def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, dataset):
     if not model_arch in ["resnet18", "resnet50"] :
         logging.error(f"model_arch: {model_arch}")
         raise ValueError()
 
-    logging.info(f"train vonenet-{model_arch} with MNIST data")
+    logging.info(f"train vonenet-{model_arch} with {dataset.upper()}")
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     logging.info(f"train with {device}")
@@ -32,7 +33,7 @@ def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch, dataset)
         in_channel = 1
     elif dataset.lower() == 'imagenet':
         train_data, label_data = data.get_imagenet(
-            root='/media/r320/2d365830-836f-4d91-8998-fef7c8443335/ImageNet_dset/ILSVRC2012',
+            root=dset_root,
             img_size=image_size,
             batch_size=batch_size,
             num_worker=8
@@ -71,11 +72,12 @@ def vonenet_model_train(epochs, batch_size, lr, image_size, model_arch, dataset)
                 iter += 1
 
             # save weights
-            torch.save(model, f"./weights/{model_arch}-ep{epoch:3d}.pth")
-            print(f"./weights/{model_arch}-ep{epoch:03d}.pth")
+            model_path = f"./weights/VOne{model_arch}-{dataset}-ep{epoch:03d}-{time.strftime("%Y-%m-%d-%H")}.pth" 
+            torch.save(model, model_path)
+            logging.info(f"weight is saved as {model_path}")
 
 
-def model_train(epochs, batch_size, lr, image_size, model_arch, dataset):
+def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, dataset):
     if not model_arch in ["resnet18", "resnet50"] :
         logging.error(f"model_arch: {model_arch}")
         raise ValueError()
@@ -92,7 +94,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dataset):
         in_channel = 1
     elif dataset.lower() == 'imagenet':
         train_data, label_data = data.get_imagenet(
-            root='/media/r320/2d365830-836f-4d91-8998-fef7c8443335/ImageNet_dset/ILSVRC2012',
+            root=dset_root,
             img_size=image_size,
             batch_size=batch_size,
             num_worker=8
@@ -131,8 +133,9 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dataset):
                 iter += 1
 
             # save weights
-            torch.save(model, f"./weights/{model_arch}-{dataset}-ep{epoch:03d}.pth")
-            print(f"./weights/{model_arch}-ep{epoch:03d}.pth")
+            model_path = f"./weights/{model_arch}-{dataset}-ep{epoch:03d}-{time.strftime("%Y-%m-%d-%H")}.pth" 
+            torch.save(model, model_path)
+            logging.info(f"weight is saved as {model_path}")
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -150,6 +153,8 @@ if __name__ == '__main__':
                         help='shape=(img_size, img_size')
     parser.add_argument('--dataset', type=str, required=True, default='imagenet',
                         help='choose one of [imagenet , mnist]')
+    parser.add_argument('--vonenet', dest='is_vonenet', action='store_true')
+    parser.set_defaults(vonenet=False)
 
     FLAGS, FIRE_FLAGS = parser.parse_known_args()
 
@@ -159,6 +164,7 @@ if __name__ == '__main__':
     learning_rate = float(FLAGS.lr)
     image_size = (int(FLAGS.img_size), int(FLAGS.img_size))
     dataset = FLAGS.dataset
+    is_vonenet = FLAGS.is_vonenet
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
     logging.info(f"epochs       : {epochs}")
@@ -168,7 +174,9 @@ if __name__ == '__main__':
     logging.info(f"image size   : {image_size}")
     logging.info(f"dataset      : {dataset}")
 
-    #vonenet_model_train(epochs=epochs, batch_size=batch_size, lr=learning_rate,
-    #                    image_size=image_size, model_arch=model_arch, dataset=dataset)
 
-    model_train(epochs, batch_size, learning_rate, image_size, model_arch, dataset) 
+    if is_vonenet:
+        vonenet_model_train(epochs=epochs, batch_size=batch_size, lr=learning_rate,
+                        image_size=image_size, model_arch=model_arch, dataset=dataset)
+    else:
+        model_train(epochs, batch_size, learning_rate, image_size, model_arch, dataset) 
