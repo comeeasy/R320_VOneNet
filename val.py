@@ -72,7 +72,7 @@ def calc_accuracy(batch_size, model_path, image_size, dataset,
                     model=model, 
                     img_batch=img_batch,
                     target_batch=target_batch)
-                writer.add_images("Images/adversarial image batch", img_batch, iter)
+                writer.add_images("Images/adversarial image batch", adv_img_batch, iter)
 
                 adv_accuracy_avg += accuracy(adv_img_batch, adv_target_batch, model) / total_batch
                 clear_accuracy_avg += accuracy(img_batch, target_batch, model) / total_batch
