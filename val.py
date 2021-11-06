@@ -78,7 +78,7 @@ def calc_accuracy(batch_size, model_path, image_size, dataset,
                 clear_accuracy_avg += accuracy(img_batch, target_batch, model) / total_batch
             
             writer.add_scalar("Test/advers_accuracy", adv_accuracy_avg)
-            writer.add_scalar("Test/original_accuracy", clear_accuracy_avg)
+            writer.add_scalar("Test/origin_accuracy", clear_accuracy_avg)
 # ======= FGSM =======================================================================
 # ======= DAmegeNet ==================================================================
         elif val_method.lower() == 'damagenet':
@@ -240,9 +240,9 @@ if __name__ == '__main__' :
                         help="choose in ['mnist', 'imagenet'])")
     parser.add_argument('--dset_root', type=str, required=True, default=None,
                         help="only for imagenet, parent directory of train, val dirs ex) ILSVRC2012")
-    parser.add_argument('val_method', type=str, required=True, default=None,
+    parser.add_argument('--val_method', type=str, required=True, default=None,
                         help="choose in ['FGSM', 'damagenet']")
-    parser.add_argument('damagenet_root', type=str, required=False, default=None,
+    parser.add_argument('--damagenet_root', type=str, required=False, default=None,
                         help="path of parent dir consisting of DAmagenet")
     FLAGS, FIRE_FLAGS = parser.parse_known_args()
 
@@ -254,7 +254,7 @@ if __name__ == '__main__' :
     test_size_limit = None if not FLAGS.test_size_limit else int(FLAGS.test_size_limit)
     image_size = (int(FLAGS.img_size), int(FLAGS.img_size))
     dataset = FLAGS.dataset
-    dset_root = FLAGS.root
+    dset_root = FLAGS.dset_root
     val_method = FLAGS.val_method
     damagenet_root = FLAGS.damagenet_root
 
@@ -278,11 +278,10 @@ if __name__ == '__main__' :
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
 
+    calc_accuracy(batch_size=batch_size, model_path=model_path, image_size=image_size, dataset=dataset, 
+                  dset_root=dset_root, val_method=val_method, damagenet_root=damagenet_root)
+    
     validation(epochs=epochs, batch_size=batch_size, learning_rate=learning_rate,
                model_path=model_path, model_arch=model_arch, test_size_limit=test_size_limit,
                image_size=image_size, dataset=dataset, dset_root=dset_root, val_method=val_method,
                damagenet_root=damagenet_root)
-
-    calc_accuracy(batch_size=batch_size, model_path=model_path, image_size=image_size, dataset=dataset, 
-                  dset_root=dset_root, val_method=val_method, damagenet_root=damagenet_root)
-
