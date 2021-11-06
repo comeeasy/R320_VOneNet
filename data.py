@@ -89,9 +89,9 @@ def get_imagenet(root: str, img_size: tuple, batch_size: int, num_worker=4):
     val_dataloader = DataLoader(
         batch_size=batch_size,
         dataset=imagenet_val,
-        shuffle=True,
+        shuffle=False,
         num_workers=num_worker,
-        drop_last=True,
+        drop_last=False,
     )
 
     return (train_dataloader, val_dataloader)
@@ -127,13 +127,26 @@ def get_damegenet(root: str, img_size: tuple, batch_size: int, num_worker=4):
     val_dataloader = DataLoader(
         batch_size=batch_size,
         dataset=imagenet_val,
-        shuffle=True,
+        shuffle=False,
         num_workers=num_worker,
-        drop_last=True,
+        drop_last=False,
     )
 
     return val_dataloader
 
+def get_imagenet_folder(root: str, img_size: tuple):
+    """
+    root: path to ILSVRC2012 consisting of train, val
+    img_size: to Resize
+    """
+
+    imagenet_val = ImageFolder(
+    root=os.path.join([root, 'val']),
+    transform=transforms.Compose([
+        transforms.Resize(img_size),
+        transforms.ToTensor()
+    ])
+)
 
 if __name__ == "__main__" :
     print(torch.cuda.is_available())
