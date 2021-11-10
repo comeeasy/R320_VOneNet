@@ -1,5 +1,5 @@
 import torch
-import data
+import utils.data
 
 import matplotlib.pyplot as plt
 

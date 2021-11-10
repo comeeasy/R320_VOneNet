@@ -7,12 +7,12 @@ from torchvision import datasets
 import vonenet.vonenet as vonenet
 import vonenet.back_ends as back_ends
 
-import data
+import utils.data as data
 from tqdm import tqdm
 import sys
 import logging
-import argparse
 import time
+import config
 
 def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, dataset, is_vonenet):
     if not model_arch in ["resnet18", "resnet50"] :
@@ -86,31 +86,14 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO,
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='VOneNet training Usage')
-    parser.add_argument('--epochs', type=int, default=1)
-    parser.add_argument('--batch_size', type=int, default=8)
-    parser.add_argument('--lr', type=float, default=1e-3)
-    parser.add_argument('--model_arch', type=str, required=True, default="resnet18",
-                        help='arch: ["resnet18", "resnet18_28x28"] default="resnet18"')
-    parser.add_argument('--img_size', type=int, required=True, default=224,
-                        help='shape=(img_size, img_size')
-    parser.add_argument('--dataset', type=str, required=True, default='imagenet',
-                        help='choose one of [imagenet , mnist]')
-    parser.add_argument('--dset_root', type=str, required=True, default=None,
-                        help='path to ILSVRC2012 consisting of train, val dirs')
-    parser.add_argument('--vonenet', dest='is_vonenet', action='store_true')
-    parser.set_defaults(vonenet=False)
-
-    FLAGS, FIRE_FLAGS = parser.parse_known_args()
-
-    epochs = int(FLAGS.epochs)
-    batch_size = int(FLAGS.batch_size)
-    model_arch = FLAGS.model_arch
-    learning_rate = float(FLAGS.lr)
-    image_size = (int(FLAGS.img_size), int(FLAGS.img_size))
-    dataset = FLAGS.dataset
-    dset_root = FLAGS.dset_root
-    is_vonenet = FLAGS.is_vonenet
+    epochs = config.ConfigTrain.epochs
+    batch_size = config.ConfigTrain.batch_size
+    model_arch = config.ConfigTrain.model_arch
+    learning_rate = config.ConfigTrain.learning_rate
+    image_size = (config.ConfigTrain.img_size, config.ConfigTrain.img_size)
+    dataset = config.ConfigTrain.dataset
+    dset_root = config.ConfigTrain.dset_root
+    is_vonenet = config.ConfigTrain.is_vonenet
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
     logging.info(f"epochs       : {epochs}")
