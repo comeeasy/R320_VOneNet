@@ -39,7 +39,7 @@ def get_mnist(batch_size=64, image_size=224) :
 
     return mnist_train_dataloader, mnist_val_dataloader
 
-def get_imagenet(root: str, img_size: tuple, batch_size: int, num_worker=4):
+def get_imagenet(root: str, img_size: tuple, batch_size: int, num_worker=8):
     """
         parameters: root: str, img_size: int, batch_size: int
         returns: (train_dataset, val_dataset)
@@ -96,7 +96,7 @@ def get_imagenet(root: str, img_size: tuple, batch_size: int, num_worker=4):
 
     return (train_dataloader, val_dataloader)
 
-def get_damegenet(root: str, img_size: tuple, batch_size: int, num_worker=4):
+def get_damegenet(root: str, img_size: tuple, batch_size: int, num_worker=8):
     """
         parameters: root: str, img_size: int, batch_size: int
         returns: adversarial_val_dataset
@@ -141,12 +141,15 @@ def get_imagenet_folder(root: str, img_size: tuple):
     """
 
     imagenet_val = ImageFolder(
-    root=os.path.join([root, 'val']),
-    transform=transforms.Compose([
-        transforms.Resize(img_size),
-        transforms.ToTensor()
-    ])
-)
+        root=os.path.join(root, 'val'),
+        transform=transforms.Compose([
+            transforms.Resize(img_size),
+            transforms.ToTensor()
+        ])
+    )
+
+    return imagenet_val
+    
 
 if __name__ == "__main__" :
     print(torch.cuda.is_available())
