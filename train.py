@@ -1,4 +1,5 @@
 import torch
+from torch._C import device
 import torch.optim as optim
 import torch.nn as nn
 import torch.utils.tensorboard as tensorboard
@@ -19,8 +20,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
         logging.error(f"model_arch: {model_arch}")
         raise ValueError()
 
-
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = config.ConfigTrain.device
     logging.info(f"train with {device}")
 
     # get data
@@ -94,6 +94,7 @@ if __name__ == '__main__':
     dataset = config.ConfigTrain.dataset
     dset_root = config.ConfigTrain.dset_root
     is_vonenet = config.ConfigTrain.is_vonenet
+    gpu_device = config.ConfigTrain.device
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
     logging.info(f"epochs       : {epochs}")
@@ -103,4 +104,4 @@ if __name__ == '__main__':
     logging.info(f"image size   : {image_size}")
     logging.info(f"dataset      : {dataset}")
 
-    model_train(epochs, batch_size, learning_rate, image_size, model_arch, dset_root, dataset, is_vonenet) 
+    model_train(epochs, batch_size, learning_rate, image_size, model_arch, dset_root, dataset, is_vonenet, gpu_device) 

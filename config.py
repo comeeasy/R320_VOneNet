@@ -18,23 +18,20 @@ class ConfigTrain:
     is_vonenet = False 
         # if this var is set, train with VOneNet
         # else, train with ordinary model
+
+    device = 'cuda:0'
+    
         
 class ConfigVal:
     epochs_finetune = 1
-    batch_size_finetune = 8
+    batch_size_finetune = 4
     learning_rate_finetune = 1e-4
     model_arch = "resnet18"
 
-    model_path = "./weights/Resnet18-ImageNet-imgSize56/resnet18-imagenet-ep020-2021-11-10-16.pth"
+    model_path = "./weights/VOneResnet18-imagenet-ImgSize224/VOneresnet18-imagenet-ep009-2021-11-09-16.pth"
         # Weight of model path to validatoin
-
-    test_size = 5   
-        # Calculating the whole test dataset consumes much time.
-        # So selected some batches from test datset as many as test_size.
-        # if you want to use it, set "shuffle" arguments,
-        # which is of the test dataset as True.
     
-    img_size = 56
+    img_size = 224
         # !! === NOTE === !!
         #   Must match img size to that of trained model 
         # turns into (224, 224)
@@ -46,7 +43,7 @@ class ConfigVal:
         # dataset path not needed for mnist
         # the path of directory must consist of train and val dirs
     
-    val_method = 'fgsm'
+    val_method = 'damagenet'
         # capable list of each dataset
         # ImageNet  : "fgsm", "damagenet"
         # MNISt     : "fgsm"
@@ -54,3 +51,5 @@ class ConfigVal:
     damagenet_root = "/media/r320/2d365830-836f-4d91-8998-fef7c8443335/ImageNet_dset/DAmageNet"
         # the path of DAmageNet dataset,
         # which consists of DAmageNet directory 
+
+    device = 'cuda:0'
