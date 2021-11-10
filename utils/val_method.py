@@ -54,6 +54,8 @@ class Fgsm:
 
             adv_accuracy_avg += accuracy(adv_img_batch, adv_target_batch, model) / total_batch
             clear_accuracy_avg += accuracy(img_batch, target_batch, model) / total_batch
+
+            iter += 1
         
         writer.add_scalar("Test/advers_accuracy", adv_accuracy_avg, epoch)
         writer.add_scalar("Test/origin_accuracy", clear_accuracy_avg, epoch)
@@ -109,6 +111,7 @@ class Fgsm:
                 writer.add_scalar('Train/loss', cost, iter)
                 writer.add_scalar("Train/origin_batch_accuracy", clear_batch_acc)
                 writer.add_scalar("Train/advers_batch_accuracy", adv_batch_acc)
+
                 iter += 1
                 
             Fgsm.calc_accuracy(model, val_dset, epoch)
@@ -133,16 +136,18 @@ class DamageNet:
 
         """
 
-        iter = 0
 
         damagenet_val = data.get_damegenet(root=damagenet_root, img_size=image_size, batch_size=batch_size)
         _, imagenet_val = data.get_imagenet(root=imagenet_root, img_size=image_size, batch_size=batch_size)
 
+        iter = 0
         adv_accuracy_avg = 0
         for img_batch, target_batch in tqdm(damagenet_val):
             writer.add_images("Images/adversarial image batch", img_batch, iter)
             adv_accuracy_avg += accuracy(img_batch, target_batch, model)
+            iter += 1
         
+        iter = 0
         clear_accuracy_avg = 0
         for img_batch, target_batch in tqdm(imagenet_val):
             writer.add_images("Images/original image batch", img_batch, iter)
@@ -150,6 +155,7 @@ class DamageNet:
 
         writer.add_scalar('Test/advers_accuracy', adv_accuracy_avg, epoch)
         writer.add_scalar("Test/origin_accuracy", clear_accuracy_avg, epoch)
+
 
 
     def finetune(model, model_arch, epochs, damagenet_root, dset_root, dataset, image_size, batch_size, criterion, optimizer, writer):
