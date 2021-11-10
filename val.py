@@ -3,16 +3,15 @@ import torch.utils.tensorboard as tensorboard
 import torch.optim as optim
 import torch.nn as nn
 
-from adversarial_attack import generate_image_adversary
-import data
+from utils.adversarial_attack import generate_image_adversary
+import utils.data as data
 
-import data
 import logging
 import sys
 import os
 from tqdm import tqdm
-import argparse
 import time
+import config
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -68,6 +67,8 @@ def calc_accuracy(batch_size, model_path, image_size, dataset,
             clear_accuracy_avg = 0
             adv_accuracy_avg = 0
             for img_batch, target_batch in tqdm(val_dset):
+                writer.add_images("Images/original image batch", img_batch, iter)
+
                 adv_img_batch, adv_target_batch = generate_image_adversary(
                     model=model, 
                     img_batch=img_batch,
@@ -153,7 +154,7 @@ def validation(epochs, batch_size, learning_rate, model_path, model_arch,
                             model=model, 
                             img_batch=img_batch,
                             target_batch=target_batch)
-                    writer.add_images("Images/adversarial image batch", img_batch, iter)
+                    writer.add_images("Images/adversarial image batch", adv_img_batch, iter)
 
                     prediction = model(adv_img_batch)
                     cost = criterion(prediction, adv_target_batch)
@@ -230,40 +231,18 @@ def validation(epochs, batch_size, learning_rate, model_path, model_arch,
 
 
 if __name__ == '__main__' :
-    parser = argparse.ArgumentParser(description='VOneNet fine tunning validation Usage')
-    parser.add_argument('--epochs', type=int, default=1,
-                        help='how many epochs needed for fine tunning validation')
-    parser.add_argument('--batch_size', type=int, default=2)
-    parser.add_argument('--lr', type=float, default=1e-4)
-    parser.add_argument('--model_path', type=str, required=True,
-                        help='path to originally trained vonenet model')
-    parser.add_argument('--model_arch', type=str, required=True, default="resnet18",
-                        help='arch: ["resnet18"]')
-    parser.add_argument('--test_size_limit', type=int, default=None,
-                        help='As test dataset is too big, we limit test_size')
-    parser.add_argument('--img_size', type=int, required=True, default=224,
-                        help='shape=(img_size, img_size')
-    parser.add_argument('--dataset', type=str, required=True, default='imagenet',
-                        help="choose in ['mnist', 'imagenet'])")
-    parser.add_argument('--dset_root', type=str, required=True, default=None,
-                        help="only for imagenet, parent directory of train, val dirs ex) ILSVRC2012")
-    parser.add_argument('--val_method', type=str, required=True, default=None,
-                        help="choose in ['FGSM', 'damagenet']")
-    parser.add_argument('--damagenet_root', type=str, required=False, default=None,
-                        help="path of parent dir consisting of DAmagenet")
-    FLAGS, FIRE_FLAGS = parser.parse_known_args()
-
-    epochs = int(FLAGS.epochs)
-    batch_size = int(FLAGS.batch_size)
-    learning_rate = float(FLAGS.lr)
-    model_path = os.path.abspath(FLAGS.model_path)
-    model_arch = FLAGS.model_arch
-    test_size_limit = None if not FLAGS.test_size_limit else int(FLAGS.test_size_limit)
-    image_size = (int(FLAGS.img_size), int(FLAGS.img_size))
-    dataset = FLAGS.dataset
-    dset_root = FLAGS.dset_root
-    val_method = FLAGS.val_method
-    damagenet_root = FLAGS.damagenet_root
+    
+    epochs = config.ConfigVal.epochs_finetune
+    batch_size = config.ConfigVal.batch_size_finetune
+    learning_rate = config.ConfigVal.learning_rate_finetune
+    model_path = config.ConfigVal.model_path
+    model_arch = config.ConfigVal.model_arch
+    test_size_limit = config.ConfigVal.test_size
+    image_size = (config.ConfigVal.img_size, config.ConfigVal.img_size)
+    dataset = config.ConfigVal.dataset
+    dset_root = config.ConfigVal.dset_root
+    val_method = config.ConfigVal.val_method
+    damagenet_root = config.ConfigVal.damagenet_root
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
 
