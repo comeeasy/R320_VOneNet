@@ -35,6 +35,8 @@ class Fgsm:
         $ tensorboard --logdir runs/ --bind_all
 
         """
+    
+        logging.info("Calculating Accuracy")
 
         iter = 0
         clear_accuracy_avg = 0
@@ -135,7 +137,7 @@ class DamageNet:
 
         """
 
-
+        logging.info("Calculating Accuracy")
         damagenet_val = data.get_damegenet(root=damagenet_root, img_size=image_size, batch_size=batch_size)
         _, imagenet_val = data.get_imagenet(root=imagenet_root, img_size=image_size, batch_size=batch_size)
 
@@ -199,31 +201,35 @@ class DamageNet:
             clear_idx = 0
             for adv_img_batch, adv_target_batch in tqdm(damagenet_val):
                 # get clear images as batch
-                clear_img_batch = [imagenet_folder.__getitem__(i + clear_idx)[0].unsqueeze(0) for i in range(batch_size)]
-                clear_img_batch = torch.cat(clear_img_batch, dim=0)
-                clear_target_batch = [imagenet_folder.__getitem__(i + clear_idx)[1] for i in range(batch_size)]
-                clear_target_batch = torch.Tensor(clear_target_batch)
-                clear_idx += batch_size
+
+                try:
+                    clear_img_batch = [imagenet_folder.__getitem__(i + clear_idx)[0].unsqueeze(0) for i in range(batch_size)]
+                    clear_img_batch = torch.cat(clear_img_batch, dim=0)
+                    clear_target_batch = [imagenet_folder.__getitem__(i + clear_idx)[1] for i in range(batch_size)]
+                    clear_target_batch = torch.Tensor(clear_target_batch)
+                    clear_idx += batch_size
                 
-                writer.add_images("Images/clear image batch", clear_img_batch, iter)
-                writer.add_images("Images/adversarial image batch", adv_img_batch, iter)
+                    writer.add_images("Images/original image batch", clear_img_batch, iter)
+                    writer.add_images("Images/adversarial image batch", adv_img_batch, iter)
                 
-                clear_img_batch = clear_img_batch.to(device)
-                clear_target_batch =clear_target_batch.to(device)
-                adv_img_batch = adv_img_batch.to(device)
-                adv_target_batch = adv_target_batch.to(device)
+                    clear_img_batch = clear_img_batch.to(device)
+                    clear_target_batch =clear_target_batch.to(device)
+                    adv_img_batch = adv_img_batch.to(device)
+                    adv_target_batch = adv_target_batch.to(device)
 
-                prediction = model(adv_img_batch)
-                cost = criterion(prediction, adv_target_batch)
+                    prediction = model(adv_img_batch)
+                    cost = criterion(prediction, adv_target_batch)
 
-                optimizer.zero_grad()
-                cost.backward()
-                optimizer.step()
+                    optimizer.zero_grad()
+                    cost.backward()
+                    optimizer.step()
 
-                writer.add_scalar('Train/loss', cost / total_batch, iter)
-                writer.add_scalar("Train/origin_batch_accuracy", accuracy(clear_img_batch, clear_target_batch,model), iter)
-                writer.add_scalar("Train/advers_batch_accuracy", accuracy(adv_img_batch, adv_target_batch, model), iter)
-                iter += 1
+                    writer.add_scalar('Train/loss', cost / total_batch, iter)
+                    writer.add_scalar("Train/origin_batch_accuracy", accuracy(clear_img_batch, clear_target_batch,model), iter)
+                    writer.add_scalar("Train/advers_batch_accuracy", accuracy(adv_img_batch, adv_target_batch, model), iter)
+                    iter += 1
+                except:
+                    pass
 
             DamageNet.calc_accuracy(model=model, damagenet_root=damagenet_root, imagenet_root=dset_root,
                                     image_size=image_size, batch_size=batch_size, epoch=epoch)
