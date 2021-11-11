@@ -110,4 +110,4 @@ if __name__ == '__main__':
     logging.info(f"dataset      : {dataset}")
     logging.info(f"device       : {gpu_device}")
 
-    model_train(epochs, batch_size, learning_rate, image_size, model_arch, dset_root, dataset, is_vonenet, gpu_device) 
+    model_train(epochs, batch_size, learning_rate, image_size, model_arch, dset_root, dataset, is_vonenet) 
