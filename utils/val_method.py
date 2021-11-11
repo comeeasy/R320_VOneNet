@@ -10,14 +10,14 @@ import time
 
 
 def accuracy(img_batch, target_batch, model):
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = ConfigVal.device
 
     with torch.no_grad():
-        X_test = img_batch.to(device)
-        Y_test = target_batch.to(device)
+        img_batch = img_batch.to(device)
+        target_batch = target_batch.to(device)
 
-        prediction = model(X_test).to(device)
-        correct_prediction = torch.argmax(prediction, 1) == Y_test
+        prediction = model(img_batch)
+        correct_prediction = torch.argmax(prediction, 1) == target_batch
         accuracy = correct_prediction.float().mean()
 
     return accuracy
@@ -119,7 +119,6 @@ class Fgsm:
             # save weights
             weight_path = f"./weights/{model_arch}-{dataset}-ep{epoch:03d}-FGSM-{time.strftime('%Y-%m-%d-%H')}.pth"
             torch.save(model, weight_path)
-            print(weight_path)
 
 class DamageNet:
     """
@@ -140,18 +139,22 @@ class DamageNet:
         damagenet_val = data.get_damegenet(root=damagenet_root, img_size=image_size, batch_size=batch_size)
         _, imagenet_val = data.get_imagenet(root=imagenet_root, img_size=image_size, batch_size=batch_size)
 
+        img_total_batch = len(imagenet_val)
+        adv_total_batch = len(damagenet_val)
+
         iter = 0
         adv_accuracy_avg = 0
         for img_batch, target_batch in tqdm(damagenet_val):
             writer.add_images("Images/adversarial image batch", img_batch, iter)
-            adv_accuracy_avg += accuracy(img_batch, target_batch, model)
+            adv_accuracy_avg += accuracy(img_batch, target_batch, model) / img_total_batch
             iter += 1
         
         iter = 0
         clear_accuracy_avg = 0
         for img_batch, target_batch in tqdm(imagenet_val):
             writer.add_images("Images/original image batch", img_batch, iter)
-            clear_accuracy_avg += accuracy(img_batch, target_batch, model)
+            clear_accuracy_avg += accuracy(img_batch, target_batch, model) / adv_total_batch
+            iter += 1
 
         writer.add_scalar('Test/advers_accuracy', adv_accuracy_avg, epoch)
         writer.add_scalar("Test/origin_accuracy", clear_accuracy_avg, epoch)
@@ -217,7 +220,7 @@ class DamageNet:
                 cost.backward()
                 optimizer.step()
 
-                writer.add_scalar('Loss/train', cost / total_batch, iter)
+                writer.add_scalar('Train/loss', cost / total_batch, iter)
                 writer.add_scalar("Train/origin_batch_accuracy", accuracy(clear_img_batch, clear_target_batch,model), iter)
                 writer.add_scalar("Train/advers_batch_accuracy", accuracy(adv_img_batch, adv_target_batch, model), iter)
                 iter += 1
