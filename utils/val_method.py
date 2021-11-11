@@ -7,6 +7,7 @@ import torch
 import torch.utils.tensorboard as tensorboard
 import utils.data as data
 import time
+import logging
 
 
 def accuracy(img_batch, target_batch, model):
