@@ -77,7 +77,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
                 cost.backward()
                 optimizer.step()
 
-                writer.add_scalar('Loss/train', cost / total_batch, iter)
+                writer.add_scalar('Loss/train', cost, iter)
                 iter += 1
 
             # save weights
