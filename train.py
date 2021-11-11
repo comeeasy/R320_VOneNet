@@ -40,11 +40,16 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
         raise RuntimeError("Not Exist dataset Error")
 
     logging.info(f"load {model_arch}")
-    if is_vonenet: 
-        model = vonenet.VOneNet(model_arch=model_arch, in_channel=in_channel)
-        model_arch = "VOne" + model_arch
+    if config.ConfigTrain.resume:
+        start_epoch = config.ConfigTrain.start_epoch
+        model = torch.load(config.ConfigTrain.resume_model_path)
     else:
-        model = back_ends.Resnet18(bottleneck_connection_channel=3)
+        if is_vonenet: 
+            model = vonenet.VOneNet(model_arch=model_arch, in_channel=in_channel)
+            model_arch = "VOne" + model_arch
+        else:
+            model = back_ends.Resnet18(bottleneck_connection_channel=3)
+
     model = model.train().to(device)
 
     logging.info(f"train {model_arch} with {dataset}")
@@ -57,7 +62,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
 
     with tensorboard.SummaryWriter() as writer:
         iter = 0
-        for epoch in range(epochs):
+        for epoch in range(start_epoch + 1, start_epoch + epochs + 1):
             total_batch = len(train_data)
 
             for imgs, targets in tqdm(train_data):
@@ -103,5 +108,6 @@ if __name__ == '__main__':
     logging.info(f"learning_rate: {learning_rate}")
     logging.info(f"image size   : {image_size}")
     logging.info(f"dataset      : {dataset}")
+    logging.info(f"device       : {gpu_device}")
 
     model_train(epochs, batch_size, learning_rate, image_size, model_arch, dset_root, dataset, is_vonenet, gpu_device) 

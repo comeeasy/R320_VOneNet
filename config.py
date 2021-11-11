@@ -19,6 +19,13 @@ class ConfigTrain:
         # if this var is set, train with VOneNet
         # else, train with ordinary model
 
+    # resume options
+    resume = False
+    resume_model_path = ""
+        # if name of model weights was Resnet18-..-ep003.pth,
+        # then start_epoch must be same as 3 
+    start_epoch = -1
+
     device = 'cuda:0'
     
         
