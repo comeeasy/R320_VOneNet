@@ -232,7 +232,7 @@ class DamageNet:
                     pass
 
             DamageNet.calc_accuracy(model=model, damagenet_root=damagenet_root, imagenet_root=dset_root,
-                                    image_size=image_size, batch_size=batch_size, epoch=epoch)
+                                    image_size=image_size, batch_size=batch_size, epoch=epoch, writer=writer)
 
             # save weights
             weight_path = f"./weights/{model_arch}-{dataset}-ep{epoch:03d}-DAmageNet-{time.strftime('%Y-%m-%d-%H')}.pth"
