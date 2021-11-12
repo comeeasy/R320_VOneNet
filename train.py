@@ -44,6 +44,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
         start_epoch = config.ConfigTrain.start_epoch
         model = torch.load(config.ConfigTrain.resume_model_path)
     else:
+        start_epoch = 0
         if is_vonenet: 
             model = vonenet.VOneNet(model_arch=model_arch, in_channel=in_channel)
             model_arch = "VOne" + model_arch
@@ -101,7 +102,6 @@ if __name__ == '__main__':
     is_vonenet = config.ConfigTrain.is_vonenet
     gpu_device = config.ConfigTrain.device
 
-    logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
     logging.info(f"epochs       : {epochs}")
     logging.info(f"batch size   : {batch_size}")
     logging.info(f"model_arch   : {model_arch}")
@@ -109,5 +109,8 @@ if __name__ == '__main__':
     logging.info(f"image size   : {image_size}")
     logging.info(f"dataset      : {dataset}")
     logging.info(f"device       : {gpu_device}")
+    logging.info(f"resume       : {config.ConfigTrain.resume}")
+    logging.info(f"resume epoch : {config.ConfigTrain.start_epoch}")
+    logging.info(f"resume path  : {config.ConfigTrain.resume_model_path}")
 
     model_train(epochs, batch_size, learning_rate, image_size, model_arch, dset_root, dataset, is_vonenet) 
