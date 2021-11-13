@@ -79,6 +79,8 @@ if __name__ == '__main__' :
     dset_root = config.ConfigVal.dset_root
     val_method = config.ConfigVal.val_method
     damagenet_root = config.ConfigVal.damagenet_root
+    resume = config.ConfigVal.resume
+    start_epoch = config.ConfigVal.start_epoch
 
     logging.info(f"As resnet was trained with ImageNet dataset, image size is fixed as (224, 224)")
 
@@ -90,6 +92,8 @@ if __name__ == '__main__' :
     logging.info(f"image size   : {image_size}")
     logging.info(f"dataset      : {dataset}")
     logging.info(f"dset_root    : {dset_root}")
+    logging.info(f"resume       : {resume}")
+    logging.info(f"start_epoch  : {start_epoch}")
     
     if dataset.lower() == 'damagenet':
         if not os.path.exists(damagenet_root):

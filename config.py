@@ -1,11 +1,11 @@
 class ConfigTrain:
-    epochs = 10
-    batch_size = 8
-    learning_rate = 1e-3
+    epochs = 30
+    batch_size = 64
+    learning_rate = 1e-4
     model_arch = "resnet18" 
         # only resnet18 for now
 
-    img_size = 224 
+    img_size = 56 
         # turns into (224, 224)
 
     dataset = "imagenet" 
@@ -20,28 +20,28 @@ class ConfigTrain:
         # else, train with ordinary model
 
     # resume options
-    resume = False
-    resume_model_path = ""
+    resume = True
+    resume_model_path = "./weights/Resnet18-ImageNet-imgSize56/resnet18-imagenet-ep020-2021-11-10-16.pth"
         # if name of model weights was Resnet18-..-ep003.pth,
         # then start_epoch must be same as 3 
-    start_epoch = -1
+    start_epoch = 20
 
     device = 'cuda:0'
     
         
 class ConfigVal:
-    epochs_finetune = 1
-    batch_size_finetune = 4
-    learning_rate_finetune = 1e-4
+    epochs_finetune = 10
+    batch_size_finetune = 16
+    learning_rate_finetune = 1e-5
     model_arch = "resnet18"
 
-    model_path = "./weights/VOneResnet18-imagenet-ImgSize224/VOneresnet18-imagenet-ep009-2021-11-09-16.pth"
+    model_path = "./weights/Resnet18-ImageNet-imgSize56/resnet18-imagenet-ep020-2021-11-10-16.pth"
         # Weight of model path to validatoin
     
-    img_size = 224
+    img_size = 56
         # !! === NOTE === !!
         #   Must match img size to that of trained model 
-        # turns into (224, 224)
+        # if img_size = 224, turns into (224, 224)
 
     dataset = "imagenet" 
         # "imagenet" or "mnist"
@@ -60,3 +60,6 @@ class ConfigVal:
         # which consists of DAmageNet directory 
 
     device = 'cuda:0'
+
+    resume = False
+    start_epoch = None
