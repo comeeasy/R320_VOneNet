@@ -38,6 +38,11 @@ class ConfigVal:
     model_path = "./weights/Resnet18-ImageNet-imgSize56/resnet18-imagenet-ep020-2021-11-10-16.pth"
         # Weight of model path to validatoin
     
+    is_vonenet = False 
+        # if this var is set, train with VOneNet
+        # else, train with ordinary model
+        # this is only for name of weigts, whether "VOne" should be attached or not
+
     img_size = 56
         # !! === NOTE === !!
         #   Must match img size to that of trained model 

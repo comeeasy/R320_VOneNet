@@ -40,11 +40,16 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
         raise RuntimeError("Not Exist dataset Error")
 
     logging.info(f"load {model_arch}")
+
     if config.ConfigTrain.resume:
         start_epoch = config.ConfigTrain.start_epoch
         model = torch.load(config.ConfigTrain.resume_model_path)
+
+        if is_vonenet:
+            model_arch = "VOne" + model_arch
     else:
         start_epoch = 0
+        
         if is_vonenet: 
             model = vonenet.VOneNet(model_arch=model_arch, in_channel=in_channel)
             model_arch = "VOne" + model_arch
@@ -82,7 +87,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
                 iter += 1
 
             # save weights
-            model_path = f"./weights/{model_arch}-{dataset}-ep{epoch:03d}-{time.strftime('%Y-%m-%d-%H')}.pth" 
+            model_path = f"./weights/{model_arch}-{dataset}-ImgSize{image_size}-ep{epoch:03d}-{time.strftime('%Y-%m-%d-%H')}.pth" 
             torch.save(model, model_path)
             logging.info(f"weight is saved as {model_path}")
 

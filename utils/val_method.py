@@ -130,7 +130,7 @@ class Fgsm:
             Fgsm.calc_accuracy(model, val_dset, epoch)
 
             # save weights
-            weight_path = f"./weights/{model_arch}-{dataset}-ep{epoch:03d}-FGSM-{time.strftime('%Y-%m-%d-%H')}.pth"
+            weight_path = f"./weights/{model_arch}-{dataset}-ImgSize{ConfigVal.img_size}-ep{epoch:03d}-FGSM-{time.strftime('%Y-%m-%d-%H')}.pth"
             torch.save(model, weight_path)
 
 class DamageNet:
@@ -256,6 +256,6 @@ class DamageNet:
                                     image_size=image_size, batch_size=batch_size, epoch=epoch, writer=writer)
 
             # save weights
-            weight_path = f"./weights/{model_arch}-{dataset}-ep{epoch:03d}-DAmageNet-{time.strftime('%Y-%m-%d-%H')}.pth"
+            weight_path = f"./weights/{model_arch}-{dataset}-ImgSize{ConfigVal.img_size}-ep{epoch:03d}-DAmageNet-{time.strftime('%Y-%m-%d-%H')}.pth"
             torch.save(model, weight_path)
             print(weight_path)
