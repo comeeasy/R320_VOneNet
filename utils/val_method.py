@@ -58,13 +58,8 @@ class Fgsm:
 
             iter += 1
         
-        if ConfigVal.resume:
-            start = ConfigVal.start_epoch
-        else:
-            start = 0
-
-        writer.add_scalar("Test/advers_accuracy", adv_accuracy_avg, epoch + start)
-        writer.add_scalar("Test/origin_accuracy", clear_accuracy_avg, epoch + start)
+        writer.add_scalar("Test/advers_accuracy", adv_accuracy_avg, epoch)
+        writer.add_scalar("Test/origin_accuracy", clear_accuracy_avg, epoch)
 
     def finetune(model, epochs, train_dset, dataset, criterion, optimizer, model_arch, val_dset, writer):
         """
@@ -166,13 +161,8 @@ class DamageNet:
             clear_accuracy_avg += accuracy(img_batch, target_batch, model) / adv_total_batch
             iter += 1
 
-        if ConfigVal.resume:
-            start = ConfigVal.start_epoch
-        else:
-            start = 0
-
-        writer.add_scalar('Test/advers_accuracy', adv_accuracy_avg, epoch + start)
-        writer.add_scalar("Test/origin_accuracy", clear_accuracy_avg, epoch + start)
+        writer.add_scalar('Test/advers_accuracy', adv_accuracy_avg, epoch)
+        writer.add_scalar("Test/origin_accuracy", clear_accuracy_avg, epoch)
 
 
 
