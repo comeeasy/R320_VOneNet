@@ -91,6 +91,9 @@ class Fgsm:
 
         """
 
+        if ConfigVal.is_vonenet:
+            model_arch = "Vone" + model_arch
+
         iter = 0
 
         if ConfigVal.resume:
@@ -204,6 +207,9 @@ class DamageNet:
         device = ConfigVal.device
 
         iter = 0
+
+        if ConfigVal.is_vonenet:
+            model_arch = "Vone" + model_arch
 
         if ConfigVal.resume:
             start = ConfigVal.start_epoch
