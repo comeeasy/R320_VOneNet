@@ -120,7 +120,7 @@ class Fgsm:
 
                 iter += 1
                 
-            Fgsm.calc_accuracy(model, val_dset, epoch)
+            Fgsm.calc_accuracy(model, val_dset, writer, epoch)
 
             # save weights
             weight_path = f"./weights/{model_arch}-{dataset}-ImgSize{ConfigVal.img_size}-ep{epoch:03d}-FGSM-{time.strftime('%Y-%m-%d-%H')}.pth"

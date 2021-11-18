@@ -54,7 +54,7 @@ def validation(epochs, batch_size, learning_rate, model_path, model_arch,
 
     if val_method.lower() == 'fgsm':
         with tensorboard.SummaryWriter() as writer:
-            # Fgsm.calc_accuracy(model, val_dset, writer, epoch=0) # first performance
+            Fgsm.calc_accuracy(model, val_dset, writer, epoch=0) # first performance
             Fgsm.finetune(model, epochs, train_dset, dataset, criterion, optimizer, model_arch, val_dset, writer)
 
     elif val_method.lower() == 'damagenet':

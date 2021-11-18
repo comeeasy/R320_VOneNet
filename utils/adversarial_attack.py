@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import os
 
-def generate_image_adversary(model, img_batch, target_batch, eps=0.01, device='cuda'):
+def generate_image_adversary(model, img_batch, target_batch, eps=0.1, device='cuda'):
     img = img_batch.clone().to(device)
     label = target_batch.clone().to(device)
 
