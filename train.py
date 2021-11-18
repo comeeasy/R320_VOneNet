@@ -87,7 +87,7 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
                 iter += 1
 
             # save weights
-            model_path = f"./weights/{model_arch}-{dataset}-ImgSize{image_size}-ep{epoch:03d}-{time.strftime('%Y-%m-%d-%H')}.pth" 
+            model_path = f"./weights/{model_arch}-{dataset}-ImgSize{config.ConfigTrain.img_size}-ep{epoch:03d}-{time.strftime('%Y-%m-%d-%H')}.pth" 
             torch.save(model, model_path)
             logging.info(f"weight is saved as {model_path}")
 
