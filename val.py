@@ -54,17 +54,15 @@ def validation(epochs, batch_size, learning_rate, model_path, model_arch,
 
     if val_method.lower() == 'fgsm':
         with tensorboard.SummaryWriter() as writer:
-            if not config.ConfigVal.is_vonenet:
-                Fgsm.calc_accuracy(model, val_dset, writer, epoch=0) # first performance
-            Fgsm.finetune(model, epochs, train_dset, dataset, criterion, optimizer, model_arch)
+            # Fgsm.calc_accuracy(model, val_dset, writer, epoch=0) # first performance
+            Fgsm.finetune(model, epochs, train_dset, dataset, criterion, optimizer, model_arch, val_dset, writer)
 
     elif val_method.lower() == 'damagenet':
         if dataset.lower() != 'imagenet':
             raise RuntimeError("To validate with DAmageNet, must choose imagenet as dataset")
         
         with tensorboard.SummaryWriter() as writer:
-            if not config.ConfigVal.is_vonenet:
-                DamageNet.calc_accuracy(model, damagenet_root, dset_root, image_size, batch_size, writer, epoch=0)
+            DamageNet.calc_accuracy(model, damagenet_root, dset_root, image_size, batch_size, writer, epoch=0)
             DamageNet.finetune(model, model_arch, epochs, damagenet_root, dset_root, dataset, 
                         image_size, batch_size, criterion, optimizer, writer)
 

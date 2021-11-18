@@ -15,7 +15,8 @@ import logging
 import time
 import config
 
-def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, dataset, is_vonenet):
+def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, 
+                        dataset, is_vonenet, simple_channel, complex_channel):
     if not model_arch in ["resnet18", "resnet50"] :
         logging.error(f"model_arch: {model_arch}")
         raise ValueError()
@@ -51,7 +52,12 @@ def model_train(epochs, batch_size, lr, image_size, model_arch, dset_root, datas
         start_epoch = 0
         
         if is_vonenet: 
-            model = vonenet.VOneNet(model_arch=model_arch, in_channel=in_channel)
+            model = vonenet.VOneNet(
+                model_arch=model_arch, 
+                in_channel=in_channel, 
+                simple_channels=simple_channel,
+                complex_channels=complex_channel
+            )
             model_arch = "VOne" + model_arch
         else:
             model = back_ends.Resnet18(bottleneck_connection_channel=3)
@@ -106,6 +112,8 @@ if __name__ == '__main__':
     dset_root = config.ConfigTrain.dset_root
     is_vonenet = config.ConfigTrain.is_vonenet
     gpu_device = config.ConfigTrain.device
+    simple_channel = config.ConfigTrain.n_simple_channel_GBF
+    complex_channel = config.ConfigTrain.n_complex_channel_GFB
 
     logging.info(f"epochs       : {epochs}")
     logging.info(f"batch size   : {batch_size}")
@@ -117,5 +125,8 @@ if __name__ == '__main__':
     logging.info(f"resume       : {config.ConfigTrain.resume}")
     logging.info(f"resume epoch : {config.ConfigTrain.start_epoch}")
     logging.info(f"resume path  : {config.ConfigTrain.resume_model_path}")
+    logging.info(f"simple channel: {simple_channel}")
+    logging.info(f"complex channel: {complex_channel}")
 
-    model_train(epochs, batch_size, learning_rate, image_size, model_arch, dset_root, dataset, is_vonenet) 
+    model_train(epochs, batch_size, learning_rate, image_size, model_arch, 
+                    dset_root, dataset, is_vonenet, simple_channel, complex_channel) 

@@ -1,5 +1,6 @@
 
 from collections import OrderedDict
+import logging
 from torch import nn
 from .modules import VOneBlock
 from .back_ends import AlexNetBackEnd, ConvNet, Basic_CNN, Basic_Linear_Regression, Resnet18, Resnet50

@@ -99,11 +99,10 @@ class Fgsm:
         for epoch in range(start + 1, start + epochs + 1):
             for img_batch, target_batch in tqdm(train_dset):
 
-                if dataset.lower() == 'imagenet':
-                    adv_img_batch, adv_target_batch = generate_image_adversary(
-                        model=model, 
-                        img_batch=img_batch,
-                        target_batch=target_batch)
+                adv_img_batch, adv_target_batch = generate_image_adversary(
+                    model=model, 
+                    img_batch=img_batch,
+                    target_batch=target_batch)
 
                 prediction = model(adv_img_batch)
                 cost = criterion(prediction, adv_target_batch)
