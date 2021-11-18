@@ -25,8 +25,11 @@ class ConfigTrain:
         # if name of model weights was Resnet18-..-ep003.pth,
         # then start_epoch must be same as 3 
     start_epoch = 20
-
     device = 'cuda:0'
+    
+    # number of each of simple, complex channel
+    n_simple_channel_GBF = 512
+    n_complex_channel_GFB = 512
     
         
 class ConfigVal:
