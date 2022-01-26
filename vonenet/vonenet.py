@@ -7,6 +7,8 @@ from .params import generate_gabor_param
 import numpy as np
 import torch
 
+from .configure import Configure as cfg
+
 def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
             simple_channels=256, complex_channels=256,
             noise_mode='neuronal', noise_scale=0.35, noise_level=0.07, k_exc=25,
@@ -61,7 +63,7 @@ def VOneNet(sf_corr=0.75, sf_max=6, sf_min=0, rand_param=False, gabor_seed=0,
             model_back_end = Resnet18(bottleneck_connection_channel=bottleneck_connection_channel)
         elif model_arch.lower() == "resnet50":
             print('Model: ', 'VOneNet-resnet50')
-            model_back_end = Resnet50(bottleneck_connection_channel=bottleneck_connection_channel)
+            model_back_end = Resnet50(bottleneck_connection_channel=bottleneck_connection_channel, n_classes=cfg.n_classes)
         else:
             raise ValueError("Invalid arch name try resnet18")
 
