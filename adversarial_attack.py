@@ -6,16 +6,17 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import os
 
-def generate_image_adversary(model, img_batch, target_batch, eps=0.35, device='cuda'):
-    img = img_batch.clone().to(device)
-    label = target_batch.clone().to(device)
+def generate_image_adversary(model, img_batch, target_batch, eps=0.01):
+    img = img_batch.clone()
+    label = target_batch.clone()
 
     img.requires_grad = True
 
-    pred = model(img).to(device)
+    pred = model(img)
+    print(pred.shape)
 
     loss_fn = torch.nn.CrossEntropyLoss()
-    loss = loss_fn(pred, label).to(device)
+    loss = loss_fn(pred, label)
 
     # we need to calculate ∇xJ(x,θ)
     # with torch.autograd.set_detect_anomaly(True):
